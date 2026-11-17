@@ -1,0 +1,6 @@
+dist/
+test-results/
+node_modules/
+.env
+.env.local
+
