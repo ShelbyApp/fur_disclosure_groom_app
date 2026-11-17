@@ -45,6 +45,11 @@ h1:focus,main:focus {outline:none}
 .dog-identity small,.pet-card small {display:block;color:var(--soft);font-size:13px}
 .owner-screen .recap dl {padding:0 12px 10px}
 .login-pup {display:block;width:100%;height:210px;object-fit:cover;object-position:50% 43%;background:var(--yellow);border-radius:22px 22px 42px 22px;margin:18px 0 22px}
+.auth-screen .lead {min-height:2.8em}
+.groomer-picker select {width:100%;border:0;background:transparent;padding:6px 0;color:var(--ink)}
+.groomer-picker .secondary {margin:8px 0 16px}
+.groomer-summary {display:grid;gap:3px;padding:12px 14px;margin:10px 0;background:var(--lilac);border-radius:14px;overflow-wrap:anywhere}
+.groomer-summary strong {font:600 20px Fredoka}.groomer-summary small {color:var(--soft)}
 .profile-section {margin-top:28px}
 .identity-link {color:inherit;text-decoration:none}
 .identity-link>div {min-width:0;flex:1}.identity-link b {font-size:28px;color:var(--violet)}

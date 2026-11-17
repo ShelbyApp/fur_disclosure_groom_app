@@ -26,8 +26,17 @@ const next=()=>click('button[type=submit]');
 const at=async id=>{await until(()=>run('location.hash==='+q('#/'+id)));};
 const text=()=>run('document.querySelector("main").innerText');
 const size=(width,height)=>c('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
-const screenshot=async name=>{await mkdir('test-results',{recursive:true});const image=await c('Page.captureScreenshot',{format:'png'});await writeFile('test-results/'+name+'.png',Buffer.from(image.data,'base64'));};
+const screenshot=async name=>{await run('Promise.all([...document.images].map(img=>img.decode())).then(()=>true)');await mkdir('test-results',{recursive:true});const image=await c('Page.captureScreenshot',{format:'png'});await writeFile('test-results/'+name+'.png',Buffer.from(image.data,'base64'));};
 const checkWidth=async()=>assert.ok(await run('document.documentElement.scrollWidth <= innerWidth'),'horizontal overflow');
+// Keep exercising old guest drafts; the public guest-entry button is intentionally hidden.
+async function legacyGuest() {
+  await run('sessionStorage.removeItem("fur-disclosure:groom:v1");sessionStorage.setItem("fd:guest-active","yes");location.hash="#/welcome"');
+  await c('Page.reload');await until(()=>run('!!document.querySelector("[data-mode=advanced]")'));
+}
+const selectGroomer=async value=>{
+  await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));
+  await run('(()=>{const el=document.querySelector("[data-saved-groomer]");el.value='+q(value)+';el.dispatchEvent(new Event("change",{bubbles:true}));})()');
+};
 
 async function upload(key) {
   await run(`(async()=>{const photo=await (await fetch('assets/studio-garden.jpg')).blob();const dt=new DataTransfer();dt.items.add(new File([photo],'dog.jpg',{type:'image/jpeg'}));const input=document.querySelector('[data-photo="${key}"]');input.files=dt.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
@@ -59,14 +68,16 @@ await c('Page.enable');await c('Runtime.enable');await size(1440,940);
 const {installAuthFixture}=await import('./auth-fixture.mjs');
 await c('Page.addScriptToEvaluateOnNewDocument',{source:'('+installAuthFixture.toString()+')()'});
 await c('Page.navigate',{url:'http://127.0.0.1:4381/'});
-await until(()=>run('!!document.querySelector("[data-owner-action=guest]")'));
+await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
+assert.equal(await run('!!document.querySelector("[data-owner-action=guest]")'),false);
 assert.ok(!(await text()).includes('sample profile'));
 await run('document.fonts.ready.then(()=>true)');await checkWidth();
 assert.ok(await run('document.querySelector("#app").getBoundingClientRect().width<=432'));
-await click('[data-owner-action=guest]');await screenshot('mode-desktop');
+await legacyGuest();await screenshot('mode-desktop');
 await size(390,844);await screenshot('mode-mobile');
 await click('[data-mode=advanced]');await at('dog');await next();await at('dog');
-await fill('name','Milo');await fill('breed','Goldendoodle');await fill('salon','Maple & Mutt');await fill('groomer','Jamie');
+await fill('name','Milo');await fill('breed','Goldendoodle');
+assert.equal(await run('!!document.querySelector("[name=salon], [name=groomer], [name=groomerPhone]")'),false);
 await moveNext('current-photos');await upload('currentFace');await click('[data-zoom=currentFace]');await click('dialog [data-dismiss]');
 await moveNext('service');await pick('service','Bath + haircut');await moveNext('inspiration');await upload('reference');
 const rectangle=await run('(()=>{const r=document.querySelector("[data-map=reference]").getBoundingClientRect();return {x:r.left+r.width*.31,y:r.top+r.height*.25};})()');
@@ -85,11 +96,11 @@ await pick('anxiety','A little nervous');await moveNext('what-ifs');await click(
 await run('(()=>{const el=document.querySelector("[data-guide]");el.value="terrier";el.dispatchEvent(new Event("change",{bubbles:true}));})()');
 await click('[data-map=sensitiveMap]');await saveNote('Tender lump on the left side','Side / belly');await screenshot('sensitive-mobile');
 await moveNext('what-ifs');await limits();await screenshot('what-ifs-mobile');await finish();
-let copy=await text();for(const item of ['Jamie','Maple & Mutt','Keep both ears this long','Tender lump on the left side','Up to 15 extra minutes','Ask before any added fee','A little nervous']) assert.ok(copy.includes(item),item);
+let copy=await text();for(const item of ['Keep both ears this long','Tender lump on the left side','Up to 15 extra minutes','Ask before any added fee','A little nervous']) assert.ok(copy.includes(item),item);
 assert.ok(!copy.includes('tester@example.test'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),2);
 let pdf=await c('Page.printToPDF',{preferCSSPageSize:true});assert.ok(pdf.data.length>15000);
 await c('Page.reload');await until(()=>run('!!document.querySelector(".sheet")'));
-await click('[data-rolehome]');await click('[data-owner-action=guest]');assert.equal(await run('!!document.querySelector("[data-resume]")'),false);
+await click('[data-rolehome]');await legacyGuest();assert.equal(await run('!!document.querySelector("[data-resume]")'),false);
 await click('[data-mode=basic]');assert.equal(await run('document.querySelector("[name=name]").value'),'');
 await fill('name','Pip');await moveNext('service');await pick('service','Bath only');
 assert.ok(!(await text()).includes('Match my photo'));
@@ -98,7 +109,7 @@ await click('[data-visit=spots]');await at('spots');assert.equal(await run('docu
 assert.equal(await run('document.querySelectorAll("[data-pin=sensitiveMap]").length'),0);
 await click('[data-map=sensitiveMap]');await saveNote('Brush gently on her left side','Side / belly');await moveNext('what-ifs');
 await finish();copy=await text();assert.ok(copy.includes('Brush gently on her left side'));assert.ok(!copy.includes('Keep both ears this long'));assert.ok(!copy.includes('Rounded'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),1);
-await click('[data-rolehome]');await click('[data-owner-action=guest]');await at('welcome');
+await click('[data-rolehome]');await legacyGuest();await at('welcome');
 await click('[data-mode=basic]');await fill('name','Pip');await moveNext('service');await pick('service','Bath only');await moveNext('coat');
 await pick('coat','No tangles noticed');await moveNext('handling');await c('Page.reload');await until(()=>run('!!document.querySelector("[name=anxiety]")'));await at('handling');
 await size(320,740);await checkWidth();await moveNext('what-ifs');await next();assert.equal(await run('document.querySelector("[data-decision=mats]").open'),true);
@@ -107,7 +118,12 @@ await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=1#/account'});
 await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
 await size(390,844);await screenshot('login-mobile');await checkWidth();
 assert.ok(await run('document.querySelector(".login-pup").src.includes("hero-pup-v2")'));
+const authLayout=()=>run('Array.from(document.querySelectorAll(".login-pup,[name=email],[name=password]")).map(el=>{const r=el.getBoundingClientRect();return [r.x,r.y,r.width,r.height]})');
+const loginLayout=await authLayout();
 await click('a[href="#/create-account"]');await at('create-account');
+assert.deepEqual(await authLayout(),loginLayout);
+assert.equal(await run('!!document.querySelector("[data-owner-action=guest]")'),false);
+await screenshot('create-account-mobile');await size(320,740);await checkWidth();await size(390,844);
 await fill('email','owner@example.test');await fill('password','fixture password one');await fill('confirmation','fixture password one');await next();
 await until(()=>run('document.querySelector("h1").textContent.includes("Check your email")'));
 const ownerId='11111111-1111-4111-8111-111111111111';
@@ -125,7 +141,9 @@ await fill('name','Lola');await fill('breed','Terrier');await fill('birthday','2
 assert.equal(await run('document.querySelectorAll("[data-owner-form=dog] select").length'),0);
 await screenshot('dog-basics-mobile');await click('[data-owner-form=dog] [type=submit]');
 await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
-await fill('time','Up to 30 extra minutes');await screenshot('dog-care-mobile');await next();
+await fill('time','Up to 30 extra minutes');await fill('allergies','Fragranced shampoo');await fill('meds','Daily prescribed medication');
+await fill('mobility','Needs a sitting break');await fill('comfortNotes','Gentle handling around ears');
+await screenshot('dog-care-mobile');await run('document.querySelector("[name=allergies]").closest("label").scrollIntoView()');await screenshot('dog-health-mobile');await next();
 await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 const firstPet=await run('location.hash');
 // Saved groomers stay separate from dogs, and can prefill a new visit.
@@ -145,27 +163,54 @@ await fill('phone','555-0191');await next();await until(()=>run('document.queryS
 await click('a[href='+q(firstPet)+']');await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 await click('.identity-link');await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
 assert.equal(await run('document.querySelector("[name=time]").value'),'Up to 30 extra minutes');
+assert.equal(await run('document.querySelector("[name=allergies]").value'),'Fragranced shampoo');
 await click('a[href*="/edit-dog/"]');await until(()=>run('!!document.querySelector("[data-owner-form=dog]")'));
 await fill('weight','19 lb');await next();await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
 assert.equal(await run('document.querySelector("[name=time]").value'),'Up to 30 extra minutes');
 await next();await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 await run('document.querySelector("#visit-groomer").selectedIndex=1');
 await click('[data-owner-action=start]');await click('[data-mode=basic]');await at('dog');
-for(const [key,value] of Object.entries({name:'Lola',breed:'Terrier',weight:'19 lb',birthday:'2021-03-14',groomer:'Jamie',salon:'Maple & Mutt',groomerPhone:'555-0191'})) {
+for(const [key,value] of Object.entries({name:'Lola',breed:'Terrier',weight:'19 lb',birthday:'2021-03-14'})) {
   assert.equal(await run('document.getElementsByName('+q(key)+')[0].value'),value);
 }
+await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));
+assert.equal(await run('!!document.querySelector("[name=salon], [name=groomer], [name=groomerAddress], [name=groomerEmail], [name=groomerPhone]")'),false);
+assert.match(await text(),/Jamie/);assert.match(await text(),/555-0191/);
+const savedGroomer=await run('document.querySelector("[data-saved-groomer]").value');
+await fill('visit','2026-12-01');
+await selectGroomer('');assert.equal(await run('!!document.querySelector(".groomer-summary")'),false);
+await selectGroomer(savedGroomer);
+await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await click('a[href="#/dog"]');await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));
+assert.equal(await run('document.querySelector("[name=visit]").value'),'2026-12-01');
+await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await c('Page.reload');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await fill('name','Casey');await fill('business','The Groom Room');await fill('phone','555-0188');await next();
+await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));
+assert.match(await text(),/Casey/);assert.match(await text(),/The Groom Room/);
+assert.equal(await run('document.querySelector("[name=visit]").value'),'2026-12-01');
+assert.equal(await run('JSON.parse(sessionStorage.getItem("test:rows:fd_groomers")).length'),3);
+await screenshot('groomer-selection-mobile');
 await moveNext('service');await pick('service','Bath only');await moveNext('coat');await pick('coat','No tangles noticed');
-await moveNext('handling');await moveNext('what-ifs');assert.match(await text(),/Up to 30 extra minutes/);
+await moveNext('handling');await click('[data-visit=health]');await at('health');
+assert.equal(await run('document.querySelector("[name=allergies]").value'),'Fragranced shampoo');
+assert.equal(await run('document.querySelector("[name=mobility]").value'),'Needs a sitting break');
+await fill('allergies','Use the shampoo I brought today');await next();await at('handling');
+await moveNext('what-ifs');assert.match(await text(),/Up to 30 extra minutes/);
 await limits();await moveNext('contact');
-for(const [key,value] of Object.entries({owner:'Fixture owner',phone:'555-0101',email:'owner@example.test'})) {
-  assert.equal(await run('document.getElementsByName('+q(key)+')[0].value'),value);
-}
-await click('details.extra summary');await fill('phone','555-0123');await click('[name=includeContact]');
+for(const value of ['Fixture owner','555-0101','owner@example.test'])assert.ok((await text()).includes(value));
+assert.equal(await run('!!document.querySelector("[name=owner],[name=phone],[name=email]")'),false);
+assert.ok(!(await text()).includes('Edit contact for this visit'));
+await click('details.extra summary');await fill('secondaryOwner','Sam');await fill('secondaryPhone','555-0123');await click('[name=includeContact]');
+await screenshot('secondary-contact-mobile');
 await moveNext('review-look');await moveNext('review-care');await click('[name=checked]');await click('[name=understood]');await moveNext('ready');
 await click('[data-go^=history]');await until(()=>run('!!document.querySelector("a[href*=past-groom]")'));await click('a[href*=past-groom]');
-await until(()=>run('!!document.querySelector("[data-owner-action=copy]")'));assert.match(await text(),/555-0123/);
+await until(()=>run('!!document.querySelector("[data-owner-action=copy]")'));assert.match(await text(),/555-0123/);assert.match(await text(),/Sam/);
+assert.match(await text(),/Casey/);assert.match(await text(),/Use the shampoo I brought today/);
+assert.equal(await run('JSON.parse(sessionStorage.getItem("test:rows:fd_dogs"))[0].care_defaults.allergies'),'Fragranced shampoo');
 await click('[data-owner-action=copy]');await at('review-look');await moveNext('review-care');await click('[data-edit=contact]');
-assert.equal(await run('document.querySelector("[name=phone]").value'),'555-0101');
+assert.match(await text(),/555-0101/);
+assert.equal(await run('document.querySelector("[name=secondaryPhone]").value'),'555-0123');
 assert.equal(await run('document.querySelector("[name=includeContact]").checked'),false);
 await moveNext('review-care');await click('[name=checked]');await click('[name=understood]');await moveNext('ready');
 await click('[data-go^=history]');await until(()=>run('document.querySelectorAll("a[href*=past-groom]").length===2'));
@@ -229,7 +274,7 @@ await click('[data-owner-action=signout]');await until(()=>run('!!document.query
 await fill('email','owner@example.test');await fill('password','wrong password');await next();
 await until(()=>run('!!document.querySelector("#account-message").textContent'));
 await fill('password','fixture password two');await next();await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));
-assert.deepEqual(errors,[]);console.log('Passed: signup/login/recovery, owner city/state, separate dog basics and defaults, multiple saved groomers, visit prefill, latest-three history, photo upload/swiping/persistence, isolated dogs, and guest planning.');
+assert.deepEqual(errors,[]);console.log('Passed: matching login/signup layouts, password flows, groomer selection and creation with draft return, editable health prefill, secondary contacts, multiple dogs, history and lookbook.');
 
 }finally{sock?.close();const closed=browser.exitCode===null?once(browser,'exit').catch(()=>{}):Promise.resolve();browser.kill();await Promise.race([closed,pause(2000)]);if(path.dirname(path.resolve(profile))===path.resolve(os.tmpdir()) && path.basename(profile).startsWith('fur-disclosure-browser-'))await rm(profile,{recursive:true,force:true,maxRetries:4,retryDelay:150}).catch(()=>{});}
 

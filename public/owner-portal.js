@@ -1,7 +1,7 @@
 import {byId, decisionIds} from './flow.js';
 import {escapeHtml as esc} from './maps.js';
 import {decisions, icon, summary} from './views.js';
-import {defaultFields, historyPageSize, validDefaults} from './profile-model.js';
+import {defaultFields, healthFields, historyPageSize, validDefaults} from './profile-model.js';
 import * as db from './account-store.js';
 import {readPhoto} from './photos.js';
 
@@ -19,15 +19,20 @@ const settings = dog => defaultFields.map(key=>{
   const f=key==='anxiety'?byId.handling.fields[0]:byId[key].fields[0];
   return `<label class="entry"><span>${esc(decisions[key]?.[0] || 'Usual nervous level')}</span><select name="${key}"><option value="">Choose at each visit</option>${f.options.map(v=>'<option '+(dog?.care_defaults?.[key]===v?'selected':'')+'>'+esc(v)+'</option>').join('')}</select></label>`;
 }).join('');
+const healthSettings = dog => '<h2>Health & comfort</h2>'+healthFields.map(f=>
+  f.type==='note'?`<label class="entry"><span>${esc(f.label)} (optional)</span><textarea name="${f.id}" maxlength="700" rows="2">${esc(dog?.care_defaults?.[f.id]||'')}</textarea></label>`:
+    field(f.label+' (optional)',f.id,dog?.care_defaults?.[f.id],'text','maxlength="180"')
+).join('');
 const petCard = dog => `<a class="pet-card" href="#/dog-profile/${esc(dog.id)}">${icon('pup')}<span><strong>${esc(dog.name)}</strong><small>${esc(dog.breed||'Dog profile')}</small></span><b>›</b></a>`;
 const groomCard = groomer => `<a class="pet-card groomer-card" href="#/edit-groomer/${esc(groomer.id)}">${icon('groomer')}<span><strong>${esc(groomer.name)}</strong><small>${esc(groomer.business || 'Independent groomer')}</small></span><b>›</b></a>`;
 const historyCards = (rows,dogId) => rows.map(row=>`<a class="pet-card history-card" href="#/past-groom/${esc(dogId)}/${esc(row.id)}">${icon('picture')}<span><strong>${esc(row.service)}</strong><small>${esc(dateLabel(row.visit_date||row.created_at))}</small></span><b>›</b></a>`).join('');
 const photoCard = photo => `<figure class="polaroid" data-photo-id="${esc(photo.id)}"><img src="${esc(photo.image_data)}" alt="${esc(photo.caption||'Dog photo')}" loading="lazy"><figcaption>${esc(photo.caption||dateLabel(photo.created_at))}</figcaption></figure>`;
 
-export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraft}) {
+export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraft, getVisitContext, useGroomer}) {
   let user=null, generation=0, current='', model=null, dog=null, past=null, newDogId=null, signedInError='';
   let sessionReady=false;
   let groomers=[], editGroomer=null, photoDraft=null, photoOffset=0;
+  let groomerReturn=null;
   const id = () => user?.id || null;
   const recovering = () => Boolean(user && sessionStorage.getItem('fd:password-recovery')===user.id);
   const home = () => recovering()?'set-password':user?'profile':'account';
@@ -74,6 +79,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
   function login(screen) {
     const email = field('Email address','email','','email','required autocomplete="email"');
     const password = (label, name, autocomplete) => field(label,name,'','password','required autocomplete="'+autocomplete+'"');
+    const hero='<img class="login-pup" src="assets/hero-pup-v2-720.jpg" alt="Our apricot pup after an unexpected haircut, on a sunny yellow background">';
     if (screen==='set-password') {
       frame('Choose a new password.','Use this password the next time you log in.',
         password('New password','password','new-password')+password('Confirm password','confirmation','new-password')+
@@ -81,8 +87,10 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       return;
     }
     if (db.configured && screen==='create-account') {
-      frame('Create your account.','Keep your dogs and their groom history in one place.',
-        email+password('Password','password','new-password')+password('Confirm password','confirmation','new-password')+submit('Create account'),'account','create-account');
+      frame('Create your account.','A home for your pups and their plans.',
+        hero+'<form class="portal-form" data-owner-form="create-account">'+
+        email+password('Password','password','new-password')+password('Confirm password','confirmation','new-password')+submit('Create account')+'</form>'+link('Already have an account? Log in','account','text-action'));
+      app.querySelector('main').classList.add('auth-screen');
       return;
     }
     if (db.configured && screen==='forgot-password') {
@@ -92,14 +100,14 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     const loginForm = db.configured
       ? `<form class="portal-form" data-owner-form="signin">${email}${password('Password','password','current-password')}${submit('Log in')}</form>`+
         link('Forgot password?','forgot-password','text-action')+link('Create an account','create-account','secondary')
-      : '<p class="hint" role="status">Account sign-in is unavailable right now. You can still plan a guest visit.</p>';
+      : '<p class="hint" role="status">Account sign-in is unavailable right now. Please try again shortly.</p>';
     frame('Your pups, all here.','Log in to plan a groom or find a past visit.',
-      '<img class="login-pup" src="assets/hero-pup-v2-720.jpg" alt="Our apricot pup after an unexpected haircut, on a sunny yellow background">'+loginForm+
-      action('Continue as a guest','guest','text-action'));
+      hero+loginForm);
+    app.querySelector('main').classList.add('auth-screen');
     if (signedInError) message(signedInError);
   }
   async function render(route) {
-    photoDraft=null;groomers=[];editGroomer=null;
+    photoDraft=null;groomers=[];editGroomer=null;groomerReturn=null;
     current=route;const ticket=++generation;
     const [screen,dogId,recordId]=route.split('/');
     if (!user) {if(!entryRoutes.includes(screen)) {navigate('account',true);return;}login(screen);return;}
@@ -139,12 +147,14 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
         editGroomer=groomers.find(g=>g.id===dogId)||null;
         if(dogId!=='new'&&!editGroomer){navigate('profile',true);return;}
         newDogId=editGroomer?.id||crypto.randomUUID();
+        const visit=getVisitContext();
+        if(dogId==='new' && recordId==='visit' && visit?.ownerId===id())groomerReturn=visit;
         frame(editGroomer?'Your groomer.':'Meet your groomer.','Keep the person and their business together.',
           field('Groomer’s name','name',editGroomer?.name,'text','required maxlength="100"')+
           field('Grooming business','business',editGroomer?.business,'text','maxlength="180" autocomplete="organization"')+
           field('Address','address',editGroomer?.address,'text','maxlength="300" autocomplete="street-address"')+
           field('Email','email',editGroomer?.email,'email','maxlength="254" autocomplete="email"')+
-          field('Phone','phone',editGroomer?.phone,'tel','maxlength="40" autocomplete="tel"')+submit('Save groomer'),'profile','groomer');return;
+          field('Phone','phone',editGroomer?.phone,'tel','maxlength="40" autocomplete="tel"')+submit(groomerReturn?'Save & use this groomer':'Save groomer'),groomerReturn?'dog':'profile','groomer');return;
       }
       if (screen==='edit-dog' && (dog || dogId==='new')) {
         newDogId=dog?.id || crypto.randomUUID();
@@ -160,7 +170,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       if(screen==='dog-care') {
         frame(dog.name+'’s usual care.','Set their usual preferences once. You can adjust them for each groom.',
           link('Edit name, breed, birthday & weight','edit-dog/'+dog.id,'text-action')+
-          settings(dog)+submit('Save care preferences'),dogRoute,'care');return;
+          settings(dog)+healthSettings(dog)+submit('Save care preferences'),dogRoute,'care');return;
       }
       if(screen==='add-photo') {
         photoDraft={id:crypto.randomUUID(),image:''};
@@ -179,7 +189,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
         const choices=Object.entries(validDefaults(dog.care_defaults));
         frame(dog.name+'’s profile',dog.breed||'Your dog’s care and visits',
           `<a class="dog-identity identity-link" href="#/dog-care/${esc(dog.id)}" aria-label="Edit ${esc(dog.name)}’s care and defaults">${icon('pup')}<div><strong>${esc(dog.name)}</strong><small>${dog.birthday?'Birthday · '+esc(dateLabel(dog.birthday)):'Birthday not set'}</small></div><b aria-hidden="true">›</b></a>
-          ${choices.length?'<details class="recap"><summary>Usual care preferences</summary><dl>'+choices.map(([k,v])=>'<div class="fact"><dt>'+esc(decisions[k]?.[0]||'Nervous level')+'</dt><dd>'+esc(v)+'</dd></div>').join('')+'</dl></details>':''}
+          ${choices.length?'<details class="recap"><summary>Usual care preferences</summary><dl>'+choices.map(([k,v])=>'<div class="fact"><dt>'+esc(decisions[k]?.[0]||healthFields.find(f=>f.id===k)?.label||'Nervous level')+'</dt><dd>'+esc(v)+'</dd></div>').join('')+'</dl></details>':''}
           ${groomers.length?'<label class="entry"><span>Groomer for this visit</span><select id="visit-groomer"><option value="">Choose later</option>'+groomers.map(g=>'<option value="'+esc(g.id)+'">'+esc([g.name,g.business].filter(Boolean).join(' · '))+'</option>').join('')+'</select></label>':''}
           ${hasDraft(id(),dog.id)?action('Resume groom','resume','secondary'):''}${action('Plan a new groom','start')}
           <section class="profile-section"><h2>Groom History</h2>${historyCards(recent,dog.id)||'<p class="hint">Your finished grooms will appear here.</p>'}${link('Entire Groom History','history/'+dog.id,'text-action')}</section>
@@ -272,8 +282,9 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       if(kind==='groomer') {
         if(!values.name.trim())throw Error('Enter your groomer’s name.');
         const contact=Object.fromEntries(['name','business','address','email','phone'].map(k=>[k,values[k].trim()]));
-        await db.saveGroomer(id(),newDogId,contact,!editGroomer);
-        if(valid())navigate('profile');return;
+        const groomerId=newDogId,returnTo=groomerReturn;
+        await db.saveGroomer(id(),groomerId,contact,!editGroomer);
+        if(valid() && !(returnTo && useGroomer({id:groomerId,...contact},returnTo)))navigate('profile');return;
       }
       if(kind==='photo') {
         if(!photoDraft?.image)throw Error('Choose a photo first.');
@@ -283,7 +294,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       }
       if(kind==='care') {
         const dogId=dog.id,defaults={...dog.care_defaults};
-        defaultFields.forEach(key=>delete defaults[key]);
+        [...defaultFields,...healthFields.map(f=>f.id)].forEach(key=>delete defaults[key]);
         await db.saveCare(id(),dogId,{...defaults,...validDefaults(values)});
         if(valid())navigate('dog-profile/'+dogId);return;
       }

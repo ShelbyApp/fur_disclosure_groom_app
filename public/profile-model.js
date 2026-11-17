@@ -1,6 +1,7 @@
 import {byId, decisionIds} from './flow.js';
 
 export const defaultFields = ['anxiety', ...decisionIds];
+export const healthFields = byId.health.fields;
 export const historyPageSize = 10;
 
 export function validDefaults(input = {}) {
@@ -9,7 +10,15 @@ export function validDefaults(input = {}) {
     const field = key === 'anxiety' ? byId.handling.fields[0] : byId[key].fields[0];
     if (field.options.includes(input[key])) result[key] = input[key];
   }
+  for(const field of healthFields) {
+    if(typeof input[field.id]==='string' && input[field.id].trim()) result[field.id]=input[field.id].trim().slice(0,field.type==='note'?700:180);
+  }
   return result;
+}
+
+export function groomerDetails(groomer) {
+  return {groomerId:groomer?.id||'',salon:groomer?.business||'',groomer:groomer?.name||'',
+    groomerAddress:groomer?.address||'',groomerEmail:groomer?.email||'',groomerPhone:groomer?.phone||''};
 }
 
 export function ageAt(birthday, now = new Date()) {
@@ -30,8 +39,7 @@ export function beginVisit(dog, owner, previous) {
     owner: owner.display_name, phone: owner.phone || '', email: owner.email || '',
     visit: '', includeContact: false, checked: false, understood: false};
   if(owner.selectedGroomer) {
-    const g=owner.selectedGroomer;
-    Object.assign(answers,{salon:g.business,groomer:g.name,groomerAddress:g.address,groomerEmail:g.email,groomerPhone:g.phone});
+    Object.assign(answers,groomerDetails(owner.selectedGroomer));
   }
   return {answers, resume: previous ? 'review-look' : 'dog', complete: null, editReturn: null,
     origin: null, dogId: dog.id, ownerId: owner.owner_id, recordId: crypto.randomUUID()};

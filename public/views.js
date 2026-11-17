@@ -24,7 +24,7 @@ export function pup(data) {
   return `<div class="pup"><img src="${esc(own||'assets/hero-pup-v3-720.jpg')}" alt="${own?'Current face photo':'Illustrative pup'}"><div><strong>${esc(data.name||'Your pup')}</strong><small>${esc([data.breed,data.groomer && 'with '+data.groomer].filter(Boolean).join(' · ') || (advanced(data)?'Advanced groom':'Basic groom'))}</small></div></div>`;
 }
 export function roles() {
-  return garden()+artCard('I’m a dog owner','Open my profile or plan a guest visit.',icon('pup'),'data-go="account"','owner role')+
+  return garden()+artCard('I’m a dog owner','My dogs, groom plans and past visits.',icon('pup'),'data-go="account"','owner role')+
     artCard('I’m a groomer','Open a finished owner plan.',icon('groomer'),'data-go="groomer-view"','groomer role');
 }
 export function welcome(state) {
@@ -96,23 +96,35 @@ function petIdentity(data) {
   const details = [data.breed, data.age, data.weight].filter(Boolean).join(' · ');
   return `<div class="dog-identity">${icon('pup')}<div><strong>${esc(data.name)}</strong><small>${esc(details)}</small></div></div>`;
 }
+export function groomerPicker(data, groomers=null, failed=false) {
+  const selected=groomers?.some(g=>g.id===data.groomerId);
+  const previous=!selected && (data.groomer||data.salon);
+  const details=[data.salon,data.groomerAddress,data.groomerEmail,data.groomerPhone].filter(Boolean);
+  const options=groomers?'<option value="">Choose later</option>'+
+    (previous?'<option value="previous" selected>'+esc('Previous selection · '+(data.groomer||data.salon))+'</option>':'')+
+    groomers.map(g=>'<option value="'+esc(g.id)+'" '+(g.id===data.groomerId?'selected':'')+'>'+esc([g.name,g.business].filter(Boolean).join(' · '))+'</option>').join(''):
+    '<option>'+(failed?'Couldn’t load groomers':'Loading your groomers…')+'</option>';
+  return '<label class="entry"><span>Groomer for this visit</span><select data-saved-groomer '+(groomers?'':'disabled')+'>'+options+'</select></label>'+
+    ((data.groomer||details.length)?'<div class="groomer-summary"><strong>'+esc(data.groomer||'Your groomer')+'</strong>'+details.map(value=>'<small>'+esc(value)+'</small>').join('')+'</div>':'')+
+    (failed?button('Try loading groomers again','data-groomer-retry','text-action'):'')+
+    button('＋ Create a groomer','data-create-groomer','secondary');
+}
 export function fields(page, data, fromProfile=false) {
   const fs = fieldsFor(page,data);
   const render = list => list.map(f=>fieldView(f,data)).join('');
   if (page.id === 'dog' && fromProfile) {
     const identity = fs.filter(f=>['name','breed','birthday','age','weight'].includes(f.id));
-    const visit = fs.filter(f=>['salon','groomer','visit'].includes(f.id));
-    return petIdentity(data) + extra('Edit pet details for this visit',render(identity),!data.name) + render(visit)+
-      extra('Groomer contact details',render(fs.slice(8)),false);
+    return petIdentity(data) + extra('Edit pet details for this visit',render(identity),!data.name) +
+      '<div id="groomer-picker" class="groomer-picker">'+groomerPicker(data)+'</div>'+render(fs.filter(f=>f.id==='visit'));
   }
   if (page.id === 'contact' && fromProfile) {
     const contact = [data.owner,data.phone,data.email].filter(Boolean);
     return '<div class="contact-card">'+contact.map(item=>'<span>'+esc(item)+'</span>').join('')+'</div>'+
-      extra('Edit contact for this visit',render(fs.filter(f=>['owner','phone','email'].includes(f.id))),!contact.length)+
+      extra('Add secondary contact',render(fs.filter(f=>['secondaryOwner','secondaryPhone'].includes(f.id))),Boolean(data.secondaryOwner||data.secondaryPhone))+
       render(fs.filter(f=>['channel','includeContact'].includes(f.id)));
   }
   if (page.id === 'dog') return render(fs.slice(0,2)) + extra('Birthday, age & weight',render([fs[7],...fs.slice(2,4)]),Boolean(data.birthday||data.age||data.weight))+
-    extra('Salon, groomer & visit date',render([...fs.slice(4,7),...fs.slice(8)]),Boolean(data.salon||data.groomer||data.visit));
+    render(fs.filter(f=>f.id==='visit'));
   if (page.id === 'spots') return guideMap(data) + (fs.length?extra('Previously saved spot details',render(fs)): '');
   if (page.id === 'handling') return render(fs.slice(0,3))+extra('Add a handling note',render(fs.slice(3)),Boolean(data.handlingNotes))+
     artCard('Health & comfort','Allergies, mobility or other care notes.',icon('comfort'),'data-visit="health" data-origin="handling"')+sensitiveLink(data,'handling');

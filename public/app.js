@@ -1,8 +1,9 @@
 import {advanced, byId, careMap, decisionIds, fieldsFor, guides, incomplete, intake, journey, snapshot, stages} from './flow.js';
 import {editPin, escapeHtml as esc, mapView, movePointer, pointFromClick} from './maps.js';
-import {button, contextArt, fields, icon, pup, roles, summary, welcome} from './views.js';
+import {button, contextArt, fields, groomerPicker, icon, pup, roles, summary, welcome} from './views.js';
 import {ownerPortal, isOwnerRoute} from './owner-portal.js';
-import {beginVisit} from './profile-model.js';
+import {beginVisit, groomerDetails} from './profile-model.js';
+import {groomersFor} from './account-store.js';
 import {readPhoto} from './photos.js';
 
 const guestKey = 'fur-disclosure:groom:v1';
@@ -20,6 +21,7 @@ try {
 } catch { /* A new tab can work entirely in memory. */ }
 let data = state.answers;
 let page, busy = false, stored = true;
+let renderVersion=0, visitGroomers=[];
 const find = selector => document.querySelector(selector);
 const special = id => decisionIds.includes(id) || ['spots','health'].includes(id);
 
@@ -68,7 +70,15 @@ function startVisit(dog,owner,prior,action) {
     confirmAction('Replace this unfinished draft?','Your saved groom history will still be available.','Start this visit',start);
   } else start();
 }
-const portal=ownerPortal({app,navigate,identityChanged,startVisit,hasDraft});
+const getVisitContext=()=>state.ownerId && state.dogId?{ownerId:state.ownerId,dogId:state.dogId,recordId:state.recordId}:null;
+function selectGroomer(groomer) {
+  for(const [field,value] of Object.entries(groomerDetails(groomer)))change(field,value);
+}
+function useGroomer(groomer,context) {
+  if(state.ownerId!==context.ownerId || state.dogId!==context.dogId || state.recordId!==context.recordId)return false;
+  selectGroomer(groomer);navigate('dog');return true;
+}
+const portal=ownerPortal({app,navigate,identityChanged,startVisit,hasDraft,getVisitContext,useGroomer});
 
 function save() {
   try { sessionStorage.setItem(key, JSON.stringify(state)); stored = true; }
@@ -165,6 +175,7 @@ function outsideForm(id) {
   ${button('Print / save PDF','data-print')}${id==='sheet'?button('Review & edit','data-go="review-look"','secondary'):''}${button(state.ownerId?'Back to my dogs':'Back to planner home','data-rolehome','text-action')}`;
 }
 function render(id, focus=true) {
+  renderVersion++;visitGroomers=[];
   if(isOwnerRoute(id)) {page=null;portal.render(id);return;}
   portal.cancel();
   page=byId[id]; if (page.stage) {state.resume=id; save();}
@@ -180,6 +191,19 @@ function render(id, focus=true) {
   document.title=titles(id)+' · Fur Disclosure';
   app.innerHTML=top()+`<main id="main" tabindex="-1" class="screen screen-${id}">${back}${shellTitle(id)}${content}</main>`;
   if (focus) {find('h1').focus({preventScroll:true}); window.scrollTo(0,0);}
+  if(id==='dog' && state.ownerId)loadVisitGroomers();
+}
+async function loadVisitGroomers() {
+  const version=renderVersion,visit=state,container=find('#groomer-picker');
+  if(!container)return;
+  container.innerHTML=groomerPicker(data);
+  try {
+    const groomers=await groomersFor(portal.id());
+    if(version!==renderVersion || state!==visit || visit.ownerId!==portal.id())return;
+    visitGroomers=groomers;container.innerHTML=groomerPicker(data,groomers);
+  } catch {
+    if(version===renderVersion && state===visit)container.innerHTML=groomerPicker(data,null,true);
+  }
 }
 function goBack() {
   if (special(page.id)) {returnFromDetail(); return;}
@@ -244,6 +268,14 @@ function commitPhoto(key, value) {
 }
 app.addEventListener('change',async event=>{
   const el=event.target;
+  if(el.hasAttribute('data-saved-groomer') && page?.id==='dog' && !busy) {
+    if(el.value==='previous')return;
+    const groomer=visitGroomers.find(g=>g.id===el.value);
+    if(el.value && !groomer)return;
+    selectGroomer(groomer);
+    find('#groomer-picker').innerHTML=groomerPicker(data,visitGroomers);
+    find('[data-saved-groomer]').focus({preventScroll:true});return;
+  }
   if (el.hasAttribute('data-guide') && guides[el.value] && !data.pins?.[careMap]?.length) {change('guide',el.value);render(page.id,false);return;}
   const key=el.dataset.photo;
   if (!key || !el.files[0] || busy || !advanced(data)) return;
@@ -304,7 +336,9 @@ app.addEventListener('click',event=>{
   if (!b || busy) return;
   const d=b.dataset;
   if(!page)return;
-  if ('later' in d) {save();navigate(state.ownerId?'dog-profile/'+state.dogId:'account');}
+  if('createGroomer' in d) {save();navigate('edit-groomer/new/visit');}
+  else if('groomerRetry' in d)loadVisitGroomers();
+  else if ('later' in d) {save();navigate(state.ownerId?'dog-profile/'+state.dogId:'account');}
   else if ('rolehome' in d) {state.editReturn=null;state.origin=null;save();navigate(portal.home());}
   else if (d.mode) selectMode(d.mode);
   else if ('resume' in d) navigate(state.resume);

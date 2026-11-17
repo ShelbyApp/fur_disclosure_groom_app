@@ -8,17 +8,7 @@ Who’s coming in for a groom?
 
 ## Inputs and displayed content
 
-- **Dog’s name** — text · required
-- **Breed or mix** — text · optional
-- **Age** — text · optional
-- **Weight, with unit** — text · optional
-- **Grooming business** — text · optional
-- **Individual groomer** — text · optional
-- **Visit date** — date · optional
-- **Birthday** — date · optional
-- **Groomer address** — text · optional
-- **Groomer email** — email · optional
-- **Groomer phone** — tel · optional
+Saved dog identity with optional per-visit edits; saved-groomer dropdown with read-only contact summary; Create a groomer button; optional visit date. No inline groomer text fields.
 
 ## Navigation
 
@@ -26,6 +16,6 @@ basic haircut path: [welcome](02-welcome.md) → [dog](03-dog.md) → [service](
 
 ## Behavior and acceptance
 
-A signed-in visit uses the selected dog’s saved identity. Choosing a saved groomer on the dog profile prefills the person, business, address, email and phone. Visit edits do not modify the saved groomer. The owner can edit dog details for this visit. Guests enter their own dog. A dog name is required. Salon, individual groomer and visit date are independent optional values. A date is an owner-entered detail, not a booking.
+A signed-in visit uses the selected dog’s saved identity. Select an existing saved groomer from a dropdown; show their person, business, address, email and phone as a read-only card. There are no inline business, groomer or groomer-contact text inputs. Choose later clears all linked groomer details. Create a groomer opens edit-groomer/new/visit, saves the contact to the household and returns to this same draft with the new groomer selected. Back cancels creation without losing visit details. The return path survives reload. Earlier copied selections remain visible until deliberately changed. Groomer loading errors offer retry. Dog identity and the optional visit date remain editable. A date is an owner-entered detail, not a booking.
 
 [All screens](README.md) · [Brand and interaction guide](../BRAND.md)

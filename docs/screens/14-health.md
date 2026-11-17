@@ -19,6 +19,6 @@ Open from handling or care review. Save returns to the origin.
 
 ## Behavior and acceptance
 
-Optional detail screen opened from handling or care review. Capture allergies, relevant conditions and mobility. Save returns to the originating screen.
+Optional detail screen opened from handling or care review. Allergies, medications or relevant conditions, mobility and comfort notes prefill from the selected dog’s saved care defaults for a new groom. Edits apply only to this visit and do not overwrite the dog profile. Copies retain the previous groom’s choices. Save returns to the originating screen.
 
 [All screens](README.md) · [Brand and interaction guide](../BRAND.md)

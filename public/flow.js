@@ -40,7 +40,7 @@ pick('fees','If there’s an extra fee…',['Ask before any added fee','Up to $1
 s('distress',4,'If it gets too much.','Your groomer can always stop unsafe work. A preference never requires continuing through distress.','21',[
 pick('distress','If your dog becomes distressed…',['Pause and contact me','Offer a calm break; stop if distress continues','Stop and arrange pickup'],true)]),
 s('contact',4,'Let’s keep in touch.','Contact details are optional. Choose whether to include them in your finished plan.','22',[
-t('owner','Your name'),t('phone','Phone number','',{type:'tel'}),t('email','Email address','',{type:'email'}),pick('channel','Preferred contact method',['Call','Text','Email']),{type:'check',id:'includeContact',label:'Include these contact details in the groomer’s copy'}]),
+t('owner','Your name'),t('phone','Phone number','',{type:'tel'}),t('email','Email address','',{type:'email'}),t('secondaryOwner','Secondary contact name','',{maxLength:100}),t('secondaryPhone','Secondary contact phone','',{type:'tel',maxLength:40}),pick('channel','Preferred contact method',['Call','Text','Email']),{type:'check',id:'includeContact',label:'Include these contact details in the groomer’s copy'}]),
 s('unreachable',4,'If we miss each other.','No reply is not permission. New changes still need the appropriate approval.','23',[
 pick('unreachable','If you can’t be reached…',['Pause work needing new permission','Complete only work already agreed','Stop and arrange collection'],true)]),
 s('review-look',5,'Here’s the look.','Check the visit, photos and style requests. You can still change any detail.','24'),
@@ -100,6 +100,7 @@ export function incomplete(page, answers) {
 
 export function snapshot(answers, now = new Date()) {
   const data = {mode: advanced(answers) ? 'advanced' : 'basic'};
+  if(typeof answers.groomerId==='string' && answers.groomerId)data.groomerId=answers.groomerId;
   const photos = new Set();
   for (const page of intake(answers).filter(p => p.stage < 5)) {
     if (page.id === 'contact' && !answers.includeContact) continue;

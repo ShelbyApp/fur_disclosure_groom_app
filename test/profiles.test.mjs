@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {PGlite} from '@electric-sql/pglite';
-import {ageAt, beginVisit} from '../public/profile-model.js';
+import {ageAt, beginVisit, groomerDetails, validDefaults} from '../public/profile-model.js';
 import {browserConfig} from '../scripts/config.mjs';
 import {snapshot} from '../public/flow.js';
 
@@ -25,6 +25,29 @@ test('build config only accepts publishable keys',()=>{
   assert.equal(browserConfig({}).publishableKey,'');
   assert.throws(()=>browserConfig({SUPABASE_PUBLISHABLE_KEY:'sb_secret_example'}));
   assert.throws(()=>browserConfig({SUPABASE_PUBLISHABLE_KEY:'eyJexample'}));
+});
+
+test('health defaults prefill new grooms without leaking edits into the profile or earlier visits',()=>{
+  const dog={id:'dog',name:'Pip',breed:'Terrier',care_defaults:{allergies:'Fragranced shampoo',meds:'Daily medication',mobility:'Sitting breaks',comfortNotes:'Gentle handling'}};
+  const owner={owner_id:'owner',display_name:'Alex'};
+  const visit=beginVisit(dog,owner);
+  for(const [key,value] of Object.entries(dog.care_defaults))assert.equal(visit.answers[key],value);
+  visit.answers.allergies='Use shampoo supplied today';
+  assert.equal(dog.care_defaults.allergies,'Fragranced shampoo');
+  const saved=snapshot(visit.answers);
+  const copy=beginVisit(dog,owner,saved);copy.answers.allergies='None known';
+  assert.equal(saved.data.allergies,'Use shampoo supplied today');
+  assert.equal(beginVisit(dog,owner).answers.allergies,'Fragranced shampoo');
+  assert.equal(validDefaults({allergies:'   '}).allergies,undefined);
+  assert.equal(validDefaults({allergies:{bad:'input'}}).allergies,undefined);
+});
+
+test('clearing a saved groomer clears every linked visit detail',()=>{
+  const previous=groomerDetails({id:'id',name:'Jamie',business:'Salon',address:'Address',email:'groomer@example.test',phone:'555'});
+  assert.equal(snapshot(previous).data.groomerId,'id');
+  Object.assign(previous,groomerDetails(null));
+  for(const value of Object.values(previous))assert.equal(value,'');
+  for(const key of Object.keys(previous))assert.equal(snapshot(previous).data[key],undefined);
 });
 
 test('a saved groomer fills visit details without changing a copied historical plan',()=>{

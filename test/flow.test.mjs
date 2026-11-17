@@ -2,6 +2,15 @@ import {test} from 'node:test';import assert from 'node:assert/strict';import {i
 test('bath-only and cleared coat concerns cannot leak stale requests',()=>{const a={service:'Bath only',coat:'No tangles noticed',ears:'Shorter',reference:'old image',spotNotes:'old note',currentFace:'current image',name:'Milo'};const snap=snapshot(a);for(const k of ['ears','reference','spotNotes'])assert.ok(!(k in snap.data));assert.equal(snap.data.currentFace,'current image');assert.ok(!intake(a).some(p=>p.cut));assert.ok(intake({...a,service:'Bath + haircut',coat:'Some tangles'}).some(p=>p.id==='spots'));});
 test('no inferred approvals or contact included by default',()=>{const a={name:'Milo',phone:'123',owner:'Alex',email:'test@example.com',channel:'Text',time:'Up to 15 extra minutes'};for(const k of ['fees','mats','distress','unreachable'])assert.ok(incomplete(byId[k],a));for(const k of ['phone','owner','email','channel'])assert.ok(!(k in snapshot(a).data));assert.equal(snapshot({...a,includeContact:true}).data.phone,'123');assert.ok(incomplete(byId['review-care'],{checked:true}));});
 test('snapshot is independent of the draft and keeps both identifiers',()=>{const a={name:'Milo',salon:'Maple & Mutt',groomer:'Jamie',priorities:['Easy upkeep']};const s=snapshot(a);a.priorities.push('Comfort first');a.groomer='Kim';assert.equal(s.data.groomer,'Jamie');assert.equal(s.data.salon,'Maple & Mutt');assert.equal(s.data.priorities.length,1);assert.match(s.status,/not agreed/);});
+
+test('primary and secondary contacts share one explicit inclusion choice',()=>{
+  const answers={name:'Milo',owner:'Alex',phone:'555-0100',email:'alex@example.test',secondaryOwner:'Sam',secondaryPhone:'555-0101'};
+  const hidden=snapshot(answers).data;
+  for(const key of ['owner','phone','email','secondaryOwner','secondaryPhone'])assert.equal(hidden[key],undefined);
+  const included=snapshot({...answers,includeContact:true}).data;
+  assert.equal(included.secondaryOwner,'Sam');assert.equal(included.secondaryPhone,'555-0101');
+  answers.secondaryPhone='555-0102';assert.equal(included.secondaryPhone,'555-0101');
+});
 test('every route has its own spec, and login is not a stage',async()=>{const fs=await import('node:fs/promises');const docs=await fs.readdir('docs/screens');assert.equal(new Set(flow.map(p=>p.id)).size,flow.length);for(const p of flow)assert.ok(docs.some(f=>f.endsWith('-'+p.id+'.md')),p.id);});
 
 
