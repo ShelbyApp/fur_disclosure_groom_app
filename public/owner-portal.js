@@ -4,7 +4,8 @@ import {decisions, icon, summary} from './views.js';
 import {defaultFields, historyPageSize, validDefaults} from './profile-model.js';
 import * as db from './account-store.js';
 
-const routes = new Set(['account','profile','owner-settings','dog-profile','edit-dog','history','past-groom']);
+const routes = new Set(['account','create-account','forgot-password','set-password','profile','owner-settings','dog-profile','edit-dog','history','past-groom']);
+const entryRoutes = ['account','create-account','forgot-password'];
 export const isOwnerRoute = id => routes.has(id.split('/')[0]);
 const link = (text, route, style='secondary') => `<a class="portal-link ${style}" href="#/${esc(route)}">${esc(text)}</a>`;
 const action = (label, name, style='primary') => `<button type="button" class="${style}" data-owner-action="${name}">${esc(label)}</button>`;
@@ -23,24 +24,32 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
   let user=null, generation=0, current='', model=null, dog=null, past=null, newDogId=null, signedInError='';
   let sessionReady=false;
   const id = () => user?.id || null;
-  const home = () => user?'profile':'account';
+  const recovering = () => Boolean(user && sessionStorage.getItem('fd:password-recovery')===user.id);
+  const home = () => recovering()?'set-password':user?'profile':'account';
 
   function setIdentity(next) {
     if ((user?.id||null)===(next?.id||null)) return false;
     const previous=id();user=next;model=null;dog=null;past=null;generation++;
+    if (!next) sessionStorage.removeItem('fd:password-recovery');
     identityChanged(previous,id());return true;
   }
   async function initialize() {
     if (db.client) {
+      const callback = new URLSearchParams(location.hash.slice(1));
+      const resetLink = callback.get('type')==='recovery';
+      if (callback.has('error') || callback.has('error_code')) signedInError='That email link has expired or is invalid. Request a new one.';
       const {data,error}=await db.client.auth.getSession();
-      if (error) signedInError='Your sign-in link could not be opened. Request a fresh link.';
+      if (error) signedInError='Please sign in again or request a new password reset link.';
       if (data?.session?.user) setIdentity(data.session.user);
+      if (resetLink && user && !error && !signedInError) sessionStorage.setItem('fd:password-recovery',id());
       db.client.auth.onAuthStateChange((event,session)=>{
         // Supabase finishes its session lock before account data is fetched.
         setTimeout(()=>{
           if (!sessionReady || event==='INITIAL_SESSION') return;
           if (event==='SIGNED_OUT' || session?.user) {
-            if (setIdentity(session?.user||null)) navigate(home(),true);
+            const changed=setIdentity(session?.user||null);
+            if(event==='PASSWORD_RECOVERY' && session?.user) sessionStorage.setItem('fd:password-recovery',session.user.id);
+            if (changed || event==='PASSWORD_RECOVERY') navigate(home(),true);
           }
         },0);
       });
@@ -57,20 +66,39 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     app.querySelector('h1')?.focus({preventScroll:true});window.scrollTo(0,0);
   }
   function message(value) {const p=app.querySelector('#account-message');if(p)p.textContent=value;}
-  function login() {
+  function login(screen) {
+    const email = field('Email address','email','','email','required autocomplete="email"');
+    const password = (label, name, autocomplete) => field(label,name,'','password','required autocomplete="'+autocomplete+'"');
+    if (screen==='set-password') {
+      frame('Choose a new password.','Use this password the next time you log in.',
+        password('New password','password','new-password')+password('Confirm password','confirmation','new-password')+
+        submit('Save password')+action('Sign out','signout','text-action'),'','set-password');
+      return;
+    }
+    if (db.configured && screen==='create-account') {
+      frame('Create your account.','Keep your dogs and their groom history in one place.',
+        email+password('Password','password','new-password')+password('Confirm password','confirmation','new-password')+submit('Create account'),'account','create-account');
+      return;
+    }
+    if (db.configured && screen==='forgot-password') {
+      frame('Set or reset your password.','Enter your account email. We’ll send you a password reset link.',
+        email+submit('Send reset link'),'account','forgot-password');return;
+    }
     const loginForm = db.configured
-      ? `<form class="portal-form" data-owner-form="signin">${field('Your email','email','','email','required autocomplete="email"')}${submit('Email me a sign-in link')}</form>`
-      : '<p class="hint" role="status">Email sign-in is unavailable right now. You can still plan a guest visit.</p>';
-    frame('Your pups, all here.','Sign in or create your profile to save your dogs and their grooms.',
+      ? `<form class="portal-form" data-owner-form="signin">${email}${password('Password','password','current-password')}${submit('Log in')}</form>`+
+        link('Forgot password?','forgot-password','text-action')+link('Create an account','create-account','secondary')
+      : '<p class="hint" role="status">Account sign-in is unavailable right now. You can still plan a guest visit.</p>';
+    frame('Your pups, all here.','Log in to plan a groom or find a past visit.',
       '<img class="garden" src="assets/studio-garden.jpg" alt="A groomed apricot dog in a garden">'+loginForm+
-      action('Continue as a guest','guest','secondary'));
+      action('Continue as a guest','guest','text-action'));
     if (signedInError) message(signedInError);
   }
   async function render(route) {
     current=route;const ticket=++generation;
     const [screen,dogId,recordId]=route.split('/');
-    if (!user) {if(screen!=='account') {navigate('account',true);return;}login();return;}
-    if (screen==='account') {navigate('profile',true);return;}
+    if (!user) {if(!entryRoutes.includes(screen)) {navigate('account',true);return;}login(screen);return;}
+    if (screen==='set-password') {login(screen);return;}
+    if (recovering() || entryRoutes.includes(screen)) {navigate(home(),true);return;}
     frame('Your profile','Loading your pups…','');
     try {
       const household=await db.household(id());
@@ -82,7 +110,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
           field('Your name','display_name',profile?.display_name||'','text','required maxlength="100" autocomplete="name"')+
           field('Sign-in email','account_email',user.email,'email','readonly autocomplete="email"')+
           field('Phone (optional)','phone',profile?.phone||'','tel','maxlength="40" autocomplete="tel"')+
-          submit(profile?.display_name?'Save changes':'Save & add my first dog')+action('Sign out','signout','text-action'),profile?.display_name?'profile':'','owner');return;
+          submit(profile?.display_name?'Save changes':'Save & add my first dog')+link('Set or change password','set-password','text-action')+action('Sign out','signout','text-action'),profile?.display_name?'profile':'','owner');return;
       }
       if (screen==='profile') {
         frame('Your pups.','Choose a dog to plan a visit or see their groom history.',
@@ -154,14 +182,31 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     event.preventDefault();
     const values=Object.fromEntries(new FormData(form));
     work(async valid=>{
-      if (form.dataset.ownerForm==='signin') {
-        const {error}=await db.client.auth.signInWithOtp({email:values.email.trim(),options:{emailRedirectTo:location.origin+location.pathname}});
+      const kind=form.dataset.ownerForm;
+      if (kind==='signin' || kind==='create-account') {
+        if(kind==='create-account' && values.password!==values.confirmation) throw Error('Enter the same password in both fields.');
+        const credentials={email:values.email.trim(),password:values.password};
+        const {data,error}=kind==='signin' ? await db.client.auth.signInWithPassword(credentials) :
+          await db.client.auth.signUp({...credentials,options:{emailRedirectTo:location.origin+location.pathname}});
         if(error)throw error;
         if(valid()) {
-          frame('Check your email.','Open the link in your email to continue.',
-            '<p class="email-receipt">'+esc(values.email.trim())+'</p>'+action('Use another email or resend','retry','secondary')+
-            action('Continue as a guest','guest','text-action'));
+          if(data.session) {setIdentity(data.session.user);navigate(home(),true);}
+          else frame('Check your email.','Follow the confirmation email to finish creating your account.',
+            '<p class="email-receipt">'+esc(credentials.email)+'</p>'+link('Back to log in','account'));
         }
+        return;
+      }
+      if (kind==='forgot-password') {
+        const {error}=await db.client.auth.resetPasswordForEmail(values.email.trim(),{redirectTo:location.origin+location.pathname});
+        if(error)throw error;
+        if(valid())frame('Check your email.','If there’s an account for this address, follow the link to choose a new password.',link('Back to log in','account'));
+        return;
+      }
+      if (kind==='set-password') {
+        if(values.password!==values.confirmation)throw Error('Enter the same password in both fields.');
+        const {error}=await db.client.auth.updateUser({password:values.password});
+        if(error)throw error;
+        if(valid()){sessionStorage.removeItem('fd:password-recovery');navigate('profile',true);}
         return;
       }
       if(form.dataset.ownerForm==='owner') {

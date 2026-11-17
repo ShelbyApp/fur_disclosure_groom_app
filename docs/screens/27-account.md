@@ -2,6 +2,6 @@
 
 **Route** `#/account`
 
-Request an email sign-in link for a new or returning Supabase user. A successful sign-in leads to the household or first-time owner form. Show the destination email after a request. Guests may plan a single visit in their browser tab.
+Log in with email and password to open the existing household. Offer Create an account and Forgot password. Continue as a guest starts a blank visit, including when this tab held a previous draft.
 
 [Screen index](README.md) · [Account setup](../SUPABASE.md)

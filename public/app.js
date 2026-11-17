@@ -47,7 +47,12 @@ function identityChanged(oldId,newId) {
   switchDraft(scoped,readDraft(scoped));
 }
 function startVisit(dog,owner,prior,action) {
-  if(action==='guest') {sessionStorage.setItem('fd:guest-active','yes');switchDraft(guestKey,readDraft(guestKey));navigate('welcome');return;}
+  if(action==='guest') {
+    switchDraft(guestKey,fresh());
+    sessionStorage.removeItem(guestKey);
+    sessionStorage.setItem('fd:guest-active','yes');
+    save();navigate('welcome',true);return;
+  }
   const scoped=draftKey(owner.owner_id,dog.id);
   const saved=readDraft(scoped);
   const start=()=>{
@@ -109,7 +114,13 @@ function navigate(id, replace=false) {
   history[replace?'replaceState':'pushState']({id:target},'', '#/'+target);
   render(target);
 }
-function fromHash() {
+function fromHash(event) {
+  // An email link can navigate an already-open tab by changing only its fragment.
+  // Give the auth client a fresh initialization to consume that callback.
+  if (event?.type==='hashchange' && !location.hash.startsWith('#/')) {
+    const params=new URLSearchParams(location.hash.slice(1));
+    if ((params.has('access_token') && params.has('refresh_token')) || params.has('error_code')) {location.reload();return;}
+  }
   const wanted = location.hash.startsWith('#/') ? location.hash.slice(2) : portal.home();
   const target = guard(wanted);
   if (target !== wanted) history.replaceState({id:target},'', '#/'+target);
@@ -163,7 +174,7 @@ function render(id, focus=true) {
     const recap = id==='review-look' ? summary(data,[1,2],true) : id==='review-care' ? summary(data,[3,4],true) : '';
     content = contextArt(page,data) + recap + `<form id="fields"><div class="fields">${fields(page,data,Boolean(state.ownerId))}</div><p id="error" role="alert"></p>
       <footer class="actions"><button type="submit" class="primary" ${id==='review-care'&&(!data.checked||!data.understood)?'disabled':''}>${esc(nextLabel())} →</button>
-      ${page.cut && id!=='ears-tail' && !state.editReturn ? button('Skip remaining look details','data-go="coat"','text-action') : ''}${button('Save & finish later','data-later','text-action')}</footer></form>`;
+      ${page.cut && id!=='ears-tail' && !state.editReturn ? button('Skip remaining look details','data-go="coat"','text-action') : ''}${state.ownerId?button('Save & finish later','data-later','text-action'):''}</footer></form>`;
   } else content=outsideForm(id);
   document.title=titles(id)+' · Fur Disclosure';
   app.innerHTML=top()+`<main id="main" tabindex="-1" class="screen screen-${id}">${back}${shellTitle(id)}${content}</main>`;

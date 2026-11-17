@@ -62,13 +62,16 @@ for(const [i,s] of flow.entries()){
  await writeFile(dir+'/'+files[s.id],spec);
 }
 const ownerScreens=[
- ['account','Owner sign-in','Request an email sign-in link for a new or returning Supabase user. A successful sign-in leads to the household or first-time owner form. Show the destination email after a request. Guests may plan a single visit in their browser tab.'],
+ ['account','Owner sign-in','Log in with email and password to open the existing household. Offer Create an account and Forgot password. Continue as a guest starts a blank visit, including when this tab held a previous draft.'],
  ['profile','Household profile','Show the saved owner and all their dogs. Each dog opens its own profile. Add dog, edit owner information or sign out. Signing out clears account-bound drafts on this tab.'],
- ['owner-settings','Owner details','Show the account email and save the owner name and optional phone. On first save, open the first dog form. Later edits return to the household.'],
+ ['owner-settings','Owner details','Show the account email and save the owner name and optional phone. On first save, open the first dog form. Later edits return to the household. Signed-in owners can also set or change their password.'],
  ['dog-profile','Dog profile','Show birthday, breed, usual preferences, a new visit action, any resumable draft in this tab, and history for this dog. Starting from this screen uses the current dog identity and defaults.'],
  ['edit-dog','Dog identity and defaults','Add or edit one dog. Name is required. Breed, birthday and weight are optional. Set nervous level and independent defaults for matting, extra time, fees, distress and missed contact. Empty values are chosen per visit. Profile edits apply to future plans.'],
  ['history','Dog groom history','Show finished records for this dog, newest saved first. Display scheduled visit date when provided, otherwise the save date. Open a record or start a new groom. Paginate ten records at a time.'],
- ['past-groom','Previous groom','Read or print the dated plan with its photos and numbered notes. Copy into a new draft to change individual sections. Keep previous styling, care choices and annotations; renew the date, contact inclusion and acknowledgements. Finishing appends a separate history record.']
+ ['past-groom','Previous groom','Read or print the dated plan with its photos and numbered notes. Copy into a new draft to change individual sections. Keep previous styling, care choices and annotations; renew the date, contact inclusion and acknowledgements. Finishing appends a separate history record.'],
+ ['create-account','Create an account','Request an account with email, password and matching confirmation. Follow the project’s email confirmation settings. The first authenticated visit collects owner details before adding pets.'],
+ ['forgot-password','Forgot password','Send a reset link to the account email and show a generic confirmation. Existing email-link users can use this path to set their first password.'],
+ ['set-password','Set a password','A recovery link opens a new-password form. Confirm the password twice and save it to the current Supabase identity. Return to the existing profile, including any saved dogs.']
 ];
 const profileIndex=[];
 for(const [index,[route,title,description]] of ownerScreens.entries()){

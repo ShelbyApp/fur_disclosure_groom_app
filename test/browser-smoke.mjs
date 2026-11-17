@@ -56,6 +56,8 @@ async function finish() {
   await click('[data-go=groomer-view]');await at('groomer-view');
 }
 await c('Page.enable');await c('Runtime.enable');await size(1440,940);
+const {installAuthFixture}=await import('./auth-fixture.mjs');
+await c('Page.addScriptToEvaluateOnNewDocument',{source:'('+installAuthFixture.toString()+')()'});
 await c('Page.navigate',{url:'http://127.0.0.1:4381/'});
 await until(()=>run('!!document.querySelector("[data-owner-action=guest]")'));
 assert.ok(!(await text()).includes('sample profile'));
@@ -87,29 +89,30 @@ let copy=await text();for(const item of ['Jamie','Maple & Mutt','Keep both ears 
 assert.ok(!copy.includes('tester@example.test'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),2);
 let pdf=await c('Page.printToPDF',{preferCSSPageSize:true});assert.ok(pdf.data.length>15000);
 await c('Page.reload');await until(()=>run('!!document.querySelector(".sheet")'));
-await click('[data-rolehome]');await click('[data-owner-action=guest]');await click('[data-mode=basic]');await moveNext('service');
+await click('[data-rolehome]');await click('[data-owner-action=guest]');assert.equal(await run('!!document.querySelector("[data-resume]")'),false);
+await click('[data-mode=basic]');assert.equal(await run('document.querySelector("[name=name]").value'),'');
+await fill('name','Pip');await moveNext('service');await pick('service','Bath only');
 assert.ok(!(await text()).includes('Match my photo'));
-await moveNext('coat');await moveNext('handling');await moveNext('what-ifs');
+await moveNext('coat');await pick('coat','No tangles noticed');await moveNext('handling');await moveNext('what-ifs');await limits();
 await click('[data-visit=spots]');await at('spots');assert.equal(await run('document.querySelectorAll("input[type=file]").length'),0);
-await click('[data-pin=sensitiveMap]');await saveNote('Brush gently on her left side','Side / belly');await moveNext('what-ifs');
+assert.equal(await run('document.querySelectorAll("[data-pin=sensitiveMap]").length'),0);
+await click('[data-map=sensitiveMap]');await saveNote('Brush gently on her left side','Side / belly');await moveNext('what-ifs');
 await finish();copy=await text();assert.ok(copy.includes('Brush gently on her left side'));assert.ok(!copy.includes('Keep both ears this long'));assert.ok(!copy.includes('Rounded'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),1);
-await click('[data-rolehome]');await click('[data-owner-action=guest]');await click('[data-new]');await click('dialog [data-confirm]');await at('welcome');
+await click('[data-rolehome]');await click('[data-owner-action=guest]');await at('welcome');
 await click('[data-mode=basic]');await fill('name','Pip');await moveNext('service');await pick('service','Bath only');await moveNext('coat');
-await pick('coat','No tangles noticed');await moveNext('handling');await click('[data-later]');await click('[data-owner-action=guest]');await click('[data-resume]');await at('handling');
+await pick('coat','No tangles noticed');await moveNext('handling');await c('Page.reload');await until(()=>run('!!document.querySelector("[name=anxiety]")'));await at('handling');
 await size(320,740);await checkWidth();await moveNext('what-ifs');await next();assert.equal(await run('document.querySelector("[data-decision=mats]").open'),true);
 // Exercise the real Supabase SDK with a local email/REST fixture.
-const {installAuthFixture}=await import('./auth-fixture.mjs');
-await c('Page.addScriptToEvaluateOnNewDocument',{source:'('+installAuthFixture.toString()+')()'});
 await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=1#/account'});
 await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
-await fill('email','owner@example.test');await click('[data-owner-form=signin] [type=submit]');
+await click('a[href="#/create-account"]');await at('create-account');
+await fill('email','owner@example.test');await fill('password','fixture password one');await fill('confirmation','fixture password one');await next();
 await until(()=>run('document.querySelector("h1").textContent.includes("Check your email")'));
-const emailRequest=await run('JSON.parse(sessionStorage.getItem("test:mail"))');assert.equal(emailRequest.email,'owner@example.test');assert.equal(emailRequest.redirect,'http://127.0.0.1:4381/');
 const ownerId='11111111-1111-4111-8111-111111111111';
 const encode=v=>Buffer.from(JSON.stringify(v)).toString('base64url');
 const expires=Math.floor(Date.now()/1000)+3600;
 const fixtureToken=encode({alg:'HS256',typ:'JWT'})+'.'+encode({exp:expires,sub:ownerId,role:'authenticated'})+'.ZmFrZQ';
-await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=2#access_token='+fixtureToken+'&refresh_token=local-fixture&expires_in=3600&expires_at='+expires+'&token_type=bearer&type=magiclink'});
+await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=2#access_token='+fixtureToken+'&refresh_token=local-fixture&expires_in=3600&expires_at='+expires+'&token_type=bearer&type=signup'});
 await until(()=>run('!!document.querySelector("[data-owner-form=owner]")'));
 assert.equal(await run('document.querySelector("[name=account_email]").value'),'owner@example.test');
 await fill('display_name','Fixture owner');await fill('phone','555-0101');await click('[data-owner-form=owner] [type=submit]');
@@ -150,7 +153,23 @@ await click('[data-later]');await until(()=>run('!!document.querySelector("[data
 await click('[data-owner-action=resume]');await at('current-photos');
 await click('[data-rolehome]');await until(()=>run('!!document.querySelector("[data-owner-action=signout]")'));
 await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
-assert.deepEqual(errors,[]);console.log('Passed: authenticated SDK callback, profile/dog/groom REST requests and sign-out with a local fixture; multiple dogs, autofill, saved history, copy/edit and guest planner.');
+await fill('email','owner@example.test');await fill('password','fixture password one');await next();
+await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
+await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
+await click('a[href="#/forgot-password"]');
+await fill('email','owner@example.test');await next();
+await until(()=>run('document.querySelector("h1").textContent.includes("Check your email")'));
+const emailRequest=await run('JSON.parse(sessionStorage.getItem("test:mail"))');assert.equal(emailRequest.email,'owner@example.test');assert.equal(emailRequest.redirect,'http://127.0.0.1:4381/');
+await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=2#access_token='+fixtureToken+'&refresh_token=local-fixture&expires_in=3600&expires_at='+expires+'&token_type=bearer&type=recovery'});
+await until(()=>run('!!document.querySelector("[data-owner-form=set-password]")'));
+await c('Page.reload');await until(()=>run('!!document.querySelector("[data-owner-form=set-password]")'));
+await fill('password','fixture password two');await fill('confirmation','fixture password two');await next();
+await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
+await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
+await fill('email','owner@example.test');await fill('password','wrong password');await next();
+await until(()=>run('!!document.querySelector("#account-message").textContent'));
+await fill('password','fixture password two');await next();await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
+assert.deepEqual(errors,[]);console.log('Passed: signup confirmation, password login and recovery, saved profiles, multiple dogs, and fresh guest visits.');
 
 }finally{sock?.close();const closed=browser.exitCode===null?once(browser,'exit').catch(()=>{}):Promise.resolve();browser.kill();await Promise.race([closed,pause(2000)]);await rm(profile,{recursive:true,force:true,maxRetries:4,retryDelay:150}).catch(()=>{});}
 

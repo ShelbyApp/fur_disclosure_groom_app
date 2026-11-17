@@ -8,12 +8,27 @@ export function installAuthFixture() {
     const url=new URL(typeof input==='string'?input:input.url||input,location.href);
     if(url.origin!==location.origin)throw Error('External request is outside this fixture.');
     const reply=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:{'content-type':'application/json'}});
-    if(url.pathname==='/auth/v1/otp'){
+    if(url.pathname==='/auth/v1/recover'){
       const data=JSON.parse(options.body);
       sessionStorage.setItem('test:mail',JSON.stringify({email:data.email,redirect:url.searchParams.get('redirect_to')}));
       return reply({});
     }
-    if(url.pathname==='/auth/v1/user')return reply({id:owner,email:'owner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}});
+    const user={id:owner,email:'owner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
+    if(url.pathname==='/auth/v1/signup'){
+      if(JSON.parse(options.body).password!=='fixture password one')return reply({msg:'Password required'},400);
+      return reply(user);
+    }
+    if(url.pathname==='/auth/v1/token' && url.searchParams.get('grant_type')==='password'){
+      const expected=sessionStorage.getItem('test:password-changed')==='yes'?'fixture password two':'fixture password one';
+      if(JSON.parse(options.body).password!==expected)return reply({msg:'Invalid login credentials'},400);
+      const encode=value=>btoa(JSON.stringify(value)).replace(/=/g,'').replace(/\+/g,'-').replace(/\//g,'_');
+      const token=encode({alg:'HS256',typ:'JWT'})+'.'+encode({exp:Math.floor(Date.now()/1000)+3600,sub:owner,role:'authenticated'})+'.ZmFrZQ';
+      return reply({user,access_token:token,refresh_token:'local-fixture',token_type:'bearer',expires_in:3600});
+    }
+    if(url.pathname==='/auth/v1/user'){
+      if(options.method==='PUT' && JSON.parse(options.body).password==='fixture password two')sessionStorage.setItem('test:password-changed','yes');
+      return reply(user);
+    }
     if(url.pathname==='/auth/v1/logout')return new Response(null,{status:204});
     const table=url.pathname.split('/').pop();
     if(!url.pathname.startsWith('/rest/v1/'))return send(input,options);

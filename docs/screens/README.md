@@ -9,6 +9,9 @@
 - [Dog identity and defaults](31-edit-dog.md)
 - [Dog groom history](32-history.md)
 - [Previous groom](33-past-groom.md)
+- [Create an account](34-create-account.md)
+- [Forgot password](35-forgot-password.md)
+- [Set a password](36-set-password.md)
 
 ## Visit planning
 
