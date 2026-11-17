@@ -26,6 +26,7 @@ export function beginVisit(dog, owner, previous) {
   const prior = previous ? structuredClone(previous.data) : {};
   const answers = {...validDefaults(dog.care_defaults), ...prior,
     name: dog.name, breed: dog.breed, birthday: dog.birthday || '', age: ageAt(dog.birthday) || prior.age || '',
+    weight: dog.care_defaults?.weight || prior.weight || '',
     owner: owner.display_name, phone: owner.phone || '', email: owner.email || '',
     visit: '', includeContact: false, checked: false, understood: false};
   return {answers, resume: previous ? 'review-look' : 'dog', complete: null, editReturn: null,

@@ -23,6 +23,6 @@ basic haircut path: [welcome](02-welcome.md) → [dog](03-dog.md) → [service](
 
 ## Behavior and acceptance
 
-A dog name is required. Salon, individual groomer and visit date are independent optional values. A date is an owner-entered detail, not a booking.
+A signed-in visit uses the selected dog’s saved identity. The owner can edit it for this visit. Guests enter their own dog. A dog name is required. Salon, individual groomer and visit date are independent optional values. A date is an owner-entered detail, not a booking.
 
 [All screens](README.md) · [Brand and interaction guide](../BRAND.md)

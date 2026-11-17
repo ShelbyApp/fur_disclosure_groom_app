@@ -12,7 +12,7 @@ Dated, read-only visit snapshot and print action.
 
 ## Navigation
 
-Print or return to review for edits. The role selector is also available.
+Print or return to review for edits. Return to the household or guest account entry.
 
 ## Behavior and acceptance
 

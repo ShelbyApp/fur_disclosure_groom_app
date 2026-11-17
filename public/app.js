@@ -125,6 +125,8 @@ function nextLabel() {
 }
 function titles(id) {
   const name=data.name?.trim();
+  if (state.dogId && name && id==='dog') return name+'’s visit.';
+  if (state.dogId && name && id==='welcome') return 'Plan '+name+'’s groom.';
   if (name && id==='handling') return 'How does '+name+' feel?';
   if (name && id==='ready') return name+'’s plan is ready.';
   if (name && id==='current-photos') return name+', as they are today.';
@@ -135,7 +137,10 @@ function top() {
     ${page.stage?'<div class="status"><span id="saved" title="Saved in this browser tab">'+(stored?'✓ Saved':'In memory')+'</span><span>Step '+page.stage+' of 5</span></div>':'<span class="app-name">Groom Planner</span>'}</header>`;
 }
 function shellTitle(id) {
-  const intro = id==='ready' ? 'Your owner request is ready to review with your groomer.' : page.intro;
+  let intro = page.intro;
+  if (id==='ready') intro='Your owner request is ready to review with your groomer.';
+  if (state.dogId && id==='dog') intro='Add the appointment details you know. You can leave them open for now.';
+  if (state.ownerId && id==='contact') intro='Your profile filled these in. Choose what to share with the groomer.';
   return `<div class="heading"><h1 tabindex="-1">${esc(titles(id))}<i class="burst" aria-hidden="true"></i></h1></div><p class="lead">${esc(intro)}</p>`;
 }
 function outsideForm(id) {
@@ -145,7 +150,7 @@ function outsideForm(id) {
   if (!state.complete) return `<div class="empty">${icon('groomer')}<h2>No finished plan here yet.</h2><p>Finish an owner plan in this tab to see the groomer’s copy.</p></div>${button('Plan a groom →','data-go="welcome"')}`;
   const plan = state.complete, record=plan.data;
   return `<article class="sheet"><header class="sheet-head"><h2>${esc(record.name)}’s groom plan</h2><p>${advanced(record)?'Advanced':'Basic'} groom · ${esc(new Date(plan.date).toLocaleDateString())}</p><small>${esc(plan.status)}</small></header>${summary(record,[1,2,3,4])}</article>
-  ${button('Print / save PDF','data-print')}${id==='sheet'?button('Review & edit','data-go="review-look"','secondary'):''}${button('Choose a side','data-rolehome','text-action')}`;
+  ${button('Print / save PDF','data-print')}${id==='sheet'?button('Review & edit','data-go="review-look"','secondary'):''}${button(state.ownerId?'Back to my dogs':'Back to planner home','data-rolehome','text-action')}`;
 }
 function render(id, focus=true) {
   if(isOwnerRoute(id)) {page=null;portal.render(id);return;}
@@ -156,7 +161,7 @@ function render(id, focus=true) {
   let content;
   if (stage) {
     const recap = id==='review-look' ? summary(data,[1,2],true) : id==='review-care' ? summary(data,[3,4],true) : '';
-    content = contextArt(page,data) + recap + `<form id="fields"><div class="fields">${fields(page,data)}</div><p id="error" role="alert"></p>
+    content = contextArt(page,data) + recap + `<form id="fields"><div class="fields">${fields(page,data,Boolean(state.ownerId))}</div><p id="error" role="alert"></p>
       <footer class="actions"><button type="submit" class="primary" ${id==='review-care'&&(!data.checked||!data.understood)?'disabled':''}>${esc(nextLabel())} →</button>
       ${page.cut && id!=='ears-tail' && !state.editReturn ? button('Skip remaining look details','data-go="coat"','text-action') : ''}${button('Save & finish later','data-later','text-action')}</footer></form>`;
   } else content=outsideForm(id);
@@ -170,7 +175,7 @@ function goBack() {
   const list=journey(data), index=list.indexOf(page);
   if (page.id==='welcome' && state.ownerId) navigate('dog-profile/'+state.dogId);
   else if (index>=0) navigate(index?list[index-1].id:'welcome');
-  else navigate(page.id==='sheet'?'ready':'roles');
+  else navigate(page.id==='sheet'?'ready':'account');
 }
 function returnFromDetail() {
   const dest=state.editReturn || state.origin || (page.id==='health'?'handling':'what-ifs');
@@ -298,8 +303,8 @@ app.addEventListener('click',event=>{
   if (!b || busy) return;
   const d=b.dataset;
   if(!page)return;
-  if ('later' in d) {save();navigate(state.ownerId?'dog-profile/'+state.dogId:'roles');}
-  else if ('rolehome' in d) {state.editReturn=null;state.origin=null;save();navigate(state.ownerId?'profile':'roles');}
+  if ('later' in d) {save();navigate(state.ownerId?'dog-profile/'+state.dogId:'account');}
+  else if ('rolehome' in d) {state.editReturn=null;state.origin=null;save();navigate(portal.home());}
   else if (d.mode) selectMode(d.mode);
   else if ('resume' in d) navigate(state.resume);
   else if ('new' in d && state.ownerId) navigate('dog-profile/'+state.dogId);

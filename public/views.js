@@ -31,7 +31,7 @@ export function welcome(state) {
   const a = state.answers;
   const started = Boolean(a.mode);
   const resume = started ? `<div class="resume-box">${pup(a)}${button(state.complete?'Open finished plan →':'Continue this visit →',state.complete?'data-go="sheet"':'data-resume','secondary')}${button('Start a different visit','data-new','text-action')}</div>` : '';
-  return resume + (!started ? garden() : '') + (started?'<h2>Planning options</h2>':'') +
+  return resume + (!started ? (state.dogId ? petIdentity(a) : garden()) : '') + (started?'<h2>Planning options</h2>':'') +
     artCard('Basic groom','The service, comfort needs and what to do if plans change.',icon('comfort'),'data-mode="basic"','basic') +
     artCard('Advanced groom','All of Basic, plus photos, haircut details and notes on the look.',icon('picture'),'data-mode="advanced"','advanced');
 }
@@ -92,9 +92,24 @@ function guideMap(data) {
     ${mapView(careMap,data,'Guide dog · '+guide.label)}
     <p class="hint">Include left or right in the note if it matters.</p>`;
 }
-export function fields(page, data) {
+function petIdentity(data) {
+  const details = [data.breed, data.age, data.weight].filter(Boolean).join(' · ');
+  return `<div class="dog-identity">${icon('pup')}<div><strong>${esc(data.name)}</strong><small>${esc(details)}</small></div></div>`;
+}
+export function fields(page, data, fromProfile=false) {
   const fs = fieldsFor(page,data);
   const render = list => list.map(f=>fieldView(f,data)).join('');
+  if (page.id === 'dog' && fromProfile) {
+    const identity = fs.filter(f=>['name','breed','birthday','age','weight'].includes(f.id));
+    const visit = fs.filter(f=>['salon','groomer','visit'].includes(f.id));
+    return petIdentity(data) + extra('Edit pet details for this visit',render(identity),!data.name) + render(visit);
+  }
+  if (page.id === 'contact' && fromProfile) {
+    const contact = [data.owner,data.phone,data.email].filter(Boolean);
+    return '<div class="contact-card">'+contact.map(item=>'<span>'+esc(item)+'</span>').join('')+'</div>'+
+      extra('Edit contact for this visit',render(fs.filter(f=>['owner','phone','email'].includes(f.id))),!contact.length)+
+      render(fs.filter(f=>['channel','includeContact'].includes(f.id)));
+  }
   if (page.id === 'dog') return render(fs.slice(0,2)) + extra('Birthday, age & weight',render([fs[7],...fs.slice(2,4)]),Boolean(data.birthday||data.age||data.weight))+
     extra('Salon, groomer & visit date',render(fs.slice(4,7)),Boolean(data.salon||data.groomer||data.visit));
   if (page.id === 'spots') return guideMap(data) + (fs.length?extra('Previously saved spot details',render(fs)): '');

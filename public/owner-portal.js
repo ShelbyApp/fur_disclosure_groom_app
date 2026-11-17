@@ -24,7 +24,6 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
   let sessionReady=false;
   const id = () => user?.id || null;
   const home = () => user?'profile':'account';
-  const isSample = () => db.isDemo(id());
 
   function setIdentity(next) {
     if ((user?.id||null)===(next?.id||null)) return false;
@@ -35,26 +34,24 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     if (db.client) {
       const {data,error}=await db.client.auth.getSession();
       if (error) signedInError='Your sign-in link could not be opened. Request a fresh link.';
-      if (data?.session?.user) { db.enableDemo(false);setIdentity(data.session.user); }
+      if (data?.session?.user) setIdentity(data.session.user);
       db.client.auth.onAuthStateChange((event,session)=>{
         // Supabase finishes its session lock before account data is fetched.
         setTimeout(()=>{
           if (!sessionReady || event==='INITIAL_SESSION') return;
           if (event==='SIGNED_OUT' || session?.user) {
-            if (session?.user) db.enableDemo(false);
             if (setIdentity(session?.user||null)) navigate(home(),true);
           }
         },0);
       });
     }
-    if (!user && db.demoActive()) setIdentity({id:db.demoOwner,email:''});
     sessionReady=true;
   }
   function frame(title,lead,body,back='',form='') {
     const logo='<img src="assets/fur-disclosure-logo-v9.png" alt="Fur Disclosure">';
     const content=form?`<form data-owner-form="${form}" class="portal-form">${body}</form>`:body;
     document.title=title+' · Fur Disclosure';
-    app.innerHTML=`<header class="brandbar"><a class="brand" href="#/${home()}">${logo}</a><span class="app-name">${isSample()?'Sample profile':'Groom Planner'}</span></header>
+    app.innerHTML=`<header class="brandbar"><a class="brand" href="#/${home()}">${logo}</a><span class="app-name">Groom Planner</span></header>
       <main id="main" tabindex="-1" class="screen owner-screen">${back?link('← Back',back,'back'):''}<div class="heading"><h1 tabindex="-1">${esc(title)}<i class="burst"></i></h1></div>
       ${lead?'<p class="lead">'+esc(lead)+'</p>':''}${content}<p id="account-message" role="status"></p></main>`;
     app.querySelector('h1')?.focus({preventScroll:true});window.scrollTo(0,0);
@@ -62,11 +59,11 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
   function message(value) {const p=app.querySelector('#account-message');if(p)p.textContent=value;}
   function login() {
     const loginForm = db.configured
-      ? `<form class="portal-form" data-owner-form="signin">${field('Email address','email','','email','required autocomplete="email"')}${submit('Email me a sign-in link')}</form>`
-      : '<p class="hint">Email sign-in is awaiting setup. Explore the sample profile in this tab.</p>';
-    frame('Your pups, all here.','Save their preferences and plan the next groom.',
+      ? `<form class="portal-form" data-owner-form="signin">${field('Your email','email','','email','required autocomplete="email"')}${submit('Email me a sign-in link')}</form>`
+      : '<p class="hint" role="status">Email sign-in is unavailable right now. You can still plan a guest visit.</p>';
+    frame('Your pups, all here.','Sign in or create your profile to save your dogs and their grooms.',
       '<img class="garden" src="assets/studio-garden.jpg" alt="A groomed apricot dog in a garden">'+loginForm+
-      action('Explore a sample profile','demo','secondary')+action('Plan one visit as a guest','guest','text-action')+link('Groomer’s copy','groomer-view','text-action'));
+      action('Continue as a guest','guest','secondary'));
     if (signedInError) message(signedInError);
   }
   async function render(route) {
@@ -81,22 +78,24 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       model=household;dog=model.dogs.find(d=>d.id===dogId);past=null;
       const profile=model.profile;
       if (screen==='owner-settings' || !profile?.display_name) {
-        frame(profile?.display_name?'Owner details':'Meet the owner.','Your contact details can fill in future visits.',
+        frame(profile?.display_name?'Your contact details':'First, meet the owner.',profile?.display_name?'These details fill in your next groom.':'Save your contact details, then add your first dog.',
           field('Your name','display_name',profile?.display_name||'','text','required maxlength="100" autocomplete="name"')+
+          field('Sign-in email','account_email',user.email,'email','readonly autocomplete="email"')+
           field('Phone (optional)','phone',profile?.phone||'','tel','maxlength="40" autocomplete="tel"')+
-          submit('Save owner profile')+action('Sign out','signout','text-action'),profile?.display_name?'profile':'','owner');return;
+          submit(profile?.display_name?'Save changes':'Save & add my first dog')+action('Sign out','signout','text-action'),profile?.display_name?'profile':'','owner');return;
       }
       if (screen==='profile') {
         frame('Your pups.','Choose a dog to plan a visit or see their groom history.',
           `<div class="owner-strip">${icon('groomer')}<strong>${esc(profile.display_name)}</strong>${link('Edit profile','owner-settings','text-action')}</div>`+
           (model.dogs.length?model.dogs.map(petCard).join(''):'<div class="empty">'+icon('pup')+'<h2>Add your first dog.</h2><p>Save their birthday and usual care preferences once.</p></div>')+
-          link('＋ Add a dog','edit-dog/new','primary')+action(isSample()?'Leave sample profile':'Sign out','signout','text-action'));return;
+          link('＋ Add a dog','edit-dog/new','primary')+action('Sign out','signout','text-action'));return;
       }
       if (screen==='edit-dog' && (dog || dogId==='new')) {
         newDogId=dog?.id || crypto.randomUUID();
         frame(dog?'Edit '+dog.name:'Meet your pup.','These details will fill in a fresh groom.',
           field('Dog’s name','name',dog?.name,'text','required maxlength="60"')+field('Breed or mix','breed',dog?.breed,'text','maxlength="180"')+
           field('Birthday (optional)','birthday',dog?.birthday,'date','max="'+dateToday()+'"')+
+          field('Weight (optional)','weight',dog?.care_defaults?.weight,'text','maxlength="40" placeholder="e.g. 28 lb"')+
           '<details class="extra"><summary>Usual care & what-ifs</summary><div>'+settings(dog)+'</div></details>'+submit('Save dog'),
           dog?'dog-profile/'+dog.id:'profile','dog');return;
       }
@@ -158,16 +157,23 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       if (form.dataset.ownerForm==='signin') {
         const {error}=await db.client.auth.signInWithOtp({email:values.email.trim(),options:{emailRedirectTo:location.origin+location.pathname}});
         if(error)throw error;
-        if(valid())message('Check your email for your Fur Disclosure sign-in link.');return;
+        if(valid()) {
+          frame('Check your email.','Open the link in your email to continue.',
+            '<p class="email-receipt">'+esc(values.email.trim())+'</p>'+action('Use another email or resend','retry','secondary')+
+            action('Continue as a guest','guest','text-action'));
+        }
+        return;
       }
       if(form.dataset.ownerForm==='owner') {
         if(!values.display_name.trim())throw Error('Enter your name.');
         await db.saveOwner(id(),{display_name:values.display_name.trim(),phone:values.phone.trim()});
-        if(valid())navigate('profile');return;
+        if(valid())navigate(!model.profile?.display_name && !model.dogs.length?'edit-dog/new':'profile',true);return;
       }
       const dogId=newDogId;
       if(!values.name.trim())throw Error('Enter a name for your dog.');
-      await db.saveDog(id(),dogId,{name:values.name.trim(),breed:values.breed.trim(),birthday:values.birthday||null,care_defaults:validDefaults(values)},!dog);
+      const defaults={...validDefaults(values)};
+      if(values.weight.trim()) defaults.weight=values.weight.trim();
+      await db.saveDog(id(),dogId,{name:values.name.trim(),breed:values.breed.trim(),birthday:values.birthday||null,care_defaults:defaults},!dog);
       if(valid())navigate('dog-profile/'+dogId);
     },form.querySelector('[type=submit]'));
   });
@@ -177,10 +183,9 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     work(async valid=>{
       switch(b.dataset.ownerAction) {
         case 'guest': startVisit(null,null,null,'guest');break;
-        case 'demo': db.enableDemo(true);setIdentity({id:db.demoOwner,email:''});navigate('profile');break;
         case 'signout':
-          if(!isSample() && db.client) {const {error}=await db.client.auth.signOut({scope:'local'});if(error)throw error;}
-          db.enableDemo(false);setIdentity(null);navigate('account',true);break;
+          if(db.client) {const {error}=await db.client.auth.signOut({scope:'local'});if(error)throw error;}
+          setIdentity(null);navigate('account',true);break;
         case 'retry': if(valid())render(current);break;
         case 'print': window.print();break;
         default: {
@@ -190,6 +195,6 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       }
     },b);
   });
-  return {initialize, render, id, home, cancel(){generation++;}, isSample,
+  return {initialize, render, id, home, cancel(){generation++;},
     saveVisit(state,plan){if(!user || user.id!==state.ownerId)throw Error('Sign in again to save this groom.');return db.saveGroom(user.id,state.dogId,state.recordId,state.copiedFrom,plan);}};
 }

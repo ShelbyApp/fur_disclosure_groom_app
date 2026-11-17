@@ -20,6 +20,6 @@ basic haircut path: [what-ifs](15-what-ifs.md) → [contact](20-contact.md) → 
 
 ## Behavior and acceptance
 
-Optional details. An unchecked inclusion choice removes all contact fields, including the preferred channel, from the finished sheet. An entered email is validated.
+Owner name, sign-in email and saved phone fill in the contact screen. Visit edits do not change the profile. Guests can enter contact details here. An unchecked inclusion choice removes all contact fields, including the preferred channel, from the finished sheet. An entered email is validated.
 
 [All screens](README.md) · [Brand and interaction guide](../BRAND.md)

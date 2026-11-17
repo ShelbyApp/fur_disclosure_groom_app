@@ -2,6 +2,6 @@
 
 **Route** `#/owner-settings`
 
-Save the owner name and optional phone. First sign-in requests an owner name before adding dogs. Return to the household when saved.
+Show the account email and save the owner name and optional phone. On first save, open the first dog form. Later edits return to the household.
 
 [Screen index](README.md) · [Account setup](../SUPABASE.md)
