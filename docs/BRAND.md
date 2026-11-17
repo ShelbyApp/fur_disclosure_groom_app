@@ -14,4 +14,5 @@ The visual reference is the 32-image **Fur Disclosure Owner Screens v1** study. 
 | Annotation | Keep image proportions. Use a yellow ring and numbered violet marker, paired with a numbered text list. Touch, mouse, named-area entry and keyboard placement are supported. |
 | Wider screens | Keep the phone layout and the same controls. Print uses the paper width and shows saved notes alongside each image. |
 | Login and signup | Match the header, intro spacing, yellow “What we got” hero photo, email and password fields. Signup adds confirm password and its primary action. Put the return-to-login link below the form. Guest entry is hidden. |
+| Shared line icons | Keep fill, stroke and line styling directly on every shape in parade-doodles.svg. Mobile Safari does not reliably apply a separate style block when an external symbol is referenced. Preserve the versioned asset URL when changing this shared set. |
 | Dog lookbook | Warm yellow panel; white Polaroid borders, lilac and yellow tape, subtle tilt and shadow. Captions use Fredoka. One large card with a glimpse of the next encourages swiping. Place the purple + action above the cards at the upper right. |

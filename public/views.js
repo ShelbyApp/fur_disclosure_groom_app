@@ -3,7 +3,7 @@ import {escapeHtml as esc, mapView} from './maps.js';
 
 export const button = (label, attrs, cls='primary') => `<button type="button" class="${cls}" ${attrs}>${label}</button>`;
 export function icon(name) {
-  return `<svg class="doodle" aria-hidden="true" viewBox="0 0 120 120"><use href="assets/parade-doodles.svg#${name}"></use></svg>`;
+  return `<svg class="doodle" aria-hidden="true" viewBox="0 0 120 120"><use href="assets/parade-doodles.svg?v=2#${name}"></use></svg>`;
 }
 export const decisions = {
   mats:['Matting & cut changes','picture'], time:['Extra time','time'], fees:['Extra fees','cost'],
