@@ -13,3 +13,5 @@ The visual reference is the 32-image **Fur Disclosure Owner Screens v1** study. 
 | Identity | Use the folded-document dog logo, the dog’s own face photo when available in Advanced, and the sample avatar otherwise. |
 | Annotation | Keep image proportions. Use a yellow ring and numbered violet marker, paired with a numbered text list. Touch, mouse, named-area entry and keyboard placement are supported. |
 | Wider screens | Keep the phone layout and the same controls. Print uses the paper width and shows saved notes alongside each image. |
+| Login | Use the yellow “What we got” hero dog from the landing page in a rounded, wide photo above the login form. |
+| Dog lookbook | Warm yellow panel; white Polaroid borders, lilac and yellow tape, subtle tilt and shadow. Captions use Fredoka. One large card with a glimpse of the next encourages swiping. Place the purple + action above the cards at the upper right. |

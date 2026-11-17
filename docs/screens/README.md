@@ -6,12 +6,15 @@
 - [Household profile](28-profile.md)
 - [Owner details](29-owner-settings.md)
 - [Dog profile](30-dog-profile.md)
-- [Dog identity and defaults](31-edit-dog.md)
+- [Dog basics](31-edit-dog.md)
 - [Dog groom history](32-history.md)
 - [Previous groom](33-past-groom.md)
 - [Create an account](34-create-account.md)
 - [Forgot password](35-forgot-password.md)
 - [Set a password](36-set-password.md)
+- [Usual care and what-ifs](37-dog-care.md)
+- [Groomer details](38-edit-groomer.md)
+- [Add to the lookbook](39-add-photo.md)
 
 ## Visit planning
 

@@ -13,7 +13,7 @@ function result(response) {
 
 export async function household(id) {
   const [profile, dogs] = await Promise.all([
-    client.from('fd_owner_profiles').select('owner_id,display_name,phone').eq('owner_id',id).maybeSingle(),
+    client.from('fd_owner_profiles').select('*').eq('owner_id',id).maybeSingle(),
     client.from('fd_dogs').select('id,owner_id,name,breed,birthday,care_defaults').eq('owner_id',id).order('created_at')
   ]);
   return {profile:result(profile),dogs:result(dogs)};
@@ -30,9 +30,30 @@ export async function saveDog(owner, id, values, isNew) {
   }
   result(await client.from('fd_dogs').update(values).eq('owner_id',owner).eq('id',id).select('id').single());
 }
-export async function historyFor(owner, dog, offset=0) {
+export async function historyFor(owner, dog, offset=0, count=historyPageSize+1) {
   return result(await client.from('fd_grooms').select('id,service,visit_date,created_at').eq('owner_id',owner).eq('dog_id',dog)
-    .order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+historyPageSize));
+    .order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+count-1));
+}
+export async function groomersFor(owner) {
+  return result(await client.from('fd_groomers').select('id,name,business,address,email,phone').eq('owner_id',owner).order('name'));
+}
+export async function saveGroomer(owner,id,values,isNew) {
+  if(isNew) {
+    const added=await client.from('fd_groomers').insert({id,owner_id:owner,...values});
+    if(added.error?.code!=='23505') {result(added);return;}
+  }
+  result(await client.from('fd_groomers').update(values).eq('owner_id',owner).eq('id',id).select('id').single());
+}
+export async function saveCare(owner,id,careDefaults) {
+  result(await client.from('fd_dogs').update({care_defaults:careDefaults}).eq('owner_id',owner).eq('id',id).select('id').single());
+}
+export async function photosFor(owner,dog,offset=0) {
+  return result(await client.from('fd_dog_photos').select('id,image_data,caption,created_at').eq('owner_id',owner).eq('dog_id',dog)
+    .order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+11));
+}
+export async function savePhoto(owner,dog,id,image,caption) {
+  const inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption});
+  if(inserted.error?.code!=='23505')result(inserted);
 }
 export async function openGroom(owner,dog,id) {
   return result(await client.from('fd_grooms').select('id,dog_id,service,visit_date,created_at,plan').eq('owner_id',owner).eq('dog_id',dog).eq('id',id).single());

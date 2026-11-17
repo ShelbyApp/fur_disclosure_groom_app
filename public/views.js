@@ -102,7 +102,8 @@ export function fields(page, data, fromProfile=false) {
   if (page.id === 'dog' && fromProfile) {
     const identity = fs.filter(f=>['name','breed','birthday','age','weight'].includes(f.id));
     const visit = fs.filter(f=>['salon','groomer','visit'].includes(f.id));
-    return petIdentity(data) + extra('Edit pet details for this visit',render(identity),!data.name) + render(visit);
+    return petIdentity(data) + extra('Edit pet details for this visit',render(identity),!data.name) + render(visit)+
+      extra('Groomer contact details',render(fs.slice(8)),false);
   }
   if (page.id === 'contact' && fromProfile) {
     const contact = [data.owner,data.phone,data.email].filter(Boolean);
@@ -111,7 +112,7 @@ export function fields(page, data, fromProfile=false) {
       render(fs.filter(f=>['channel','includeContact'].includes(f.id)));
   }
   if (page.id === 'dog') return render(fs.slice(0,2)) + extra('Birthday, age & weight',render([fs[7],...fs.slice(2,4)]),Boolean(data.birthday||data.age||data.weight))+
-    extra('Salon, groomer & visit date',render(fs.slice(4,7)),Boolean(data.salon||data.groomer||data.visit));
+    extra('Salon, groomer & visit date',render([...fs.slice(4,7),...fs.slice(8)]),Boolean(data.salon||data.groomer||data.visit));
   if (page.id === 'spots') return guideMap(data) + (fs.length?extra('Previously saved spot details',render(fs)): '');
   if (page.id === 'handling') return render(fs.slice(0,3))+extra('Add a handling note',render(fs.slice(3)),Boolean(data.handlingNotes))+
     artCard('Health & comfort','Allergies, mobility or other care notes.',icon('comfort'),'data-visit="health" data-origin="handling"')+sensitiveLink(data,'handling');

@@ -1,7 +1,7 @@
-# Dog identity and defaults
+# Dog basics
 
 **Route** `#/edit-dog` with a dog ID or new
 
-Add or edit one dog. Name is required. Breed, birthday and weight are optional. Set nervous level and independent defaults for matting, extra time, fees, distress and missed contact. Empty values are chosen per visit. Profile edits apply to future plans.
+Add or edit one dog. This page contains only name (required), breed or mix, birthday and weight (optional). Next saves these fields then opens dog-care. Updating basics preserves existing usual-care defaults; clearing weight removes only weight. Future visits use updated identity; historical plans remain unchanged.
 
 [Screen index](README.md) · [Account setup](../SUPABASE.md)

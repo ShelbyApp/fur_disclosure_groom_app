@@ -29,6 +29,10 @@ export function beginVisit(dog, owner, previous) {
     weight: dog.care_defaults?.weight || prior.weight || '',
     owner: owner.display_name, phone: owner.phone || '', email: owner.email || '',
     visit: '', includeContact: false, checked: false, understood: false};
+  if(owner.selectedGroomer) {
+    const g=owner.selectedGroomer;
+    Object.assign(answers,{salon:g.business,groomer:g.name,groomerAddress:g.address,groomerEmail:g.email,groomerPhone:g.phone});
+  }
   return {answers, resume: previous ? 'review-look' : 'dog', complete: null, editReturn: null,
     origin: null, dogId: dog.id, ownerId: owner.owner_id, recordId: crypto.randomUUID()};
 }

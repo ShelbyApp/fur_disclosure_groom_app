@@ -44,6 +44,31 @@ h1:focus,main:focus {outline:none}
 .pet-card>span {flex:1;min-width:0}.pet-card b {color:var(--violet);font-size:23px}
 .dog-identity small,.pet-card small {display:block;color:var(--soft);font-size:13px}
 .owner-screen .recap dl {padding:0 12px 10px}
+.login-pup {display:block;width:100%;height:210px;object-fit:cover;object-position:50% 43%;background:var(--yellow);border-radius:22px 22px 42px 22px;margin:18px 0 22px}
+.profile-section {margin-top:28px}
+.identity-link {color:inherit;text-decoration:none}
+.identity-link>div {min-width:0;flex:1}.identity-link b {font-size:28px;color:var(--violet)}
+.groomer-card {background:#f7edfd}
+.dog-lookbook {margin-top:30px;padding:16px 12px 4px;background:#fff0b5;border-radius:22px}
+.lookbook-heading {display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:4px}
+.lookbook-heading h2 {margin:0;font-size:28px}
+.lookbook-add {display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:var(--violet);color:white;font:500 32px Fredoka;text-decoration:none}
+.polaroid-strip {display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;padding:25px 8px 20px;scrollbar-color:#b28ac9 transparent;scrollbar-width:thin}
+.polaroid-strip:focus-visible {outline:3px solid var(--violet);outline-offset:1px;border-radius:12px}
+.polaroid {position:relative;flex:0 0 87%;min-width:0;margin:0;padding:10px 10px 16px;background:white;border-radius:4px 4px 9px 9px;box-shadow:0 5px 10px #42205225;scroll-snap-align:center;transform:rotate(-1deg)}
+.polaroid:nth-child(even) {transform:rotate(1deg)}
+.polaroid::before {content:'';position:absolute;z-index:1;width:70px;height:27px;left:calc(50% - 35px);top:-13px;background:#dac2efc9;transform:rotate(-5deg)}
+.polaroid:nth-child(even)::before {background:#ffe4a7ca;transform:rotate(4deg)}
+.polaroid img {display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:var(--lilac)}
+.polaroid figcaption,.empty-polaroid strong {display:block;font:550 18px/1.2 Fredoka;text-align:center;margin-top:13px;overflow-wrap:anywhere}
+.empty-polaroid {color:var(--plum);text-decoration:none}
+.empty-polaroid>span {display:grid;place-items:center;aspect-ratio:4/5;background:var(--lilac)}
+.empty-polaroid .doodle {width:105px;height:105px}
+.photo-preview:empty {display:none}.photo-preview img {display:block;width:100%;max-height:360px;object-fit:contain;background:var(--lilac);border-radius:16px}
+.photo-pickers {display:flex;gap:10px}.photo-pickers>* {flex:1}
+.upload-choice {position:relative;overflow:hidden;text-align:center;cursor:pointer;display:grid;place-items:center}
+.upload-choice input {position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.upload-choice:focus-within {outline:3px solid #9650c9;outline-offset:3px}
 #account-message:empty {display:none}
 #account-message {padding:9px 12px;background:var(--lilac);border-radius:10px}
 @media print {.past-actions,.owner-screen>.portal-link,#account-message {display:none!important}}

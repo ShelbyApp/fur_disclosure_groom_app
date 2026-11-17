@@ -32,16 +32,25 @@ export function installAuthFixture() {
     if(url.pathname==='/auth/v1/logout')return new Response(null,{status:204});
     const table=url.pathname.split('/').pop();
     if(!url.pathname.startsWith('/rest/v1/'))return send(input,options);
-    if(!['fd_owner_profiles','fd_dogs','fd_grooms'].includes(table))throw Error('Unexpected table');
+    if(!['fd_owner_profiles','fd_dogs','fd_grooms','fd_groomers','fd_dog_photos'].includes(table))throw Error('Unexpected table');
     const key='test:rows:'+table;
     const rows=JSON.parse(sessionStorage.getItem(key)||'[]');
     if(options.method==='POST') {
       const value=JSON.parse(options.body);
+      if(rows.some(row=>table==='fd_owner_profiles'?row.owner_id===value.owner_id:row.id===value.id))return reply({code:'23505',message:'Duplicate'},409);
       rows.push({...value,created_at:new Date().toISOString()});
       sessionStorage.setItem(key,JSON.stringify(rows));
       return new Response(null,{status:201});
     }
-    const filtered=rows.filter(row=>[...url.searchParams].every(([field,value])=>!value.startsWith('eq.')||row[field]===value.slice(3)));
+    let filtered=rows.filter(row=>[...url.searchParams].every(([field,value])=>!value.startsWith('eq.')||row[field]===value.slice(3)));
+    if(options.method==='PATCH') {
+      filtered.forEach(row=>Object.assign(row,JSON.parse(options.body)));
+      sessionStorage.setItem(key,JSON.stringify(rows));
+    }
+    const sort=(url.searchParams.get('order')||'').split(',').filter(Boolean);
+    filtered.sort((a,b)=>{for(const order of sort){const [field,direction]=order.split('.');const result=String(a[field]||'').localeCompare(String(b[field]||''));if(result)return direction==='desc'?-result:result;}return 0;});
+    const offset=Number(url.searchParams.get('offset')||0),limit=Number(url.searchParams.get('limit')||filtered.length);
+    filtered=filtered.slice(offset,offset+limit);
     if(new Headers(options.headers).get('Accept')?.includes('vnd.pgrst.object')) return reply(filtered[0]||null);
     return reply(filtered);
   };

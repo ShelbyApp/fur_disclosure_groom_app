@@ -3,8 +3,9 @@ import {escapeHtml as esc} from './maps.js';
 import {decisions, icon, summary} from './views.js';
 import {defaultFields, historyPageSize, validDefaults} from './profile-model.js';
 import * as db from './account-store.js';
+import {readPhoto} from './photos.js';
 
-const routes = new Set(['account','create-account','forgot-password','set-password','profile','owner-settings','dog-profile','edit-dog','history','past-groom']);
+const routes = new Set(['account','create-account','forgot-password','set-password','profile','owner-settings','dog-profile','edit-dog','dog-care','edit-groomer','add-photo','history','past-groom']);
 const entryRoutes = ['account','create-account','forgot-password'];
 export const isOwnerRoute = id => routes.has(id.split('/')[0]);
 const link = (text, route, style='secondary') => `<a class="portal-link ${style}" href="#/${esc(route)}">${esc(text)}</a>`;
@@ -19,10 +20,14 @@ const settings = dog => defaultFields.map(key=>{
   return `<label class="entry"><span>${esc(decisions[key]?.[0] || 'Usual nervous level')}</span><select name="${key}"><option value="">Choose at each visit</option>${f.options.map(v=>'<option '+(dog?.care_defaults?.[key]===v?'selected':'')+'>'+esc(v)+'</option>').join('')}</select></label>`;
 }).join('');
 const petCard = dog => `<a class="pet-card" href="#/dog-profile/${esc(dog.id)}">${icon('pup')}<span><strong>${esc(dog.name)}</strong><small>${esc(dog.breed||'Dog profile')}</small></span><b>›</b></a>`;
+const groomCard = groomer => `<a class="pet-card groomer-card" href="#/edit-groomer/${esc(groomer.id)}">${icon('groomer')}<span><strong>${esc(groomer.name)}</strong><small>${esc(groomer.business || 'Independent groomer')}</small></span><b>›</b></a>`;
+const historyCards = (rows,dogId) => rows.map(row=>`<a class="pet-card history-card" href="#/past-groom/${esc(dogId)}/${esc(row.id)}">${icon('picture')}<span><strong>${esc(row.service)}</strong><small>${esc(dateLabel(row.visit_date||row.created_at))}</small></span><b>›</b></a>`).join('');
+const photoCard = photo => `<figure class="polaroid" data-photo-id="${esc(photo.id)}"><img src="${esc(photo.image_data)}" alt="${esc(photo.caption||'Dog photo')}" loading="lazy"><figcaption>${esc(photo.caption||dateLabel(photo.created_at))}</figcaption></figure>`;
 
 export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraft}) {
   let user=null, generation=0, current='', model=null, dog=null, past=null, newDogId=null, signedInError='';
   let sessionReady=false;
+  let groomers=[], editGroomer=null, photoDraft=null, photoOffset=0;
   const id = () => user?.id || null;
   const recovering = () => Boolean(user && sessionStorage.getItem('fd:password-recovery')===user.id);
   const home = () => recovering()?'set-password':user?'profile':'account';
@@ -89,11 +94,12 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
         link('Forgot password?','forgot-password','text-action')+link('Create an account','create-account','secondary')
       : '<p class="hint" role="status">Account sign-in is unavailable right now. You can still plan a guest visit.</p>';
     frame('Your pups, all here.','Log in to plan a groom or find a past visit.',
-      '<img class="garden" src="assets/studio-garden.jpg" alt="A groomed apricot dog in a garden">'+loginForm+
+      '<img class="login-pup" src="assets/hero-pup-v2-720.jpg" alt="Our apricot pup after an unexpected haircut, on a sunny yellow background">'+loginForm+
       action('Continue as a guest','guest','text-action'));
     if (signedInError) message(signedInError);
   }
   async function render(route) {
+    photoDraft=null;groomers=[];editGroomer=null;
     current=route;const ticket=++generation;
     const [screen,dogId,recordId]=route.split('/');
     if (!user) {if(!entryRoutes.includes(screen)) {navigate('account',true);return;}login(screen);return;}
@@ -110,13 +116,35 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
           field('Your name','display_name',profile?.display_name||'','text','required maxlength="100" autocomplete="name"')+
           field('Sign-in email','account_email',user.email,'email','readonly autocomplete="email"')+
           field('Phone (optional)','phone',profile?.phone||'','tel','maxlength="40" autocomplete="tel"')+
-          submit(profile?.display_name?'Save changes':'Save & add my first dog')+link('Set or change password','set-password','text-action')+action('Sign out','signout','text-action'),profile?.display_name?'profile':'','owner');return;
+          field('City (optional)','city',profile?.city||'','text','maxlength="100" autocomplete="address-level2"')+
+          field('State (optional)','state',profile?.state||'','text','maxlength="100" autocomplete="address-level1"')+
+          submit(profile?.display_name?'Save changes':'Save & add my first dog')+
+          (profile?.display_name?link('Set or change password','set-password','text-action'):''),profile?.display_name?'profile':'','owner');return;
       }
       if (screen==='profile') {
-        frame('Your pups.','Choose a dog to plan a visit or see their groom history.',
+        const contacts=await db.groomersFor(id()).catch(()=>null);
+        if(ticket!==generation)return;
+        frame('Your profile.','Your dogs and the people who care for them.',
           `<div class="owner-strip">${icon('groomer')}<strong>${esc(profile.display_name)}</strong>${link('Edit profile','owner-settings','text-action')}</div>`+
+          '<h2>Your dogs</h2>'+
           (model.dogs.length?model.dogs.map(petCard).join(''):'<div class="empty">'+icon('pup')+'<h2>Add your first dog.</h2><p>Save their birthday and usual care preferences once.</p></div>')+
-          link('＋ Add a dog','edit-dog/new','primary')+action('Sign out','signout','text-action'));return;
+          link('＋ Add a dog','edit-dog/new','primary')+
+          '<section class="profile-section"><h2>Your groomers</h2>'+
+          (contacts?contacts.map(groomCard).join('')||'<p class="hint">Keep your favorite people and salons here.</p>':'<p role="status">Your groomers couldn’t be loaded. Try again shortly.</p>')+
+          link('＋ Add a groomer','edit-groomer/new','secondary')+'</section>'+action('Sign out','signout','text-action'));return;
+      }
+      if(screen==='edit-groomer') {
+        groomers=await db.groomersFor(id());
+        if(ticket!==generation)return;
+        editGroomer=groomers.find(g=>g.id===dogId)||null;
+        if(dogId!=='new'&&!editGroomer){navigate('profile',true);return;}
+        newDogId=editGroomer?.id||crypto.randomUUID();
+        frame(editGroomer?'Your groomer.':'Meet your groomer.','Keep the person and their business together.',
+          field('Groomer’s name','name',editGroomer?.name,'text','required maxlength="100"')+
+          field('Grooming business','business',editGroomer?.business,'text','maxlength="180" autocomplete="organization"')+
+          field('Address','address',editGroomer?.address,'text','maxlength="300" autocomplete="street-address"')+
+          field('Email','email',editGroomer?.email,'email','maxlength="254" autocomplete="email"')+
+          field('Phone','phone',editGroomer?.phone,'tel','maxlength="40" autocomplete="tel"')+submit('Save groomer'),'profile','groomer');return;
       }
       if (screen==='edit-dog' && (dog || dogId==='new')) {
         newDogId=dog?.id || crypto.randomUUID();
@@ -124,24 +152,46 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
           field('Dog’s name','name',dog?.name,'text','required maxlength="60"')+field('Breed or mix','breed',dog?.breed,'text','maxlength="180"')+
           field('Birthday (optional)','birthday',dog?.birthday,'date','max="'+dateToday()+'"')+
           field('Weight (optional)','weight',dog?.care_defaults?.weight,'text','maxlength="40" placeholder="e.g. 28 lb"')+
-          '<details class="extra"><summary>Usual care & what-ifs</summary><div>'+settings(dog)+'</div></details>'+submit('Save dog'),
+          submit('Next · care & what-ifs'),
           dog?'dog-profile/'+dog.id:'profile','dog');return;
       }
       if (!dog) {navigate('profile',true);return;}
       const dogRoute='dog-profile/'+dog.id;
+      if(screen==='dog-care') {
+        frame(dog.name+'’s usual care.','Set their usual preferences once. You can adjust them for each groom.',
+          link('Edit name, breed, birthday & weight','edit-dog/'+dog.id,'text-action')+
+          settings(dog)+submit('Save care preferences'),dogRoute,'care');return;
+      }
+      if(screen==='add-photo') {
+        photoDraft={id:crypto.randomUUID(),image:''};
+        frame('A moment for the lookbook.','Add a photo of '+dog.name+'.',
+          '<div id="photo-preview" class="photo-preview"></div><div class="photo-pickers">'+
+          '<label class="secondary upload-choice">Choose a photo<input type="file" accept="image/jpeg,image/png,image/webp" data-lookbook-photo></label>'+
+          '<label class="secondary upload-choice">Take a photo<input type="file" accept="image/jpeg,image/png,image/webp" capture="environment" data-lookbook-photo></label></div>'+
+          field('Caption (optional)','caption','','text','maxlength="120" placeholder="e.g. Fresh from today’s groom"')+submit('Add to lookbook'),dogRoute,'photo');
+        app.querySelector('[type=submit]').disabled=true;return;
+      }
       if (screen==='dog-profile') {
+        const [recent,photos,contacts]=await Promise.all([
+          db.historyFor(id(),dog.id,0,3),db.photosFor(id(),dog.id).catch(()=>null),db.groomersFor(id()).catch(()=>[])]);
+        if(ticket!==generation)return;
+        groomers=contacts;photoOffset=photos?.length||0;
         const choices=Object.entries(validDefaults(dog.care_defaults));
         frame(dog.name+'’s profile',dog.breed||'Your dog’s care and visits',
-          `<div class="dog-identity">${icon('pup')}<div><strong>${esc(dog.name)}</strong><small>${dog.birthday?'Birthday · '+esc(dateLabel(dog.birthday)):'Birthday not set'}</small></div></div>
-          ${link('Edit dog & care defaults','edit-dog/'+dog.id,'text-action')}
+          `<a class="dog-identity identity-link" href="#/dog-care/${esc(dog.id)}" aria-label="Edit ${esc(dog.name)}’s care and defaults">${icon('pup')}<div><strong>${esc(dog.name)}</strong><small>${dog.birthday?'Birthday · '+esc(dateLabel(dog.birthday)):'Birthday not set'}</small></div><b aria-hidden="true">›</b></a>
           ${choices.length?'<details class="recap"><summary>Usual care preferences</summary><dl>'+choices.map(([k,v])=>'<div class="fact"><dt>'+esc(decisions[k]?.[0]||'Nervous level')+'</dt><dd>'+esc(v)+'</dd></div>').join('')+'</dl></details>':''}
-          ${hasDraft(id(),dog.id)?action('Resume groom','resume','secondary'):''}${action('Plan a new groom','start')}${link('Groom history','history/'+dog.id)}`,'profile');return;
+          ${groomers.length?'<label class="entry"><span>Groomer for this visit</span><select id="visit-groomer"><option value="">Choose later</option>'+groomers.map(g=>'<option value="'+esc(g.id)+'">'+esc([g.name,g.business].filter(Boolean).join(' · '))+'</option>').join('')+'</select></label>':''}
+          ${hasDraft(id(),dog.id)?action('Resume groom','resume','secondary'):''}${action('Plan a new groom','start')}
+          <section class="profile-section"><h2>Groom History</h2>${historyCards(recent,dog.id)||'<p class="hint">Your finished grooms will appear here.</p>'}${link('Entire Groom History','history/'+dog.id,'text-action')}</section>
+          <section class="dog-lookbook" aria-labelledby="lookbook-heading"><div class="lookbook-heading"><h2 id="lookbook-heading">Lookbook</h2><a class="lookbook-add" href="#/add-photo/${esc(dog.id)}" aria-label="Add a photo to ${esc(dog.name)}’s lookbook">+</a></div>
+          ${photos?'<div class="polaroid-strip" tabindex="0" aria-label="Dog photos. Swipe or scroll for more.">'+(photos.map(photoCard).join('')||'<a class="polaroid empty-polaroid" href="#/add-photo/'+esc(dog.id)+'"><span>'+icon('picture')+'</span><strong>Add their first photo</strong></a>')+'</div>':'<p role="status">The lookbook couldn’t be loaded. Try again shortly.</p>'}
+          ${photos?.length===12?action('More photos','more-photos','text-action'):''}</section>`,'profile');return;
       }
       if (screen==='history') {
         const offset=Math.max(0,parseInt(recordId,10)||0);
         const rows=await db.historyFor(id(),dog.id,offset);
         if(ticket!==generation)return;
-        const cards=rows.slice(0,historyPageSize).map(row=>`<a class="pet-card" href="#/past-groom/${esc(dog.id)}/${esc(row.id)}">${icon('picture')}<span><strong>${esc(row.service)}</strong><small>${esc(dateLabel(row.visit_date||row.created_at))}</small></span><b>›</b></a>`).join('');
+        const cards=historyCards(rows.slice(0,historyPageSize),dog.id);
         frame(dog.name+'’s groom history','Open a visit to see the plan or make a copy.', (cards||'<div class="empty"><h2>No grooms here yet.</h2><p>Finish a plan to add the first visit.</p></div>')+
           (offset?link('Newer visits','history/'+dog.id+'/'+Math.max(0,offset-historyPageSize),'text-action'):'')+
           (rows.length>historyPageSize?link('Older visits','history/'+dog.id+'/'+(offset+historyPageSize),'text-action'):'')+
@@ -163,7 +213,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     }
   }
   function problem(error) {
-    if (['PGRST205','42P01'].includes(error?.code)) return 'The Fur Disclosure tables are awaiting setup.';
+    if (['PGRST205','42P01','42703','PGRST204'].includes(error?.code)) return 'This feature is awaiting the latest database update.';
     return error?.message || 'Could not save. Check your connection and try again.';
   }
   const active = () => Boolean(app.querySelector('.owner-screen'));
@@ -211,16 +261,61 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       }
       if(form.dataset.ownerForm==='owner') {
         if(!values.display_name.trim())throw Error('Enter your name.');
-        await db.saveOwner(id(),{display_name:values.display_name.trim(),phone:values.phone.trim()});
+        const contact={display_name:values.display_name.trim(),phone:values.phone.trim()};
+        // Empty optional fields remain compatible while the database update is being installed.
+        if(values.city.trim() || values.state.trim() || 'city' in (model.profile||{})) {
+          contact.city=values.city.trim();contact.state=values.state.trim();
+        }
+        await db.saveOwner(id(),contact);
         if(valid())navigate(!model.profile?.display_name && !model.dogs.length?'edit-dog/new':'profile',true);return;
       }
-      const dogId=newDogId;
-      if(!values.name.trim())throw Error('Enter a name for your dog.');
-      const defaults={...validDefaults(values)};
-      if(values.weight.trim()) defaults.weight=values.weight.trim();
-      await db.saveDog(id(),dogId,{name:values.name.trim(),breed:values.breed.trim(),birthday:values.birthday||null,care_defaults:defaults},!dog);
-      if(valid())navigate('dog-profile/'+dogId);
+      if(kind==='groomer') {
+        if(!values.name.trim())throw Error('Enter your groomer’s name.');
+        const contact=Object.fromEntries(['name','business','address','email','phone'].map(k=>[k,values[k].trim()]));
+        await db.saveGroomer(id(),newDogId,contact,!editGroomer);
+        if(valid())navigate('profile');return;
+      }
+      if(kind==='photo') {
+        if(!photoDraft?.image)throw Error('Choose a photo first.');
+        const dogId=dog.id;
+        await db.savePhoto(id(),dogId,photoDraft.id,photoDraft.image,values.caption.trim());
+        if(valid())navigate('dog-profile/'+dogId);return;
+      }
+      if(kind==='care') {
+        const dogId=dog.id,defaults={...dog.care_defaults};
+        defaultFields.forEach(key=>delete defaults[key]);
+        await db.saveCare(id(),dogId,{...defaults,...validDefaults(values)});
+        if(valid())navigate('dog-profile/'+dogId);return;
+      }
+      if(kind==='dog') {
+        const dogId=newDogId;
+        if(!values.name.trim())throw Error('Enter a name for your dog.');
+        const defaults={...dog?.care_defaults};
+        delete defaults.weight;
+        if(values.weight.trim())defaults.weight=values.weight.trim();
+        await db.saveDog(id(),dogId,{name:values.name.trim(),breed:values.breed.trim(),birthday:values.birthday||null,care_defaults:defaults},!dog);
+        if(valid())navigate('dog-care/'+dogId);
+      }
     },form.querySelector('[type=submit]'));
+  });
+  app.addEventListener('change',event=>{
+    const input=event.target.closest('[data-lookbook-photo]');
+    if(!input?.files?.[0] || !photoDraft)return;
+    const file=input.files[0],draft=photoDraft,save=app.querySelector('[type=submit]');
+    work(async valid=>{
+      if(save)save.disabled=true;
+      message('Getting your photo ready…');
+      try {
+        const image=await readPhoto(file);
+        if(!valid() || photoDraft!==draft)return;
+        draft.image=image;
+        app.querySelector('#photo-preview').innerHTML='<img src="'+esc(image)+'" alt="Photo ready for the lookbook">';
+        message('');
+      } finally {
+        input.value='';
+        if(valid() && save)save.disabled=!draft.image;
+      }
+    },input);
   });
   app.addEventListener('click',event=>{
     const b=event.target.closest('[data-owner-action]');
@@ -233,9 +328,20 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
           setIdentity(null);navigate('account',true);break;
         case 'retry': if(valid())render(current);break;
         case 'print': window.print();break;
+        case 'more-photos': {
+          const photos=await db.photosFor(id(),dog.id,photoOffset);
+          if(!valid())return;
+          photoOffset+=photos.length;
+          const strip=app.querySelector('.polaroid-strip');
+          const existing=new Set([...strip.querySelectorAll('[data-photo-id]')].map(e=>e.dataset.photoId));
+          strip.insertAdjacentHTML('beforeend',photos.filter(p=>!existing.has(p.id)).map(photoCard).join(''));
+          if(photos.length<12)b.hidden=true;
+          message(photos.length?'More photos added to the lookbook.':'You’ve reached the last photo.');break;
+        }
         default: {
           if (!dog || !model?.profile)return;
-          startVisit(dog,{...model.profile,email:user.email},past,b.dataset.ownerAction);
+          const selectedGroomer=groomers.find(g=>g.id===app.querySelector('#visit-groomer')?.value);
+          startVisit(dog,{...model.profile,email:user.email,selectedGroomer},past,b.dataset.ownerAction);
         }
       }
     },b);

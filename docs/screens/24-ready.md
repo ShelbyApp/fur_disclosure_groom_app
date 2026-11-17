@@ -16,6 +16,6 @@ Open the printable blueprint or the groomer copy.
 
 ## Behavior and acceptance
 
-Shows the finished owner request with access to the printable sheet and groomer copy. A signed-in visit enters the dog’s history before this page opens. Never claims a delivery, booking or agreement.
+Shows the finished owner request with access to the printable sheet and groomer copy. A signed-in visit enters the dog’s history before this page opens. Current face, side, back and coat-detail photos also join that dog’s lookbook; inspiration photos do not. Identical photos from copies appear once in the lookbook. Never claims a delivery, booking or agreement.
 
 [All screens](README.md) · [Brand and interaction guide](../BRAND.md)

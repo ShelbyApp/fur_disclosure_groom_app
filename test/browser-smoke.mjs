@@ -105,6 +105,8 @@ await size(320,740);await checkWidth();await moveNext('what-ifs');await next();a
 // Exercise the real Supabase SDK with a local email/REST fixture.
 await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=1#/account'});
 await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
+await size(390,844);await screenshot('login-mobile');await checkWidth();
+assert.ok(await run('document.querySelector(".login-pup").src.includes("hero-pup-v2")'));
 await click('a[href="#/create-account"]');await at('create-account');
 await fill('email','owner@example.test');await fill('password','fixture password one');await fill('confirmation','fixture password one');await next();
 await until(()=>run('document.querySelector("h1").textContent.includes("Check your email")'));
@@ -115,14 +117,41 @@ const fixtureToken=encode({alg:'HS256',typ:'JWT'})+'.'+encode({exp:expires,sub:o
 await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=2#access_token='+fixtureToken+'&refresh_token=local-fixture&expires_in=3600&expires_at='+expires+'&token_type=bearer&type=signup'});
 await until(()=>run('!!document.querySelector("[data-owner-form=owner]")'));
 assert.equal(await run('document.querySelector("[name=account_email]").value'),'owner@example.test');
-await fill('display_name','Fixture owner');await fill('phone','555-0101');await click('[data-owner-form=owner] [type=submit]');
+assert.equal(await run('!!document.querySelector('+q('[data-owner-action=signout], a[href="#/set-password"]')+')'),false);
+await fill('display_name','Fixture owner');await fill('phone','555-0101');await fill('city','Austin');await fill('state','TX');
+await screenshot('owner-onboarding-mobile');await click('[data-owner-form=owner] [type=submit]');
 await until(()=>run('!!document.querySelector("[data-owner-form=dog]")'));
 await fill('name','Lola');await fill('breed','Terrier');await fill('birthday','2021-03-14');await fill('weight','18 lb');
-await fill('time','Up to 30 extra minutes');await click('[data-owner-form=dog] [type=submit]');
+assert.equal(await run('document.querySelectorAll("[data-owner-form=dog] select").length'),0);
+await screenshot('dog-basics-mobile');await click('[data-owner-form=dog] [type=submit]');
+await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
+await fill('time','Up to 30 extra minutes');await screenshot('dog-care-mobile');await next();
 await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 const firstPet=await run('location.hash');
+// Saved groomers stay separate from dogs, and can prefill a new visit.
+await click('a[href="#/profile"]');await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+await click('a[href="#/owner-settings"]');await until(()=>run('!!document.querySelector("[data-owner-form=owner]")'));
+assert.equal(await run('document.querySelector("[name=city]").value'),'Austin');
+assert.equal(await run('document.querySelector("[name=state]").value'),'TX');
+await fill('city','San Marcos');await next();await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+for(const [name,business] of [['Jamie','Maple & Mutt'],['Taylor','Happy Paws']]) {
+  await click('a[href="#/edit-groomer/new"]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+  await fill('name',name);await fill('business',business);await fill('address','12 Main Street');await fill('email','groomer@example.test');await fill('phone','555-0190');
+  await next();await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+}
+assert.equal(await run('document.querySelectorAll(".groomer-card").length'),2);
+await click('.groomer-card');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await fill('phone','555-0191');await next();await until(()=>run('document.querySelectorAll(".groomer-card").length===2'));
+await click('a[href='+q(firstPet)+']');await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+await click('.identity-link');await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
+assert.equal(await run('document.querySelector("[name=time]").value'),'Up to 30 extra minutes');
+await click('a[href*="/edit-dog/"]');await until(()=>run('!!document.querySelector("[data-owner-form=dog]")'));
+await fill('weight','19 lb');await next();await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
+assert.equal(await run('document.querySelector("[name=time]").value'),'Up to 30 extra minutes');
+await next();await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+await run('document.querySelector("#visit-groomer").selectedIndex=1');
 await click('[data-owner-action=start]');await click('[data-mode=basic]');await at('dog');
-for(const [key,value] of Object.entries({name:'Lola',breed:'Terrier',weight:'18 lb',birthday:'2021-03-14'})) {
+for(const [key,value] of Object.entries({name:'Lola',breed:'Terrier',weight:'19 lb',birthday:'2021-03-14',groomer:'Jamie',salon:'Maple & Mutt',groomerPhone:'555-0191'})) {
   assert.equal(await run('document.getElementsByName('+q(key)+')[0].value'),value);
 }
 await moveNext('service');await pick('service','Bath only');await moveNext('coat');await pick('coat','No tangles noticed');
@@ -140,12 +169,43 @@ assert.equal(await run('document.querySelector("[name=phone]").value'),'555-0101
 assert.equal(await run('document.querySelector("[name=includeContact]").checked'),false);
 await moveNext('review-care');await click('[name=checked]');await click('[name=understood]');await moveNext('ready');
 await click('[data-go^=history]');await until(()=>run('document.querySelectorAll("a[href*=past-groom]").length===2'));
+for(let i=0;i<2;i++) {
+  await click('a[href*=past-groom]');await until(()=>run('!!document.querySelector("[data-owner-action=copy]")'));
+  await click('[data-owner-action=copy]');await at('review-look');await moveNext('review-care');
+  await click('[name=checked]');await click('[name=understood]');await moveNext('ready');
+  await click('[data-go^=history]');await until(()=>run('document.querySelectorAll("a[href*=past-groom]").length==='+q(i+3)));
+}
+await click('a[href='+q(firstPet)+']');await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+assert.equal(await run('document.querySelectorAll(".history-card").length'),3);
+assert.match(await text(),/Entire Groom History/);
+for(const [asset,caption] of [['studio-garden.jpg','A fresh trim'],['hero-pup-v2-720.jpg','Ready for the next groom']]) {
+  await click('.lookbook-add');await until(()=>run('!!document.querySelector("[data-owner-form=photo]")'));
+  assert.equal(await run('document.querySelector("[type=submit]").disabled'),true);
+  await run(`(async()=>{const image=await(await fetch('assets/'+${q(asset)})).blob();const dt=new DataTransfer();dt.items.add(new File([image],'dog.jpg',{type:'image/jpeg'}));const input=document.querySelector('[data-lookbook-photo]');input.files=dt.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await until(()=>run('!!document.querySelector("#photo-preview img")'));
+  await fill('caption',caption);await next();await until(()=>run('!!document.querySelector(".polaroid img")'));
+}
+assert.equal(await run('document.querySelectorAll(".polaroid img").length'),2);
+await c('Page.reload');await until(()=>run('document.querySelectorAll(".polaroid img").length===2'));
+await checkWidth();await screenshot('dog-profile-mobile');
+await run('document.querySelector(".dog-lookbook").scrollIntoView()');await screenshot('dog-lookbook-mobile');
+assert.ok(await run('(()=>{const el=document.querySelector(".polaroid-strip");return el.scrollWidth>el.clientWidth})()'));
+await run('document.querySelector(".polaroid-strip").scrollTo({left:500,behavior:"instant"})');
+assert.ok(await run('document.querySelector(".polaroid-strip").scrollLeft>0'));
+await size(1440,940);await checkWidth();await screenshot('dog-lookbook-desktop');await size(320,740);await checkWidth();
+await click('.identity-link');await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
+await fill('time','');await next();await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+await click('.identity-link');await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));
+assert.equal(await run('document.querySelector("[name=time]").value'),'');await next();
+await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 await click('a[href="#/profile"]');await until(()=>run('!!document.querySelector("a[href*=edit-dog]")'));
 await click('a[href="#/edit-dog/new"]');await until(()=>run('!!document.querySelector("[data-owner-form=dog]")'));
-await fill('name','Nova');await click('[data-owner-form=dog] [type=submit]');await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+await fill('name','Nova');await click('[data-owner-form=dog] [type=submit]');
+await until(()=>run('!!document.querySelector("[data-owner-form=care]")'));await next();await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
+assert.equal(await run('document.querySelectorAll(".polaroid img").length'),0);
 await click('a[href*="/history/"]');await until(()=>run('document.querySelector("main").textContent.includes("No grooms here yet")'));
-await click('a[href="#/profile"]');await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
-await c('Page.reload');await until(()=>run('document.querySelectorAll(".pet-card").length===2'));await checkWidth();
+await click('a[href="#/profile"]');await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));
+await c('Page.reload');await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));await checkWidth();
 await screenshot('owner-household-mobile');
 await click('a[href='+q(firstPet)+']');await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 await click('[data-owner-action=start]');await click('[data-mode=advanced]');await moveNext('current-photos');
@@ -154,7 +214,7 @@ await click('[data-owner-action=resume]');await at('current-photos');
 await click('[data-rolehome]');await until(()=>run('!!document.querySelector("[data-owner-action=signout]")'));
 await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
 await fill('email','owner@example.test');await fill('password','fixture password one');await next();
-await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
+await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));
 await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
 await click('a[href="#/forgot-password"]');
 await fill('email','owner@example.test');await next();
@@ -164,12 +224,12 @@ await c('Page.navigate',{url:'http://127.0.0.1:4381/?fixture=2#access_token='+fi
 await until(()=>run('!!document.querySelector("[data-owner-form=set-password]")'));
 await c('Page.reload');await until(()=>run('!!document.querySelector("[data-owner-form=set-password]")'));
 await fill('password','fixture password two');await fill('confirmation','fixture password two');await next();
-await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
+await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));
 await click('[data-owner-action=signout]');await until(()=>run('!!document.querySelector("[data-owner-form=signin]")'));
 await fill('email','owner@example.test');await fill('password','wrong password');await next();
 await until(()=>run('!!document.querySelector("#account-message").textContent'));
-await fill('password','fixture password two');await next();await until(()=>run('document.querySelectorAll(".pet-card").length===2'));
-assert.deepEqual(errors,[]);console.log('Passed: signup confirmation, password login and recovery, saved profiles, multiple dogs, and fresh guest visits.');
+await fill('password','fixture password two');await next();await until(()=>run('document.querySelectorAll(".pet-card:not(.groomer-card)").length===2'));
+assert.deepEqual(errors,[]);console.log('Passed: signup/login/recovery, owner city/state, separate dog basics and defaults, multiple saved groomers, visit prefill, latest-three history, photo upload/swiping/persistence, isolated dogs, and guest planning.');
 
-}finally{sock?.close();const closed=browser.exitCode===null?once(browser,'exit').catch(()=>{}):Promise.resolve();browser.kill();await Promise.race([closed,pause(2000)]);await rm(profile,{recursive:true,force:true,maxRetries:4,retryDelay:150}).catch(()=>{});}
+}finally{sock?.close();const closed=browser.exitCode===null?once(browser,'exit').catch(()=>{}):Promise.resolve();browser.kill();await Promise.race([closed,pause(2000)]);if(path.dirname(path.resolve(profile))===path.resolve(os.tmpdir()) && path.basename(profile).startsWith('fur-disclosure-browser-'))await rm(profile,{recursive:true,force:true,maxRetries:4,retryDelay:150}).catch(()=>{});}
 
