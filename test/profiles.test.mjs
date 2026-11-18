@@ -25,6 +25,9 @@ test('build config only accepts publishable keys',()=>{
   assert.equal(browserConfig({}).publishableKey,'');
   assert.throws(()=>browserConfig({SUPABASE_PUBLISHABLE_KEY:'sb_secret_example'}));
   assert.throws(()=>browserConfig({SUPABASE_PUBLISHABLE_KEY:'eyJexample'}));
+  assert.equal(browserConfig({GOOGLE_PLACES_API_KEY:'private-research-key'}).googleMapsBrowserKey,'');
+  assert.throws(()=>browserConfig({GOOGLE_MAPS_BROWSER_KEY:'invalid'}));
+  assert.equal(browserConfig({},'2.3.4').appVersion,'02.03');
 });
 
 test('health defaults prefill new grooms without leaking edits into the profile or earlier visits',()=>{

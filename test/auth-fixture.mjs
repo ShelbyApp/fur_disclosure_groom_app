@@ -1,12 +1,15 @@
 // Local contract fixture for the browser test. No email or request leaves localhost.
-export function installAuthFixture(directory=[]) {
-  const config={url:location.origin,publishableKey:'sb_publishable_local_fixture'};
-  Object.defineProperty(window,'FD_CONFIG',{get:()=>config,set:()=>{}});
+export function installAuthFixture(directory=[],{liveMaps=false}={}) {
+  const config={url:location.origin,publishableKey:'sb_publishable_local_fixture',appVersion:'01.01'};
+  Object.defineProperty(window,'FD_CONFIG',{get:()=>config,set:value=>{if(liveMaps)config.googleMapsBrowserKey=value.googleMapsBrowserKey;}});
   const send=window.fetch.bind(window);
   const owner='11111111-1111-4111-8111-111111111111';
   window.fetch=async(input,options={})=>{
     const url=new URL(typeof input==='string'?input:input.url||input,location.href);
-    if(url.origin!==location.origin)throw Error('External request is outside this fixture.');
+    if(url.origin!==location.origin){
+      if(liveMaps&&['maps.googleapis.com','maps.gstatic.com'].includes(url.hostname))return send(input,options);
+      throw Error('External request is outside this fixture.');
+    }
     const reply=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:{'content-type':'application/json'}});
     if(url.pathname==='/auth/v1/recover'){
       const data=JSON.parse(options.body);
@@ -38,6 +41,7 @@ export function installAuthFixture(directory=[]) {
       if(table==='fd_find_directory_cities') {
         const clean=v=>v.toLowerCase().replace(/[^a-z0-9]/g,'');
         const cityList=[{id:'sarasota-fl',name:'Sarasota',state:'FL',aliases:['sarasota']},{id:'st-petersburg-fl',name:'St. Petersburg',state:'FL',aliases:['stpetersburg','saintpetersburg','stpete']},{id:'tampa-fl',name:'Tampa',state:'FL',aliases:['tampa']}];
+        if(sessionStorage.getItem('test:many-cities')==='yes')cityList.push(...['Salem','San Diego','San Francisco','Santa Fe'].map(name=>({id:name,name,state:'TEST',aliases:[clean(name)]})));
         const query=clean(args.p_query);
         if(query==='sa')await new Promise(r=>setTimeout(r,600));
         return reply(cityList.filter(c=>query.length>=2&&c.aliases.some(a=>a.startsWith(query)||query===a+'fl')));

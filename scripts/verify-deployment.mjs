@@ -12,7 +12,7 @@ const fetchPath=async path=>{
 };
 const version=await(await fetchPath('/version.json')).json();
 if(version.commit!==expected)throw Error(`Deployment pending: expected ${expected}, received ${version.commit}.`);
-const files=['index.html','app.js','owner-portal.js','account-store.js','directory.js','style.css','print-plan.js','print-plan.css'];
+const files=['index.html','app.js','owner-portal.js','account-store.js','directory.js','directory-map.js','style.css','print-plan.js','print-plan.css'];
 const assets=await Promise.all(files.map(async file=>{
   const response=await fetchPath('/'+file);
   const remote=Buffer.from(await response.arrayBuffer());
@@ -26,4 +26,5 @@ if(!match)throw Error('Runtime configuration is missing.');
 const parsed=JSON.parse(match[1]);
 if(parsed.url!=='https://zdpheikochvtjirgskuv.supabase.co'||!/^sb_publishable_[A-Za-z0-9_-]+$/.test(parsed.publishableKey||''))throw Error('Expected Supabase publishable configuration is missing.');
 const homepage=await fetchPath('/');
-console.log(JSON.stringify({url:origin,commit:version.commit,builtAt:version.builtAt,server:homepage.headers.get('server'),homepage_status:homepage.status,supabase_configured:true,assets},null,2));
+if(!/^AIza[A-Za-z0-9_-]{35}$/.test(parsed.googleMapsBrowserKey||''))throw Error('Google Maps browser configuration is missing.');
+console.log(JSON.stringify({url:origin,commit:version.commit,appVersion:parsed.appVersion,builtAt:version.builtAt,server:homepage.headers.get('server'),homepage_status:homepage.status,supabase_configured:true,maps_configured:true,assets},null,2));

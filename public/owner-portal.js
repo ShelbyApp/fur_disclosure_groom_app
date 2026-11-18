@@ -103,7 +103,8 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
     }
     const loginForm = db.configured
       ? `<form class="portal-form" data-owner-form="signin">${email}${password('Password','password','current-password')}${submit('Log in')}</form>`+
-        link('Forgot password?','forgot-password','text-action')+link('Create an account','create-account','secondary')
+        link('Forgot password?','forgot-password','text-action')+link('Create an account','create-account','secondary')+
+        '<p class="login-version">Version: '+esc(globalThis.FD_CONFIG?.appVersion||'01.01')+'</p>'
       : '<p class="hint" role="status">Account sign-in is unavailable right now. Please try again shortly.</p>';
     frame('Your pups, all here.','Log in to plan a groom or find a past visit.',
       hero+loginForm);
