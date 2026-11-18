@@ -60,7 +60,11 @@ try{
  await fill('#directory-name','zzzz');assert.equal(await count('.directory-card'),0);assert.equal(await count('.directory-map-pin[aria-pressed=true]'),0);await settled();
  assert.match(await text(),/No matching businesses/);assert.equal(await run('window.testGeocodes.length'),calls);
  await fill('#directory-name','');await settled();assert.equal(await count('.directory-card'),0);
- await click('[data-directory-all]');await until(async()=>await count('.directory-card')===20);await click('[data-directory-page=next]');await until(async()=>await count('.directory-card')===25);
+ await click('[data-directory-all]');await until(async()=>await count('.directory-card')===25);assert.equal(await count('[data-directory-page=next]'),0);
+ await run('sessionStorage.setItem("test:large-directory","yes")');await fill('#directory-name','');await settled();
+ await click('[data-directory-all]');await until(async()=>await count('.directory-card')===100);await click('[data-directory-page=next]');await until(async()=>await count('.directory-card')===125);
+ assert.equal(await run('new Set([...document.querySelectorAll("[data-directory-select]")].map(el=>el.dataset.directorySelect)).size'),125);
+ await run('sessionStorage.removeItem("test:large-directory")');
  // Broad city matches stay hidden, then appear when there are four or fewer.
  await run('sessionStorage.setItem("test:many-cities","yes")');await fill('#directory-city','S');await settled();assert.equal(await count('[data-directory-city]'),0);
  await fill('#directory-city','Sa');await until(()=>run('document.querySelector("#directory-status").textContent.includes("four cities")'));assert.equal(await count('[data-directory-city]'),0);

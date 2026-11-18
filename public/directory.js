@@ -56,10 +56,18 @@ export function mountDirectory(root,{initialCity='',onSelect,onCreate}) {
     const version=++searchVersion;if(!append)clear();if(!city)return;status('Finding businesses…');
     el('pages').innerHTML='';
     try {
-      const found=await db.searchDirectory(city.id,el('name').value,el('service').value,el('mode').value,append?rows.length:0);
+      const offset=append?rows.length:0,chosen=city,query=el('name').value,service=el('service').value,mode=el('mode').value;
+      let found=await db.searchDirectory(chosen.id,query,service,mode,offset);
       if(!alive||version!==searchVersion)return;
-      hasMore=found.length>20;rows=append?[...rows,...found.slice(0,20)]:found.slice(0,20);
-      if(!showAll&&found.length>4){status('More than four matches. Keep typing to narrow your search, or see all results.');return;}
+      const batch=found.slice(0,20);let more=found.length>20;
+      // One click reveals the pilot cities in full; large future cities remain bounded.
+      while(showAll&&more&&batch.length<100){
+        found=await db.searchDirectory(chosen.id,query,service,mode,offset+batch.length);
+        if(!alive||version!==searchVersion)return;
+        batch.push(...found.slice(0,20));more=found.length>20;
+      }
+      hasMore=more;rows=append?[...rows,...batch]:batch;
+      if(!showAll&&batch.length>4){status('More than four matches. Keep typing to narrow your search, or see all results.');return;}
       el('results').innerHTML=rows.map(directoryCard).join('');
       el('pages').innerHTML=showAll&&hasMore?'<button type="button" class="text-action" data-directory-page="next">Show more results</button>':'';
       status(rows.length?`${city.name}, ${city.state} · ${rows.length} ${rows.length===1?'result':'results'}${hasMore?' · more available':''}`:'No matching businesses in this city. Try another name or location filter, or add your groomer.');

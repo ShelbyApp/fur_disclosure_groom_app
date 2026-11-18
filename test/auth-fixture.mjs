@@ -48,6 +48,10 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
       }
       if(table==='fd_search_directory') {
         if(sessionStorage.getItem('test:directory-fail')==='yes')return reply({message:'Fixture unavailable'},503);
+        if(sessionStorage.getItem('test:large-directory')==='yes'){
+          const future=Array.from({length:125},(_,i)=>({...directory[0],id:'future-'+i,business_name:'Future business '+i}));
+          return reply(future.slice(args.p_offset,args.p_offset+21));
+        }
         const terms=args.p_query.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
         const found=directory.filter(r=>r.service_city_ids.includes(args.p_city_id)&&r.service_flags[args.p_service]===true&&(args.p_mode==='all'||r.location_flags[args.p_mode]===true)&&terms.every(term=>r.business_name.toLowerCase().split(/[^a-z0-9]+/).some(word=>word.startsWith(term))));
         return reply(found.slice(args.p_offset,args.p_offset+21));
