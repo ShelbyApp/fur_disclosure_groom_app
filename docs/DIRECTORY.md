@@ -1,0 +1,41 @@
+# Service directory pilot
+
+Ask “Where do you need service?” first, then search business names within the selected city. Return salons in that city and mobile providers with independently supported coverage. Sarasota uses postal/service geography, not municipal boundary testing. One University Park listing is explicitly labeled nearby.
+
+The pilot contains 41 unique businesses/locations: 25 Sarasota-area results, 8 St. Petersburg results and 11 Tampa results. Three mobile providers serve both Tampa and St. Petersburg. Branches are separate records; a mobile provider covering several cities remains one record. This is a reviewed pilot, not an exhaustive market census.
+
+## Data contract
+
+- `service_flags`: `{"grooming":true,"daycare":null,"boarding":null}`. Each key independently supports true, false or null (unknown). Missing website claims do not imply false.
+- `location_flags`: `{"fixed_location":true,"mobile":null}`. Both can be true. Pickup/dropoff alone does not imply mobile grooming.
+- `fd_directory_coverage` connects businesses to cities, with storefront/service-area/nearby types and evidence links. Service-area text captures limitations such as North Tampa. Owners confirm exact-address coverage with the provider.
+- Ratings use `numeric(2,1)` constrained to 1.0–5.0, with count, source, observation time and expiry. Null means unavailable. Ratings generally concern the whole business/location, not grooming alone.
+- Contacts contain the business, address, public phone/email and website. Individual groomer names stay separate and optional.
+- `entry_source` is `auto_populated` or `user_entered`; verification status is separate.
+- Show-level cuts and languages remain nullable. First-party evidence is retained separately; never infer them from names or star ratings.
+
+## Search and owner contacts
+
+`fd_find_directory_cities` requires two letters and returns at most 10 prefix matches. St. Pete, St. Petersburg and Saint Petersburg resolve to one city. `fd_search_directory` requires a city ID and returns 21 rows at most: render 20 and use the extra row to show More results. It uses indexed city coverage and token-prefix name search. The browser debounces typing and rejects stale responses; it never downloads every business. Grooming is the default service; daycare and boarding are available as filters.
+
+City selection avoids device-location permission and supports care near home, work or travel. Later add address geocoding, indexed PostGIS radius/polygon queries and ZIP coverage while preserving business identities and city aliases. A city match is not a promise that a mobile provider covers every address.
+
+Selecting a listing creates or reuses one owner-private contact per business. It works from the household or active groom plan, including returning to the same draft after refresh. Editing this contact changes only the owner's copy, not the shared listing or historical plans.
+
+Missing businesses can be saved immediately, including outside the pilot cities. Require a person or business name and city; collect known flags. Saving creates a private review submission. Other owners cannot read these submissions or unapproved listings. Likely duplicates are recorded against approved businesses and earlier pending submissions using phone or normalized name plus city. These are review candidates, not automatic merges: chains may share phones and names can be similar.
+
+For later consolidation, reviewers set `canonical_business_id` and `review_status` after checking branch, contact and coverage evidence. Approved directory duplicates can be marked `merged` with `merged_into_id`; search excludes them. Future moderation should reconcile owners who saved both records before changing links, preserve their individual contact edits, and leave historical groom snapshots intact. No destructive automatic merge or public auto-approval is included.
+
+## Installation and validation
+
+After the existing owner migrations 001 and 002, run [the combined directory SQL](../supabase/deploy/RUN_THIS_create_tables_and_import.sql). It installs 003 if absent, applies 005 storage safeguards and imports 41 providers in one transaction. It also upgrades installations with the earlier 004 seed. It is safe to rerun and preserves provider edits and private owner contacts. Independently unverified existing providers stay excluded from public search until reviewed. Deploy the matching app after the SQL runs. The initial import's 25/8/11 city counts were confirmed by the user on November 18, 2026.
+
+Run `node scripts/build-directory-deployment.mjs`, `npm test` and `npm run build`, then start `node scripts/preview.mjs`. With that server running, run `node test/directory-browser.mjs` and `node test/browser-smoke.mjs`. Browser fixtures use local mock APIs and are not bundled in production. Sanitized provider data is versioned in `supabase/data/providers.json`; generated SQL is in `supabase/deploy/`, so a fresh repository checkout can run every check. SQL tests execute actual migrations and RPCs in PostgreSQL/PGlite, including repeated installation, upgrades, cache removal, owner isolation, review visibility and duplicate saves. Setting `TEST_APP_URL` on the directory browser test loads deployed assets while keeping all account/database operations mocked in its isolated browser profile.
+
+## Google data and request budget
+
+Workspace research files are in `output/groomer-research/2026-11-18`. The CSV includes observed Google ratings and Place IDs. The expansion snapshot retains only requested attributes: types, address components, contact details, business status, attributions and ratings. Four expansion calls brought the shared ledger to 31 attempts (30 successful responses and one earlier connection failure). The hard cap remains 100; no automatic pagination or retries spend requests.
+
+The current import uses independently researched website facts and exempt Place IDs. Do not import the earlier research CSV or raw snapshot into Supabase. [Google Places policies](https://developers.google.com/maps/documentation/places/web-service/policies) allow indefinite Place ID storage but restrict other content. The 30-day Places exception concerns latitude/longitude, not ratings. In addition, [section 3.2.3(d) of Google's standard terms](https://cloud.google.com/maps-platform/terms) restricts listings/directory-service use. A live lookup or expiry date alone does not resolve that restriction. No Google content integration is enabled for this directory; separate permission would need evaluation before adding one.
+
+Migration 005 enforces source categories, field provenance and license references. It removes explicitly identified Google rating/source caches and rejects new Google cache rows. It refuses to silently relabel unknown existing ratings. Shared ratings support own-app reviews or independently licensed third-party ratings only; all 41 imported providers start with no rating. The UI labels the actual rating source and suppresses legacy Google values. Provider source records are restricted to first-party research, provider/user submissions or explicitly licensed evidence. A provider label is an ingestion contract, not automatic legal verification of arbitrary content. No Google API requests, billing changes or refresh jobs are part of this SQL import.

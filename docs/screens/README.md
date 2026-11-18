@@ -44,3 +44,4 @@
 - [ready](24-ready.md) — Your groom plan is ready.
 - [sheet](25-sheet.md) — Groom Blueprint
 - [groomer-view](26-groomer-view.md) — Groomer’s copy.
+- [find-groomer](40-find-groomer.md) — City-first service directory.

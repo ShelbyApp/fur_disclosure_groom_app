@@ -97,9 +97,9 @@ await run('(()=>{const el=document.querySelector("[data-guide]");el.value="terri
 await click('[data-map=sensitiveMap]');await saveNote('Tender lump on the left side','Side / belly');await screenshot('sensitive-mobile');
 await moveNext('what-ifs');await limits();await screenshot('what-ifs-mobile');await finish();
 let copy=await text();for(const item of ['Keep both ears this long','Tender lump on the left side','Up to 15 extra minutes','Ask before any added fee','A little nervous']) assert.ok(copy.includes(item),item);
-assert.ok(!copy.includes('tester@example.test'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),2);
+assert.ok(!copy.includes('tester@example.test'));assert.equal(await run('document.querySelectorAll(".groom-sheet .gs-map-pin, .groom-screen-photos .map-pin").length'),2);
 let pdf=await c('Page.printToPDF',{preferCSSPageSize:true});assert.ok(pdf.data.length>15000);
-await c('Page.reload');await until(()=>run('!!document.querySelector(".sheet")'));
+await c('Page.reload');await until(()=>run('!!document.querySelector(".groom-sheet")'));
 await click('[data-rolehome]');await legacyGuest();assert.equal(await run('!!document.querySelector("[data-resume]")'),false);
 await click('[data-mode=basic]');assert.equal(await run('document.querySelector("[name=name]").value'),'');
 await fill('name','Pip');await moveNext('service');await pick('service','Bath only');
@@ -108,7 +108,7 @@ await moveNext('coat');await pick('coat','No tangles noticed');await moveNext('h
 await click('[data-visit=spots]');await at('spots');assert.equal(await run('document.querySelectorAll("input[type=file]").length'),0);
 assert.equal(await run('document.querySelectorAll("[data-pin=sensitiveMap]").length'),0);
 await click('[data-map=sensitiveMap]');await saveNote('Brush gently on her left side','Side / belly');await moveNext('what-ifs');
-await finish();copy=await text();assert.ok(copy.includes('Brush gently on her left side'));assert.ok(!copy.includes('Keep both ears this long'));assert.ok(!copy.includes('Rounded'));assert.equal(await run('document.querySelectorAll(".sheet .map-pin").length'),1);
+await finish();copy=await text();assert.ok(copy.includes('Brush gently on her left side'));assert.ok(!copy.includes('Keep both ears this long'));assert.ok(!copy.includes('Rounded'));assert.equal(await run('document.querySelectorAll(".groom-sheet .gs-map-pin").length'),1);
 await click('[data-rolehome]');await legacyGuest();await at('welcome');
 await click('[data-mode=basic]');await fill('name','Pip');await moveNext('service');await pick('service','Bath only');await moveNext('coat');
 await pick('coat','No tangles noticed');await moveNext('handling');await c('Page.reload');await until(()=>run('!!document.querySelector("[name=anxiety]")'));await at('handling');
@@ -147,15 +147,15 @@ await screenshot('dog-care-mobile');await run('document.querySelector("[name=all
 await until(()=>run('!!document.querySelector("[data-owner-action=start]")'));
 const firstPet=await run('location.hash');
 // Saved groomers stay separate from dogs, and can prefill a new visit.
-await click('a[href="#/profile"]');await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+await click('a[href="#/profile"]');await until(()=>run('!!document.querySelector('+q('a[href="#/find-groomer/new"]')+')'));
 await click('a[href="#/owner-settings"]');await until(()=>run('!!document.querySelector("[data-owner-form=owner]")'));
 assert.equal(await run('document.querySelector("[name=city]").value'),'Austin');
 assert.equal(await run('document.querySelector("[name=state]").value'),'TX');
-await fill('city','San Marcos');await next();await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+await fill('city','San Marcos');await next();await until(()=>run('!!document.querySelector('+q('a[href="#/find-groomer/new"]')+')'));
 for(const [name,business] of [['Jamie','Maple & Mutt'],['Taylor','Happy Paws']]) {
-  await click('a[href="#/edit-groomer/new"]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+  await click('a[href="#/find-groomer/new"]');await until(()=>run('!!document.querySelector("[data-directory-create]")'));await click('[data-directory-create]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
   await fill('name',name);await fill('business',business);await fill('address','12 Main Street');await fill('email','groomer@example.test');await fill('phone','555-0190');
-  await next();await until(()=>run('!!document.querySelector('+q('a[href="#/edit-groomer/new"]')+')'));
+  await next();await until(()=>run('!!document.querySelector('+q('a[href="#/find-groomer/new"]')+')'));
 }
 assert.equal(await run('document.querySelectorAll(".groomer-card").length'),2);
 await click('.groomer-card');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
@@ -180,10 +180,10 @@ const savedGroomer=await run('document.querySelector("[data-saved-groomer]").val
 await fill('visit','2026-12-01');
 await selectGroomer('');assert.equal(await run('!!document.querySelector(".groomer-summary")'),false);
 await selectGroomer(savedGroomer);
-await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-directory-create]")'));
 await click('a[href="#/dog"]');await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));
 assert.equal(await run('document.querySelector("[name=visit]").value'),'2026-12-01');
-await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
+await click('[data-create-groomer]');await until(()=>run('!!document.querySelector("[data-directory-create]")'));await click('[data-directory-create]');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
 await c('Page.reload');await until(()=>run('!!document.querySelector("[data-owner-form=groomer]")'));
 await fill('name','Casey');await fill('business','The Groom Room');await fill('phone','555-0188');await next();
 await until(()=>run('!!document.querySelector("[data-saved-groomer]:not(:disabled)")'));

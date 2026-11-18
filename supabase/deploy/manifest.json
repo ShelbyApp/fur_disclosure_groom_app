@@ -1,0 +1,13 @@
+{
+  "combined_file": "RUN_THIS_create_tables_and_import.sql",
+  "combined_sha256": "3823fe805418ee1c0d01bfb33398c3295a0208791a411bd35bfc9f9e0131b3ac",
+  "schema_file": "RUN_FIRST_directory_schema.sql",
+  "schema_sha256": "6c399002993cbf920fe6b0ec9bdfb05f5c64477f34558b8040c1ff47797d54c9",
+  "import_file": "RUN_SECOND_import_providers.sql",
+  "import_sha256": "cc50e03cb153dcd82cb18438db58b7cfda080799a14f11aaa82f723629d0f200",
+  "providers": 41,
+  "city_associations": 44,
+  "place_ids": 40,
+  "google_ratings_imported": 0,
+  "google_api_requests": 0
+}

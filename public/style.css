@@ -217,3 +217,17 @@ dialog select,dialog textarea {border:1.5px solid var(--edge);background:white;m
   .recap summary,.sheet-head {break-after:avoid}.fact,.note-row {break-inside:avoid}
 }
 
+.directory-filter-row {display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.directory-filter-row .entry {min-width:0}
+.directory-city-choice {width:100%;margin-bottom:8px}
+.directory-card {padding:18px;margin:16px 0;border:1px solid var(--edge);border-radius:18px;background:white;overflow-wrap:anywhere}
+.directory-card h2 {margin:0 0 8px;font-size:1.2rem}
+.directory-card p {margin:8px 0}
+.directory-tags {font-size:.85rem;text-transform:capitalize;font-weight:700}
+.directory-contact {display:flex;flex-wrap:wrap;gap:12px;margin:14px 0}
+.directory-contact a,.directory-rating a {text-decoration:underline}
+.directory-card .primary {width:100%;margin-top:8px}
+.directory-flags {border:1px solid var(--edge);border-radius:12px;margin:12px 0;padding:12px}
+.directory-flags label {display:flex;align-items:center;gap:8px;padding:7px 0}
+.directory-flags input {width:20px;height:20px}
+

@@ -107,7 +107,7 @@ export function groomerPicker(data, groomers=null, failed=false) {
   return '<label class="entry"><span>Groomer for this visit</span><select data-saved-groomer '+(groomers?'':'disabled')+'>'+options+'</select></label>'+
     ((data.groomer||details.length)?'<div class="groomer-summary"><strong>'+esc(data.groomer||'Your groomer')+'</strong>'+details.map(value=>'<small>'+esc(value)+'</small>').join('')+'</div>':'')+
     (failed?button('Try loading groomers again','data-groomer-retry','text-action'):'')+
-    button('＋ Create a groomer','data-create-groomer','secondary');
+    button('Find or add a groomer','data-create-groomer','secondary');
 }
 export function fields(page, data, fromProfile=false) {
   const fs = fieldsFor(page,data);

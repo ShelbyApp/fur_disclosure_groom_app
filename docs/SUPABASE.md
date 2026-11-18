@@ -1,5 +1,7 @@
 # Connect Fur Disclosure to Supabase
 
+**Directory update:** after owner migrations 001 and 002, run [the combined directory SQL](../supabase/deploy/RUN_THIS_create_tables_and_import.sql). It creates/updates the directory tables, applies [005 storage safeguards](../supabase/005_directory_storage_policy.sql), and imports the 41 providers in one transaction. It is safe to rerun and upgrades the earlier 003/004 pilot. Use this combined file instead of the original seed. See [Directory](DIRECTORY.md) for source and moderation details. The user confirmed the initial import returned 25 Sarasota, 8 St. Petersburg and 11 Tampa results on November 18, 2026.
+
 Use project `zdpheikochvtjirgskuv`. The planner’s API endpoint is already set to `https://zdpheikochvtjirgskuv.supabase.co`. The dashboard URL is for administration.
 
 **Updating an existing installation:** run [002_profiles_groomers_lookbook.sql](../supabase/002_profiles_groomers_lookbook.sql) once in the SQL Editor before deploying this version. Do not rerun 001. This adds city/state, private saved groomers and private dog photo collections. It backfills current-coat photos from prior grooms and adds a trigger to collect them from future completed grooms. The trigger touches only Fur Disclosure tables. Existing environment variables and auth settings stay valid. New installations run 001 below, then 002.

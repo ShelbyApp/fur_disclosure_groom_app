@@ -18,6 +18,18 @@ export async function household(id) {
   ]);
   return {profile:result(profile),dogs:result(dogs)};
 }
+export async function findDirectoryCities(query) {
+  return result(await client.rpc('fd_find_directory_cities',{p_query:query}));
+}
+export async function searchDirectory(city,query='',service='grooming',mode='all',offset=0) {
+  return result(await client.rpc('fd_search_directory',{p_city_id:city,p_query:query,p_service:service,p_mode:mode,p_offset:offset}));
+}
+export async function saveDirectoryGroomer(businessId) {
+  return result(await client.rpc('fd_save_directory_groomer',{p_business_id:businessId}).single());
+}
+export async function submitDirectoryGroomer(contactId,contact,cityId,cityText,services,locations,serviceArea) {
+  return result(await client.rpc('fd_submit_directory_groomer',{p_contact_id:contactId,p_contact:contact,p_city_id:cityId,p_city_text:cityText,p_services:services,p_locations:locations,p_service_area:serviceArea}).single());
+}
 export async function saveOwner(id, values) {
   const inserted=await client.from('fd_owner_profiles').insert({owner_id:id,...values});
   if (inserted.error?.code==='23505') result(await client.from('fd_owner_profiles').update(values).eq('owner_id',id).select('owner_id').single());

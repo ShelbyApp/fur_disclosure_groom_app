@@ -5,6 +5,7 @@ import {ownerPortal, isOwnerRoute} from './owner-portal.js';
 import {beginVisit, groomerDetails} from './profile-model.js';
 import {groomersFor} from './account-store.js';
 import {readPhoto} from './photos.js';
+import {groomPlan, printGroomPlan} from './print-plan.js';
 
 const guestKey = 'fur-disclosure:groom:v1';
 let key = guestKey;
@@ -170,9 +171,8 @@ function outsideForm(id) {
   if (id==='welcome') return welcome(state);
   if (id==='ready') return `<div class="ticket"><strong class="stamp">✓</strong>${pup(state.complete.data)}<p>${state.ownerId?'Saved to groom history':'Owner request · ready to discuss'}</p></div>${button('View & print my plan →','data-go="sheet"')}${state.ownerId?button('View groom history','data-go="history/'+esc(state.dogId)+'"','secondary'):''}${button('Open groomer’s copy','data-go="groomer-view"','secondary')}`;
   if (!state.complete) return `<div class="empty">${icon('groomer')}<h2>No finished plan here yet.</h2><p>Finish an owner plan in this tab to see the groomer’s copy.</p></div>${button('Plan a groom →','data-go="welcome"')}`;
-  const plan = state.complete, record=plan.data;
-  return `<article class="sheet"><header class="sheet-head"><h2>${esc(record.name)}’s groom plan</h2><p>${advanced(record)?'Advanced':'Basic'} groom · ${esc(new Date(plan.date).toLocaleDateString())}</p><small>${esc(plan.status)}</small></header>${summary(record,[1,2,3,4])}</article>
-  ${button('Print / save PDF','data-print')}${id==='sheet'?button('Review & edit','data-go="review-look"','secondary'):''}${button(state.ownerId?'Back to my dogs':'Back to planner home','data-rolehome','text-action')}`;
+  return `${button('Print / save PDF','data-print')}<p class="groom-print-help">Print in portrait, or choose Save as PDF. Turn off browser headers and footers.</p>${groomPlan(state.complete)}
+  ${id==='sheet'?button('Review & edit','data-go="review-look"','secondary'):''}${button(state.ownerId?'Back to my dogs':'Back to planner home','data-rolehome','text-action')}`;
 }
 function render(id, focus=true) {
   renderVersion++;visitGroomers=[];
@@ -336,7 +336,7 @@ app.addEventListener('click',event=>{
   if (!b || busy) return;
   const d=b.dataset;
   if(!page)return;
-  if('createGroomer' in d) {save();navigate('edit-groomer/new/visit');}
+  if('createGroomer' in d) {save();navigate('find-groomer/new/visit');}
   else if('groomerRetry' in d)loadVisitGroomers();
   else if ('later' in d) {save();navigate(state.ownerId?'dog-profile/'+state.dogId:'account');}
   else if ('rolehome' in d) {state.editReturn=null;state.origin=null;save();navigate(portal.home());}
@@ -357,9 +357,8 @@ app.addEventListener('click',event=>{
     modal.querySelector('[data-dismiss]').onclick=()=>modal.close();modal.showModal();
   }
   else if (d.remove) confirmAction('Remove this photo?','The photo and any notes on it will be removed.','Remove photo',()=>commitPhoto(d.remove,undefined));
-  else if ('print' in d) window.print();
+  else if ('print' in d) printGroomPlan(app);
 });
-window.addEventListener('beforeprint',()=>app.querySelectorAll('.sheet details').forEach(item=>item.open=true));
 document.querySelector('.skip').onclick=event=>{event.preventDefault();find('#main').focus();};
 portal.initialize().then(()=>{
   window.addEventListener('hashchange',fromHash);fromHash();

@@ -1,5 +1,5 @@
 // Local contract fixture for the browser test. No email or request leaves localhost.
-export function installAuthFixture() {
+export function installAuthFixture(directory=[]) {
   const config={url:location.origin,publishableKey:'sb_publishable_local_fixture'};
   Object.defineProperty(window,'FD_CONFIG',{get:()=>config,set:()=>{}});
   const send=window.fetch.bind(window);
@@ -32,6 +32,35 @@ export function installAuthFixture() {
     if(url.pathname==='/auth/v1/logout')return new Response(null,{status:204});
     const table=url.pathname.split('/').pop();
     if(!url.pathname.startsWith('/rest/v1/'))return send(input,options);
+    if(url.pathname.startsWith('/rest/v1/rpc/')) {
+      const args=JSON.parse(options.body),key='test:rows:fd_groomers',saved=JSON.parse(sessionStorage.getItem(key)||'[]');
+      const log=JSON.parse(sessionStorage.getItem('test:directory-requests')||'[]');log.push({name:table,args});sessionStorage.setItem('test:directory-requests',JSON.stringify(log));
+      if(table==='fd_find_directory_cities') {
+        const clean=v=>v.toLowerCase().replace(/[^a-z0-9]/g,'');
+        const cityList=[{id:'sarasota-fl',name:'Sarasota',state:'FL',aliases:['sarasota']},{id:'st-petersburg-fl',name:'St. Petersburg',state:'FL',aliases:['stpetersburg','saintpetersburg','stpete']},{id:'tampa-fl',name:'Tampa',state:'FL',aliases:['tampa']}];
+        const query=clean(args.p_query);
+        if(query==='sa')await new Promise(r=>setTimeout(r,600));
+        return reply(cityList.filter(c=>query.length>=2&&c.aliases.some(a=>a.startsWith(query)||query===a+'fl')));
+      }
+      if(table==='fd_search_directory') {
+        if(sessionStorage.getItem('test:directory-fail')==='yes')return reply({message:'Fixture unavailable'},503);
+        const terms=args.p_query.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+        const found=directory.filter(r=>r.service_city_ids.includes(args.p_city_id)&&r.service_flags[args.p_service]===true&&(args.p_mode==='all'||r.location_flags[args.p_mode]===true)&&terms.every(term=>r.business_name.toLowerCase().split(/[^a-z0-9]+/).some(word=>word.startsWith(term))));
+        return reply(found.slice(args.p_offset,args.p_offset+21));
+      }
+      if(table==='fd_save_directory_groomer') {
+        let contact=saved.find(r=>r.directory_business_id===args.p_business_id);
+        if(!contact){const row=directory.find(r=>r.id===args.p_business_id);if(!row)return reply({message:'Unavailable'},400);
+          contact={id:crypto.randomUUID(),owner_id:owner,name:'',business:row.business_name,address:row.address,email:row.email,phone:row.phone,directory_business_id:row.id,entry_source:'auto_populated'};saved.push(contact);sessionStorage.setItem(key,JSON.stringify(saved));}
+        return reply(contact);
+      }
+      if(table==='fd_submit_directory_groomer') {
+        let contact=saved.find(r=>r.id===args.p_contact_id);
+        if(!contact){contact={id:args.p_contact_id,owner_id:owner,...args.p_contact,entry_source:'user_entered'};saved.push(contact);sessionStorage.setItem(key,JSON.stringify(saved));}
+        sessionStorage.setItem('test:last-submission',JSON.stringify(args));return reply(contact);
+      }
+      throw Error('Unexpected directory RPC');
+    }
     if(!['fd_owner_profiles','fd_dogs','fd_grooms','fd_groomers','fd_dog_photos'].includes(table))throw Error('Unexpected table');
     const key='test:rows:'+table;
     const rows=JSON.parse(sessionStorage.getItem(key)||'[]');

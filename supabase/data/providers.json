@@ -1,0 +1,4031 @@
+[
+  {
+    "id": "35147b9d-f0da-4bfc-86fc-f2dc78972260",
+    "seed_key": "alfonsos-mobile-sarasota",
+    "business_name": "Alfonso's Dog Mobile Grooming",
+    "address": "",
+    "phone": "(941) 402-9395",
+    "email": "",
+    "website_url": "https://www.amgmobilegrooming.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "Sarasota and Manatee County",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJTXtXOa6o72MRNxkMmii3WTw",
+    "source_urls": [
+      "https://www.amgmobilegrooming.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.amgmobilegrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "7a6a7ae8-98bb-483f-8dd9-297cf58bd331",
+    "seed_key": "and-a-leash-tampa",
+    "business_name": "And a Leash Specialty Petcare",
+    "address": "2722 S MacDill Ave, Tampa, FL 33629",
+    "phone": "(813) 244-2437",
+    "email": "andaleash@gmail.com",
+    "website_url": "https://www.andaleash.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJQWcB2tLCwogRWukkJky_Bd8",
+    "source_urls": [
+      "https://www.andaleash.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.andaleash.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "51396cf1-e1b0-48b7-8c78-a12abcb526df",
+    "seed_key": "bark-and-mane-sarasota",
+    "business_name": "Bark & Mane of Sarasota",
+    "address": "",
+    "phone": "(941) 207-9844",
+    "email": "",
+    "website_url": "https://www.barkandmane.com/pet-groomers/sarasota-fl/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "Sarasota, Bradenton, Lakewood Ranch, Venice and surrounding communities",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ5SMQMgA8jYgR6MmeH36gH9E",
+    "source_urls": [
+      "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/sarasota-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "b44f8069-486f-4242-8c21-2b893dd1c10e",
+    "seed_key": "bark-and-mane-tampa-bay",
+    "business_name": "Bark & Mane of Tampa Bay",
+    "address": "",
+    "phone": "(727) 741-7612",
+    "email": "",
+    "website_url": "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "Tampa, St. Petersburg and other listed Tampa Bay cities",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJZ9argjTBwogReZaC4uSuUlo",
+    "source_urls": [
+      "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.barkandmane.com/pet-groomers/tampa-bay-fl/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl",
+      "tampa-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "fd7fe6c9-c5ad-47af-8554-9f194a3ad827",
+    "seed_key": "chasing-sunshine-mobile-sarasota",
+    "business_name": "Chasing Sunshine Mobile Grooming",
+    "address": "",
+    "phone": "(941) 800-0086",
+    "email": "chasingsunshinegrooming@gmail.com",
+    "website_url": "https://chasingsunshinemobile.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "Sarasota, Florida",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": null,
+    "source_urls": [
+      "https://chasingsunshinemobile.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://chasingsunshinemobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "6de78a65-8596-4d28-8f90-d5aab091d2e7",
+    "seed_key": "cutie-pawtootie-mobile",
+    "business_name": "Cutie Pawtootie Mobile Grooming",
+    "address": "",
+    "phone": "(727) 336-3990",
+    "email": "cutiepawspa@gmail.com",
+    "website_url": "https://www.cutiepawspa.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "St. Petersburg, Tampa, Pinellas Park, Dunedin, Clearwater, Largo, Gulfport, Pasadena and St. Pete Beach",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJiULGM4__VUcRNYN2_MyRmOg",
+    "source_urls": [
+      "https://www.cutiepawspa.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.cutiepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl",
+      "tampa-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "3a733155-2ac5-46d2-8cf6-2b8b1667355c",
+    "seed_key": "dappertails-north-tampa",
+    "business_name": "DapperTails Mobile Pet Grooming of North Tampa",
+    "address": "",
+    "phone": "(813) 797-6093",
+    "email": "north.tampa@dappertailsmobile.com",
+    "website_url": "https://www.dappertailsmobile.com/north-tampa-fl",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "North Tampa, Wesley Chapel, Lutz, Odessa and Zephyrhills",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJyaCO4bBniWgR-3uEoXcKnTQ",
+    "source_urls": [
+      "https://www.dappertailsmobile.com/north-tampa-fl"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dappertailsmobile.com/north-tampa-fl"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "dfbc3bcb-055c-45a5-881d-a6a6887d1be5",
+    "seed_key": "dog-world-blaikie",
+    "business_name": "Dog World Sarasota",
+    "address": "8265 Blaikie Court, Sarasota FL 34240",
+    "phone": "(941) 377-3647",
+    "email": "",
+    "website_url": "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJr_ASVgg4w4gR1g5DLcy1uTc",
+    "source_urls": [
+      "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.dogworldsarasota.com/dog-grooming-sarasota-fl.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "82b7c65b-e2aa-4308-8867-6c9aa9c8553c",
+    "seed_key": "doggo-den-n-tamiami",
+    "business_name": "Doggo Den",
+    "address": "7326 N Tamiami Trail, Sarasota FL 34243",
+    "phone": "(941) 358-5335",
+    "email": "doggodengrooming@gmail.com",
+    "website_url": "https://www.doggodengrooming.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJee5yEAgVw4gR1XrP0_KK1wk",
+    "source_urls": [
+      "https://www.doggodengrooming.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.doggodengrooming.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "3417263c-cda7-4797-8361-dbcd4331af0e",
+    "seed_key": "doggyday-inn-tampa",
+    "business_name": "DoggyDay Inn Resort",
+    "address": "3849 Northdale Blvd, Tampa, FL 33624",
+    "phone": "(813) 269-1364",
+    "email": "Info@doggydayinn.com",
+    "website_url": "https://doggydayinn.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJNzeBFXXBwogRs4ZM0HgcSD8",
+    "source_urls": [
+      "https://doggydayinn.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://doggydayinn.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "2ab09f56-810e-47eb-8e3e-1168adc3a29f",
+    "seed_key": "dogperfect-landings",
+    "business_name": "DOGPerfect - The Landings of Sarasota",
+    "address": "4820 S Tamiami Trail, Sarasota FL 34231",
+    "phone": "(941) 564-0094",
+    "email": "",
+    "website_url": "https://dogperfect.com/sarasota",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJg5L7HhlBw4gRvTTquecUre4",
+    "source_urls": [
+      "https://dogperfect.com/page/locations",
+      "https://dogperfect.com/page/grooming"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "8c7a4ee0-352d-49dc-8765-60976a8f1f15",
+    "seed_key": "dogperfect-university-park",
+    "business_name": "DOGPerfect - University Park",
+    "address": "5419 University Parkway, University Park FL 34201",
+    "phone": "(941) 803-4464",
+    "email": "",
+    "website_url": "https://dogperfect.com/page/locations",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ-Zts0G45w4gRUIxOk9288NE",
+    "source_urls": [
+      "https://dogperfect.com/page/locations",
+      "https://dogperfect.com/page/grooming"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://dogperfect.com/page/locations",
+          "https://dogperfect.com/page/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "nearby"
+  },
+  {
+    "id": "1a336b95-355c-429e-8bb0-d0e95cc45ec0",
+    "seed_key": "downtown-doggie-st-pete",
+    "business_name": "Downtown Doggie Center",
+    "address": "1825 5th Ave N, St. Petersburg, FL 33713",
+    "phone": "(727) 851-8400",
+    "email": "info@downtowndoggiecenter.com",
+    "website_url": "https://downtowndoggiecenter.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ01kOu9LjwogREpxQTQQBAfw",
+    "source_urls": [
+      "https://downtowndoggiecenter.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://downtowndoggiecenter.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "bc10c6ab-f609-4df9-8651-b47d4225eb7b",
+    "seed_key": "fur-seasons-superior",
+    "business_name": "Fur Seasons Pet Grooming",
+    "address": "6545 Superior Avenue, Sarasota FL 34231",
+    "phone": "(941) 298-2097",
+    "email": "",
+    "website_url": "https://www.furseasonspetgrooming.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJIWRal5JBw4gRAbSCII4GwaU",
+    "source_urls": [
+      "https://www.furseasonspetgrooming.com/",
+      "https://www.furseasonspetgrooming.com/contact/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.furseasonspetgrooming.com/",
+          "https://www.furseasonspetgrooming.com/contact/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "813dfb15-7892-441f-83f3-942278052f3b",
+    "seed_key": "groomingdales-tampa",
+    "business_name": "Groomingdales Bed & Biscuit",
+    "address": "7416 Edgemere Rd, Tampa, FL 33625",
+    "phone": "(813) 792-0008",
+    "email": "",
+    "website_url": "https://www.groomingdalestampa.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJx1N3cybAwogREOsDwmKNMAo",
+    "source_urls": [
+      "https://www.groomingdalestampa.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.groomingdalestampa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "77979b4e-5326-44ae-82cb-378b0d9f1ea4",
+    "seed_key": "happy-paws-bee-ridge",
+    "business_name": "Happy Paws Grooming",
+    "address": "8278 Bee Ridge Road, Sarasota FL 34241",
+    "phone": "(941) 377-9663",
+    "email": "info@happypawssarasota.com",
+    "website_url": "https://www.happypawsgroomingsarasota.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJrxM2v_VHw4gRdjMOz1QmpzE",
+    "source_urls": [
+      "https://www.happypawsgroomingsarasota.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.happypawsgroomingsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "17ee03d9-7c70-4201-8ce6-5ad1cd6ed487",
+    "seed_key": "lavish-dog-spa-central-sarasota",
+    "business_name": "Lavish Dog Spa",
+    "address": "3916 Central Sarasota Parkway, Sarasota FL 34238",
+    "phone": "(941) 879-4559",
+    "email": "",
+    "website_url": "https://lavishdogspa.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ83Be5DZBw4gRIAuzyf3yLXk",
+    "source_urls": [
+      "https://lavishdogspa.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lavishdogspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "c6334f7c-bc1d-4a5b-8a8e-01d0bd506875",
+    "seed_key": "love-my-dog-grooming-st-pete",
+    "business_name": "Love My Dog Grooming",
+    "address": "1010 18th St N, St. Petersburg, FL 33713",
+    "phone": "(727) 527-5825",
+    "email": "Grooming@LoveMyDogResort.com",
+    "website_url": "https://lovemydogresort.com/grooming",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ6zRblVLhwogRRtYW1qTcAKM",
+    "source_urls": [
+      "https://lovemydogresort.com/grooming"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://lovemydogresort.com/grooming"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "018dfc1b-be1c-4b03-879a-c43046d4b629",
+    "seed_key": "paws-n-rec-sarasota",
+    "business_name": "Paws 'n' Rec - Sarasota",
+    "address": "2226 8th Street, Sarasota FL 34237",
+    "phone": "(941) 559-6111",
+    "email": "",
+    "website_url": "https://www.pawsnrec.com/location/florida/sarasota/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJtXHkvf5Bw4gRt0pHZd6VHXA",
+    "source_urls": [
+      "https://www.pawsnrec.com/location/florida/sarasota/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/sarasota/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "f74e9546-66e0-44fd-816b-749b6188d219",
+    "seed_key": "paws-n-rec-pearl-tampa",
+    "business_name": "Paws 'n' Rec — Pearl",
+    "address": "4313 W Pearl Ave, Tampa, FL 33611",
+    "phone": "(813) 839-7715",
+    "email": "",
+    "website_url": "https://www.pawsnrec.com/location/florida/south-tampa/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJPzLCTt7cwogR2lmdP5Db2dk",
+    "source_urls": [
+      "https://www.pawsnrec.com/location/florida/south-tampa/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/south-tampa/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "e7efd699-7961-43f9-8f41-3f93fed9116c",
+    "seed_key": "paws-n-rec-st-pete",
+    "business_name": "Paws 'n' Rec — St. Pete",
+    "address": "4300 28th St N, St. Petersburg, FL 33714",
+    "phone": "(833) 767-7877",
+    "email": "",
+    "website_url": "https://www.pawsnrec.com/location/florida/st-petersburg/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJp64fO3njwogRGZlhoWPM3kw",
+    "source_urls": [
+      "https://www.pawsnrec.com/location/florida/st-petersburg/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawsnrec.com/location/florida/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "46a8e76b-a294-4633-8633-63a1afeb7d69",
+    "seed_key": "pawsh-southgate",
+    "business_name": "Pawsh Boutique & Spa",
+    "address": "3212 Southgate Circle, Sarasota FL 34239",
+    "phone": "(941) 925-7906",
+    "email": "pawshpetgrooming@gmail.com",
+    "website_url": "https://www.pawshpetgrooming.com/contactus.html",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ48G63n5Bw4gR0s_Qp2PSVTk",
+    "source_urls": [
+      "https://www.pawshpetgrooming.com/contactus.html"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.pawshpetgrooming.com/contactus.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "2478d604-f279-4d86-87bc-424fdc6e2ddd",
+    "seed_key": "petco-sarasota-2710",
+    "business_name": "Petco Grooming - Sarasota",
+    "address": "3800 S Tamiami Trail, Sarasota FL 34239",
+    "phone": "(941) 366-6784",
+    "email": "",
+    "website_url": "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJQSwiU7JBw4gRPvAsOSgeGco",
+    "source_urls": [
+      "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-2710.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "1449cb85-e6a8-46cb-8fda-8ecb5930d74d",
+    "seed_key": "petco-sarasota-south-1590",
+    "business_name": "Petco Grooming - Sarasota South",
+    "address": "8356 S Tamiami Trail, Sarasota FL 34238-2934",
+    "phone": "(941) 966-1840",
+    "email": "",
+    "website_url": "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJVaH4XpVDw4gRgp1KJ01deOg",
+    "source_urls": [
+      "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1590.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "e5ac1e5f-3d68-492d-8716-e1e237d66bc6",
+    "seed_key": "petco-sarasota-utc-1536",
+    "business_name": "Petco Grooming - Sarasota UTC",
+    "address": "131 N Cattlemen Road, Sarasota FL 34243",
+    "phone": "(941) 351-2871",
+    "email": "",
+    "website_url": "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJt4xKYdw4w4gR0CxTIhZFybE",
+    "source_urls": [
+      "https://stores.petco.com/grooming/fl/sarasota",
+      "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://stores.petco.com/grooming/fl/sarasota",
+          "https://stores.petco.com/fl/sarasota/full-service-grooming-sarasota-fl-1536.html"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "704dd22e-cc72-444b-8bc1-8de00bca11f3",
+    "seed_key": "puppy-manor-tampa",
+    "business_name": "Puppy Manor",
+    "address": "5103 S West Shore Blvd, Tampa, FL 33611",
+    "phone": "(813) 898-0495",
+    "email": "info@puppymanor.com",
+    "website_url": "https://www.puppymanor.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": true,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJBTExDCPdwogRDtC85laVyII",
+    "source_urls": [
+      "https://www.puppymanor.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puppymanor.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "d7f6ef7e-229d-42e7-8d88-82c42832d7e6",
+    "seed_key": "puptown-mobile-tampa-bay",
+    "business_name": "Puptown Mobile Grooming",
+    "address": "",
+    "phone": "(813) 898-4707",
+    "email": "",
+    "website_url": "https://www.puptownmobile.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "South Tampa and St. Petersburg",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ10H32-PcwogRswRLreARTLk",
+    "source_urls": [
+      "https://www.puptownmobile.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.puptownmobile.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl",
+      "tampa-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "78c21f98-9b59-4bf2-83a7-06a60a02ec4c",
+    "seed_key": "rover-done-over-tampa",
+    "business_name": "Rover Done Over Mobile Pet Grooming",
+    "address": "",
+    "phone": "(813) 310-5600",
+    "email": "",
+    "website_url": "https://www.roverdoneover.net/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "Tampa; confirm specific neighborhood coverage",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJIxB4dG7EwogRp0UdA2i4WVI",
+    "source_urls": [
+      "https://www.roverdoneover.net/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.roverdoneover.net/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "bc6ba887-624e-46ef-8bfb-eb3cd75f6c01",
+    "seed_key": "sarasota-grooming-company-reynolds",
+    "business_name": "Sarasota Grooming Company",
+    "address": "2051 Reynolds Street, Sarasota FL 34231",
+    "phone": "(941) 953-1368",
+    "email": "sarasotagroomingcompany@gmail.com",
+    "website_url": "https://sarasotagroomingcompany.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": true,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJlWOh6M9Dw4gRtwKxIGfAb3E",
+    "source_urls": [
+      "https://sarasotagroomingcompany.com/",
+      "https://www.sarasotagroomingcompany.com/dogservices"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotagroomingcompany.com/",
+          "https://www.sarasotagroomingcompany.com/dogservices"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "first_party_website",
+        "source_url": "https://sarasotagroomingcompany.com/"
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "a9d60691-7dd0-429a-818c-8e0177b64948",
+    "seed_key": "seaside-paw-spa-washington",
+    "business_name": "Seaside Paw Spa",
+    "address": "625 N Washington Blvd, Sarasota FL 34236",
+    "phone": "(941) 706-3858",
+    "email": "seasidepawspa@gmail.com",
+    "website_url": "https://www.seasidepawspa.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJg6bTXQ1Bw4gRPvgidpnlt4o",
+    "source_urls": [
+      "https://www.seasidepawspa.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.seasidepawspa.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "34cbb808-5eea-4e79-86a4-3eb0285a580d",
+    "seed_key": "spot-srq-dolphin",
+    "business_name": "SPOT srq Dog Grooming",
+    "address": "1510 Dolphin Street, Sarasota FL 34236",
+    "phone": "(859) 338-3889",
+    "email": "spotsrqdoggrooming@gmail.com",
+    "website_url": "https://www.spotsrqdoggrooming.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJPVc9mfY_w4gRsZX0sQ4r36Y",
+    "source_urls": [
+      "https://www.spotsrqdoggrooming.com/",
+      "https://www.spotsrqdoggrooming.com/contact"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.spotsrqdoggrooming.com/",
+          "https://www.spotsrqdoggrooming.com/contact"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "e997c07c-179d-45d4-8e76-32478e424f01",
+    "seed_key": "sarasota-dog-salon-palmer",
+    "business_name": "The Sarasota Dog Salon",
+    "address": "5666 Palmer Blvd, Sarasota FL 34232",
+    "phone": "(941) 415-6890",
+    "email": "",
+    "website_url": "https://sarasotadogsalon.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJkf_eCUFHw4gRrGleNRGkaYs",
+    "source_urls": [
+      "https://sarasotadogsalon.com/",
+      "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://sarasotadogsalon.com/",
+          "https://www.scgov.net/Home/Components/BusinessDirectory/BusinessDirectory/525/30?alpha=T-81&widgetId=81"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "6dbb2230-2eae-4d1f-82ed-9d5b1846abf0",
+    "seed_key": "sudsy-pup-fruitville",
+    "business_name": "The Sudsy Pup Paw Spa",
+    "address": "5045 Fruitville Road, Suite 131, Sarasota FL 34232",
+    "phone": "(941) 374-1135",
+    "email": "thesudsypuppawspa@gmail.com",
+    "website_url": "https://www.thesudsypupsarasota.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJK8GgVedBw4gRVWN1xIWUazg",
+    "source_urls": [
+      "https://www.thesudsypupsarasota.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.thesudsypupsarasota.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "d14f28e8-13c0-4218-895e-84923ab23bf4",
+    "seed_key": "two-mutts-st-pete",
+    "business_name": "Two Mutts and a Poodle Pet Salon",
+    "address": "2920 Central Ave, St. Petersburg, FL 33712",
+    "phone": "(727) 323-5842",
+    "email": "",
+    "website_url": "https://www.twomuttsandapoodle.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJy75lcUniwogRXpEnea45GDY",
+    "source_urls": [
+      "https://www.twomuttsandapoodle.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.twomuttsandapoodle.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "e3f4d31c-8630-4870-8617-99c74d26e8e2",
+    "seed_key": "urbanwagz-tampa",
+    "business_name": "UrbanWagz",
+    "address": "809 N Tampa St, Tampa, FL 33602",
+    "phone": "(813) 708-9922",
+    "email": "info@urbanwagz.com",
+    "website_url": "https://urbanwagz.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": true
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJuVUNClnFwogRBSBSk7YCn6Y",
+    "source_urls": [
+      "https://urbanwagz.com/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://urbanwagz.com/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "tampa-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "5dc75537-3179-4d1d-879f-c0f78ad4cbf4",
+    "seed_key": "well-groomed-pets-fruitville",
+    "business_name": "Well Groomed Pets - Sarasota",
+    "address": "5441 Fruitville Road, Sarasota FL 34232",
+    "phone": "(941) 379-6222",
+    "email": "gewing@wellgroomedpets.com",
+    "website_url": "https://wellgroomedpets.com/sarasota/contact-us/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJmS7yBJpHw4gRJsmytPVrxT8",
+    "source_urls": [
+      "https://wellgroomedpets.com/sarasota/contact-us/",
+      "https://booking.wellgroomedpets.com/location?name=sarasota"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://wellgroomedpets.com/sarasota/contact-us/",
+          "https://booking.wellgroomedpets.com/location?name=sarasota"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "482f002f-e01d-4e6a-8425-57d155a259f6",
+    "seed_key": "wet-noses-main-street",
+    "business_name": "Wet Noses Grooming Sarasota",
+    "address": "1465 Main Street, Sarasota FL 34236",
+    "phone": "(941) 388-3647",
+    "email": "",
+    "website_url": "https://www.wetnosessarasota.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJ1-P1tpFqw4gRtewxjHVAoxQ",
+    "source_urls": [
+      "https://www.wetnosessarasota.com/",
+      "https://destinationdowntownsarasota.com/business-directory/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wetnosessarasota.com/",
+          "https://destinationdowntownsarasota.com/business-directory/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "ff96170d-964a-4543-84f9-9d6d8c711b9e",
+    "seed_key": "woof-gang-cattlemen",
+    "business_name": "Woof Gang Bakery & Grooming - Cattlemen",
+    "address": "5832 Bee Ridge Road, Sarasota FL 34233",
+    "phone": "(941) 260-9919",
+    "email": "cattlemenfl@woofgangbakery.com",
+    "website_url": "https://woofgangbakery.com/pages/locations/cattlemen",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJIyRNGwJHw4gRZW6mS8J7POs",
+    "source_urls": [
+      "https://woofgangbakery.com/pages/locations/cattlemen"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/cattlemen"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "d9307c89-e9ba-42e3-8135-a0f491be518a",
+    "seed_key": "woof-gang-waterside",
+    "business_name": "Woof Gang Bakery & Grooming - Waterside",
+    "address": "6532 University Parkway, Suite 140, Sarasota FL 34240",
+    "phone": "(941) 334-2365",
+    "email": "watersidefl@woofgangbakery.com",
+    "website_url": "https://woofgangbakery.com/pages/locations/waterside",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJixBqcJM5w4gRlOP4f7mdlQ8",
+    "source_urls": [
+      "https://woofgangbakery.com/pages/locations/waterside"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://woofgangbakery.com/pages/locations/waterside"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  },
+  {
+    "id": "46b7259f-97be-4b82-8bac-d9e0bd7969ba",
+    "seed_key": "woofies-mobile-st-pete",
+    "business_name": "Woofie’s of St. Petersburg",
+    "address": "",
+    "phone": "(727) 870-1349",
+    "email": "",
+    "website_url": "https://www.woofies.com/st-petersburg/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": null,
+      "mobile": true
+    },
+    "service_area": "St. Petersburg, Clearwater, Gulfport and St. Pete Beach",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJjbHILixSLkQRnFk4Xzu2ChM",
+    "source_urls": [
+      "https://www.woofies.com/st-petersburg/"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.woofies.com/st-petersburg/"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "st-petersburg-fl"
+    ],
+    "coverage_type": "service_area"
+  },
+  {
+    "id": "ea59a356-9c00-421e-842d-70a99f6e5147",
+    "seed_key": "wuts-up-pup-washington",
+    "business_name": "Wut's Up Pup",
+    "address": "560 N Washington Blvd, Unit A, Sarasota FL 34236",
+    "phone": "(941) 706-3433",
+    "email": "",
+    "website_url": "https://www.wutsuppupcfg.com/",
+    "service_flags": {
+      "grooming": true,
+      "daycare": null,
+      "boarding": null
+    },
+    "location_flags": {
+      "fixed_location": true,
+      "mobile": null
+    },
+    "service_area": "",
+    "show_level_cuts": null,
+    "languages_spoken": null,
+    "entry_source": "auto_populated",
+    "google_place_id": "ChIJq-o-ngNBw4gRcfLEXRp2h0s",
+    "source_urls": [
+      "https://www.wutsuppupcfg.com/",
+      "https://www.wutsuppupcfg.com/location"
+    ],
+    "data_origin": "first_party_website",
+    "field_provenance": {
+      "business_name": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "address": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "phone": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "email": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "website_url": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "location_flags": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "service_area": {
+        "origin": "first_party_website",
+        "source_urls": [
+          "https://www.wutsuppupcfg.com/",
+          "https://www.wutsuppupcfg.com/location"
+        ],
+        "checked_on": "2026-11-18"
+      },
+      "show_level_cuts": {
+        "origin": "unknown",
+        "source_url": null
+      },
+      "languages_spoken": {
+        "origin": "unknown"
+      }
+    },
+    "service_city_ids": [
+      "sarasota-fl"
+    ],
+    "coverage_type": "storefront"
+  }
+]
