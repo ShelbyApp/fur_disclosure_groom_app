@@ -1,4 +1,42 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {PGlite} from '@electric-sql/pglite';
+test('eight database inspiration images are rated, distinguishable, stable and ordered with approved uploads',async()=>{
+  const db=new PGlite(),owner=crypto.randomUUID(),dog=crypto.randomUUID();
+  try{
+    await db.exec(`create role authenticated;create role anon;create schema auth;create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}');
+      create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
+      grant usage on schema auth to authenticated;grant execute on function auth.uid() to authenticated;`);
+    for(const name of ['001_owner_profiles.sql','002_profiles_groomers_lookbook.sql','003_service_directory.sql','006_lookbook_sharing.sql','007_public_gallery.sql'])await db.exec(await readFile('supabase/'+name,'utf8'));
+    const seed=await readFile('supabase/008_lookbook_inspiration.sql','utf8');await db.exec(seed);await db.exec(seed);
+    const seeded=(await db.query('select id,seed_key,quality_score,image_data,created_at from public.fd_lookbook_inspiration order by id desc')).rows;
+    assert.equal(seeded.length,8);assert.ok(seeded.every(r=>r.quality_score===8&&r.image_data.startsWith('data:image/jpeg;base64,')));
+    for(const row of seeded){const bytes=Buffer.from(row.image_data.split(',')[1],'base64');assert.equal(bytes[0],255);assert.equal(bytes[1],216);assert.ok(bytes.length>10000);}
+    const featured=async()=>(await db.query('select * from public.fd_gallery_featured()')).rows;
+    await db.exec('set role anon');const first=await featured();assert.equal(first.length,8);assert.deepEqual(await featured(),first);
+    assert.ok(first.every(r=>r.uploader_type==='inspiration'&&r.provider_id===null&&r.location_label===''));
+    assert.equal((await db.query("select * from public.fd_gallery_items(null,null,'owner')")).rows.length,0);
+    assert.equal((await db.query("select * from public.fd_gallery_items('tampa-fl')")).rows.length,0);
+    assert.equal((await db.query('select * from public.fd_gallery_image($1)',[first[0].id])).rows[0].image_data,seeded[0].image_data);
+    assert.equal((await db.query('select * from public.fd_public_lookbook()')).rows.length,8);
+    await assert.rejects(db.query('select * from public.fd_lookbook_inspiration'),e=>e.code==='42501');
+    await db.exec('reset role');await db.query('insert into auth.users(id) values($1)',[owner]);
+    await db.query("insert into public.fd_owner_profiles(owner_id,display_name) values($1,'Private owner')",[owner]);
+    await db.query("insert into public.fd_dogs(id,owner_id,name) values($1,$2,'Milo')",[dog,owner]);
+    const newest=crypto.randomUUID(),unrated=crypto.randomUUID(),low=crypto.randomUUID(),privateId=crypto.randomUUID();
+    for(const [i,id,visibility,score] of [[1,newest,'public',3],[2,unrated,'public',null],[3,low,'public',1],[4,privateId,'private',10]])
+      await db.query("insert into public.fd_dog_photos(id,owner_id,dog_id,image_data,visibility,quality_score,created_at) values($1,$2,$3,$4,$5,$6,'2099-01-01')",[id,owner,dog,'data:image/png;base64,'+Buffer.from(String(i)).toString('base64'),visibility,score]);
+    await db.exec('set role anon');const newestFirst=await featured();assert.equal(newestFirst.length,8);assert.equal(newestFirst[0].id,newest);
+    const all=(await db.query('select * from public.fd_gallery_items()')).rows;assert.equal(all.length,9);assert.ok(!all.some(r=>[unrated,low,privateId].includes(r.id)));
+    for(const id of [unrated,low,privateId])assert.equal((await db.query('select * from public.fd_gallery_image($1)',[id])).rows.length,0);
+    await db.exec('reset role;set role authenticated');await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner]);
+    await assert.rejects(db.query('update public.fd_lookbook_inspiration set quality_score=10'),e=>e.code==='42501');
+    await assert.rejects(db.query("insert into public.fd_lookbook_inspiration(seed_key,title,breed,caption,image_data,quality_score) values('fake','Fake','','','data:image/png;base64,YWJj',10)"),e=>e.code==='42501');
+    await db.exec('reset role');await db.query('update public.fd_lookbook_inspiration set quality_score=1 where id=$1',[seeded[0].id]);
+    await db.query('update public.fd_lookbook_inspiration set published=false where id=$1',[seeded[1].id]);await db.exec(seed);
+    assert.deepEqual((await db.query('select created_at from public.fd_lookbook_inspiration order by id desc')).rows.map(r=>r.created_at),seeded.map(r=>r.created_at));
+    await db.exec('set role anon');assert.equal((await featured()).length,7);
+    for(const id of [seeded[0].id,seeded[1].id])assert.equal((await db.query('select * from public.fd_gallery_image($1)',[id])).rows.length,0);
+  }finally{await db.close();}
+});
 test('public gallery filters, quality priority, paging and permissions use only opted-in photos',async()=>{
   const db=new PGlite(),owner=crypto.randomUUID(),groomer=crypto.randomUUID(),dogA=crypto.randomUUID(),dogB=crypto.randomUUID();
   try{
