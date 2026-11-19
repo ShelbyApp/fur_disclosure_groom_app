@@ -1,4 +1,58 @@
 import {test} from 'node:test';import assert from 'node:assert/strict';import {readFile} from 'node:fs/promises';import {PGlite} from '@electric-sql/pglite';
+test('public uploads awaiting review appear alongside inspiration without losing privacy or stable paging',async()=>{
+  const db=new PGlite(),owner=crypto.randomUUID(),groomer=crypto.randomUUID(),dog=crypto.randomUUID(),groomerDog=crypto.randomUUID();
+  try{
+    await db.exec(`create role authenticated;create role anon;create schema auth;create table auth.users(id uuid primary key,raw_user_meta_data jsonb default '{}');
+      create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid$$;
+      grant usage on schema auth to authenticated;grant execute on function auth.uid() to authenticated;`);
+    for(const name of ['001_owner_profiles.sql','002_profiles_groomers_lookbook.sql','003_service_directory.sql','006_lookbook_sharing.sql','007_public_gallery.sql','008_lookbook_inspiration.sql'])await db.exec(await readFile('supabase/'+name,'utf8'));
+    await db.query('insert into auth.users(id,raw_user_meta_data) values($1,\'{}\'),($2,\'{"fd_account_role":"groomer"}\')',[owner,groomer]);
+    for(const [user,pup] of [[owner,dog],[groomer,groomerDog]]){
+      await db.query("insert into public.fd_owner_profiles(owner_id,display_name) values($1,'Private profile')",[user]);
+      await db.query("insert into public.fd_dogs(id,owner_id,name) values($1,$2,'Milo')",[pup,user]);
+    }
+    const userPhotos=[],excluded=[];
+    async function addPhoto(user,pup,visibility,score,day){
+      const id=crypto.randomUUID();
+      await db.query('insert into public.fd_dog_photos(id,owner_id,dog_id,image_data,visibility,quality_score,created_at) values($1,$2,$3,$4,$5,$6,$7)',[id,user,pup,'data:image/png;base64,'+Buffer.from(id).toString('base64'),visibility,score,'2020-01-'+String(day).padStart(2,'0')+'T12:00:00Z']);
+      return id;
+    }
+    // Both genuine uploads predate the AI import and have no quality review yet.
+    userPhotos.push(await addPhoto(owner,dog,'public',null,2));userPhotos.push(await addPhoto(groomer,groomerDog,'public',null,1));
+    excluded.push(await addPhoto(owner,dog,'private',10,3),await addPhoto(owner,dog,'public',1,4),await addPhoto(owner,dog,'private',null,5));
+    const before=(await db.query('select id,visibility,quality_score,created_at from public.fd_dog_photos order by id')).rows;
+    const featured=async()=>(await db.query('select * from public.fd_gallery_featured()')).rows;
+    await db.exec('set role anon');assert.ok((await featured()).every(r=>r.uploader_type==='inspiration'));
+    await db.exec('reset role');const sql=await readFile('supabase/009_restore_public_uploads.sql','utf8');await db.exec(sql);await db.exec(sql);
+    assert.deepEqual((await db.query('select id,visibility,quality_score,created_at from public.fd_dog_photos order by id')).rows,before);
+    await db.exec('set role anon');const first=await featured();assert.equal(first.length,8);assert.deepEqual(first.slice(0,2).map(r=>r.id),userPhotos);assert.equal(first.filter(r=>r.uploader_type==='inspiration').length,6);assert.deepEqual(await featured(),first);
+    const all=(await db.query('select * from public.fd_gallery_items()')).rows;assert.equal(all.length,10);assert.ok(userPhotos.every(id=>all.some(p=>p.id===id)));
+    assert.equal((await db.query("select * from public.fd_gallery_items(null,null,'owner')")).rows[0].id,userPhotos[0]);
+    assert.equal((await db.query("select * from public.fd_gallery_items(null,null,'groomer')")).rows[0].id,userPhotos[1]);
+    assert.equal((await db.query("select * from public.fd_gallery_items('tampa-fl')")).rows.length,0);
+    for(const id of userPhotos){assert.equal((await db.query('select * from public.fd_gallery_image($1)',[id])).rows.length,1);assert.equal((await db.query('select * from public.fd_gallery_items(p_photo_id=>$1)',[id])).rows.length,1);}
+    assert.equal((await db.query('select * from public.fd_public_lookbook()')).rows.length,10);
+    for(const id of excluded){assert.ok(!all.some(p=>p.id===id));assert.equal((await db.query('select * from public.fd_gallery_image($1)',[id])).rows.length,0);}
+    await assert.rejects(db.query('select * from public.fd_gallery_source'),e=>e.code==='42501');
+    await db.exec('reset role');
+    // Once eight real uploads qualify, no AI image takes their landing place.
+    for(let day=6;day<13;day++)userPhotos.push(await addPhoto(owner,dog,'public',day%2?null:8,day));
+    await db.exec('set role anon');const filled=await featured();assert.equal(filled.length,8);assert.ok(filled.every(r=>r.uploader_type!=='inspiration'));assert.equal(filled[0].id,userPhotos.at(-1));
+    const page1=(await db.query('select * from public.fd_gallery_items()')).rows,last=page1.at(-1);
+    const page2=(await db.query('select * from public.fd_gallery_items(p_before_time=>$1,p_before_id=>$2)',[last.created_at,last.id])).rows;
+    assert.equal(page1.length,13);assert.equal(page2.length,4);assert.equal(new Set([...page1,...page2].map(r=>r.id)).size,17);
+    await db.exec('reset role;set role authenticated');await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner]);
+    await assert.rejects(db.query('update public.fd_dog_photos set quality_score=10 where id=$1',[userPhotos[0]]),e=>e.code==='42501');
+    await db.query("update public.fd_dog_photos set visibility='private' where id=$1",[userPhotos[0]]);
+    await db.exec('reset role');await db.query('update public.fd_dog_photos set quality_score=1 where id=$1',[userPhotos[1]]);
+    await db.query('update public.fd_lookbook_inspiration set published=false where id=$1',[first[2].id]);
+    await db.query('update public.fd_lookbook_inspiration set quality_score=1 where id=$1',[first[3].id]);
+    await db.exec('set role anon');
+    for(const id of [userPhotos[0],userPhotos[1],first[2].id,first[3].id]){
+      assert.ok(!(await featured()).some(p=>p.id===id));assert.equal((await db.query('select * from public.fd_gallery_image($1)',[id])).rows.length,0);assert.equal((await db.query('select * from public.fd_gallery_items(p_photo_id=>$1)',[id])).rows.length,0);
+    }
+  }finally{await db.close();}
+});
 test('eight database inspiration images are rated, distinguishable, stable and ordered with approved uploads',async()=>{
   const db=new PGlite(),owner=crypto.randomUUID(),dog=crypto.randomUUID();
   try{
