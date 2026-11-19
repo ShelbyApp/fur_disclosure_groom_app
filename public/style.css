@@ -7,6 +7,7 @@
   font:16px/1.4 Nunito, sans-serif; color-scheme:light; background:var(--cream);
 }
 * { box-sizing:border-box }
+html {scrollbar-gutter:stable}
 body { margin:0; min-height:100dvh }
 #app { width:100%; max-width:432px; min-height:100dvh; margin:0 auto; background:var(--cream); padding:20px 20px max(26px,env(safe-area-inset-bottom)) }
 @media(min-width:456px) {
@@ -71,6 +72,27 @@ h1:focus,main:focus {outline:none}
 .empty-polaroid .doodle {width:105px;height:105px}
 .photo-preview:empty {display:none}.photo-preview img {display:block;width:100%;max-height:360px;object-fit:contain;background:var(--lilac);border-radius:16px}
 .photo-pickers {display:flex;gap:10px}.photo-pickers>* {flex:1}
+.photo-visibility {display:grid;grid-template-columns:1fr 1fr;gap:10px;border:0;padding:0;margin:12px 0 0;min-width:0}
+.photo-visibility legend {font-weight:800;margin-bottom:10px}
+.photo-visibility label {display:flex;align-items:flex-start;gap:7px;border:2px solid #e6d9ec;border-radius:18px;padding:13px 10px;cursor:pointer;background:white}
+.photo-visibility label:has(input:checked) {border-color:var(--violet);background:var(--lilac)}
+.photo-visibility input {accent-color:var(--violet);width:18px;height:18px;flex-shrink:0;margin:2px 0}
+.photo-visibility strong,.photo-visibility small {display:block}
+.photo-visibility small {font-size:12px;line-height:1.4;margin-top:4px}
+.photo-sharing-note {margin:0 0 8px;font-size:12px}
+.photo-provider {min-width:0}
+.photo-provider .entry {margin:0}
+.provider-result {display:block;width:100%;text-align:left;padding:12px 14px;margin:7px 0;border:1px solid #dac2ef;border-radius:14px;background:white;color:var(--plum);cursor:pointer;overflow-wrap:anywhere}
+.provider-result:hover,.provider-result:focus-visible {background:var(--lilac)}
+.provider-result strong,.provider-result small,.provider-tag small {display:block;line-height:1.45}
+.provider-result small,.provider-tag small {font-size:12px;margin-top:3px}
+.provider-tag {display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--lilac);padding:10px 14px;border-radius:14px;margin-top:10px;overflow-wrap:anywhere}
+.provider-tag .text-action {min-width:44px;min-height:44px;font-size:24px;flex-shrink:0}
+.polaroid>a {display:block;color:inherit;text-decoration:none}
+.polaroid figcaption small {display:block;font:700 12px/1.4 Nunito,sans-serif;margin-top:7px}
+.groomer-welcome {padding:24px 20px;background:var(--lilac);border:1px solid #dac2ef;border-radius:24px;margin:18px 0}
+.groomer-welcome>.doodle {width:72px;height:72px}
+.feature-status {display:inline-block;font-size:12px;font-weight:800;border-radius:20px;padding:6px 10px;background:var(--yellow);color:var(--plum)}
 .upload-choice {position:relative;overflow:hidden;text-align:center;cursor:pointer;display:grid;place-items:center}
 .upload-choice input {position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
 .upload-choice:focus-within {outline:3px solid #9650c9;outline-offset:3px}

@@ -60,12 +60,26 @@ export async function saveCare(owner,id,careDefaults) {
   result(await client.from('fd_dogs').update({care_defaults:careDefaults}).eq('owner_id',owner).eq('id',id).select('id').single());
 }
 export async function photosFor(owner,dog,offset=0) {
-  return result(await client.from('fd_dog_photos').select('id,image_data,caption,created_at').eq('owner_id',owner).eq('dog_id',dog)
+  return result(await client.from('fd_dog_photos').select('*').eq('owner_id',owner).eq('dog_id',dog)
     .order('created_at',{ascending:false}).order('id',{ascending:false}).range(offset,offset+11));
 }
-export async function savePhoto(owner,dog,id,image,caption) {
-  const inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption});
-  if(inserted.error?.code!=='23505')result(inserted);
+export async function photoFor(owner,dog,id) {
+  return result(await client.from('fd_dog_photos').select('*').eq('owner_id',owner).eq('dog_id',dog).eq('id',id).single());
+}
+export async function findPhotoProviders(query) {
+  return result(await client.rpc('fd_find_photo_providers',{p_query:query}));
+}
+export async function savePhoto(owner,dog,id,image,caption,visibility='private',providerId=null) {
+  let inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption,visibility,provider_id:providerId});
+  // Preserve private uploads before migration 006; never discard a sharing choice or tag.
+  if(['PGRST204','42703'].includes(inserted.error?.code) && visibility==='private' && !providerId)
+    inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption});
+  if(inserted.error?.code==='23505')throw Error('This photo is already in the lookbook. Open it there to change its caption, sharing or provider tag.');
+  result(inserted);
+}
+export async function updatePhoto(owner,dog,id,caption,visibility,providerId) {
+  result(await client.from('fd_dog_photos').update({caption,visibility,provider_id:providerId})
+    .eq('owner_id',owner).eq('dog_id',dog).eq('id',id).select('id').single());
 }
 export async function openGroom(owner,dog,id) {
   return result(await client.from('fd_grooms').select('id,dog_id,service,visit_date,created_at,plan').eq('owner_id',owner).eq('dog_id',dog).eq('id',id).single());

@@ -16,9 +16,12 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
       sessionStorage.setItem('test:mail',JSON.stringify({email:data.email,redirect:url.searchParams.get('redirect_to')}));
       return reply({});
     }
-    const user={id:owner,email:'owner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:{}};
+    const user={id:owner,email:'owner@example.test',aud:'authenticated',role:'authenticated',app_metadata:{},user_metadata:JSON.parse(sessionStorage.getItem('test:user-metadata')||'{}')};
     if(url.pathname==='/auth/v1/signup'){
       if(JSON.parse(options.body).password!=='fixture password one')return reply({msg:'Password required'},400);
+      const signup=JSON.parse(options.body);
+      sessionStorage.setItem('test:signup',JSON.stringify({data:signup.data,redirect:url.searchParams.get('redirect_to')}));
+      sessionStorage.setItem('test:user-metadata',JSON.stringify(signup.data||{}));
       return reply(user);
     }
     if(url.pathname==='/auth/v1/token' && url.searchParams.get('grant_type')==='password'){
@@ -45,6 +48,13 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
         const query=clean(args.p_query);
         if(query==='sa')await new Promise(r=>setTimeout(r,600));
         return reply(cityList.filter(c=>query.length>=2&&c.aliases.some(a=>a.startsWith(query)||query===a+'fl')));
+      }
+      if(table==='fd_find_photo_providers') {
+        if(sessionStorage.getItem('test:photo-search-fail')==='yes')return reply({message:'Unavailable'},503);
+        if(args.p_query==='slow')await new Promise(r=>setTimeout(r,800));
+        return reply(args.p_query==='none'?[]:[
+          {id:'33333333-3333-4333-8333-333333333333',business_name:'Happy Daycare',location_label:'Tampa, FL',services_label:'Daycare · Boarding'},
+          {id:'44444444-4444-4444-8444-444444444444',business_name:'Rolling Pups',location_label:'Tampa, FL',services_label:'Grooming · Mobile'}]);
       }
       if(table==='fd_search_directory') {
         if(sessionStorage.getItem('test:directory-fail')==='yes')return reply({message:'Fixture unavailable'},503);
@@ -74,6 +84,8 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
     const rows=JSON.parse(sessionStorage.getItem(key)||'[]');
     if(options.method==='POST') {
       const value=JSON.parse(options.body);
+      if(table==='fd_dog_photos'&&'visibility' in value&&sessionStorage.getItem('test:legacy-photo-schema')==='yes')return reply({code:'PGRST204',message:'Missing visibility column'},400);
+      if(table==='fd_dog_photos')value.provider_label=value.provider_id==='33333333-3333-4333-8333-333333333333'?'Happy Daycare':value.provider_id?'Rolling Pups':'';
       if(rows.some(row=>table==='fd_owner_profiles'?row.owner_id===value.owner_id:row.id===value.id))return reply({code:'23505',message:'Duplicate'},409);
       rows.push({...value,created_at:new Date().toISOString()});
       sessionStorage.setItem(key,JSON.stringify(rows));
@@ -82,6 +94,7 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
     let filtered=rows.filter(row=>[...url.searchParams].every(([field,value])=>!value.startsWith('eq.')||row[field]===value.slice(3)));
     if(options.method==='PATCH') {
       filtered.forEach(row=>Object.assign(row,JSON.parse(options.body)));
+      if(table==='fd_dog_photos')filtered.forEach(row=>{row.provider_label=row.provider_id==='33333333-3333-4333-8333-333333333333'?'Happy Daycare':row.provider_id?'Rolling Pups':'';});
       sessionStorage.setItem(key,JSON.stringify(rows));
     }
     const sort=(url.searchParams.get('order')||'').split(',').filter(Boolean);

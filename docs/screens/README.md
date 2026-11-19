@@ -15,6 +15,8 @@
 - [Usual care and what-ifs](37-dog-care.md)
 - [Groomer details](38-edit-groomer.md)
 - [Add to the lookbook](39-add-photo.md)
+- [Edit photo sharing and provider](41-edit-photo.md)
+- [Groomer profile entry](42-groomer-home.md)
 
 ## Visit planning
 

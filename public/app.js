@@ -105,7 +105,7 @@ function missingStep(step) {
 function guard(id) {
   if (isOwnerRoute(id)) return id;
   if (!byId[id]) return portal.home();
-  if (portal.id() && !state.dogId) return 'profile';
+  if (portal.id() && !state.dogId) return portal.home();
   if (!portal.id() && !['roles','groomer-view'].includes(id) && !sessionStorage.getItem('fd:guest-active') && !state.answers.mode) return 'account';
   if (['ready','sheet'].includes(id) && !state.complete) return 'welcome';
   if (!byId[id].stage) return id;
