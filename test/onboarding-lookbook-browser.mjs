@@ -5,8 +5,8 @@ import {mkdir,readFile} from 'node:fs/promises';
 import {pathToFileURL} from 'node:url';
 import {installAuthFixture} from './auth-fixture.mjs';
 const {chromium,webkit}=await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href);
-const server=spawn(process.execPath,['scripts/preview.mjs'],{windowsHide:true,stdio:['ignore','pipe','pipe']});
-const base='http://127.0.0.1:4381/';
+const server=spawn(process.execPath,['scripts/preview.mjs'],{windowsHide:true,env:{...process.env,PORT:'4388'},stdio:['ignore','pipe','pipe']});
+const base='http://127.0.0.1:4388/';
 const owner='11111111-1111-4111-8111-111111111111',dog='22222222-2222-4222-8222-222222222222';
 await new Promise((resolve,reject)=>{server.stdout.once('data',resolve);server.once('error',reject);});
 await mkdir('test-results',{recursive:true});
@@ -18,6 +18,7 @@ async function seed(page){await page.evaluate(({owner,dog})=>{
 async function visible(page,selector){await page.locator(selector).first().waitFor({state:'visible'});}
 try{
 for(const [name,engine,options] of [['chromium',chromium,{executablePath:process.env.CHROME_PATH||'C:/Program Files/Google/Chrome/Application/chrome.exe'}],['webkit',webkit,{}]]){
+  if(process.env.CHROMIUM_ONLY==='1'&&name!=='chromium')continue;
   const browser=await engine.launch({headless:true,...options});
   try{
     const context=await browser.newContext({viewport:{width:390,height:844}});await context.addInitScript(installAuthFixture);
@@ -50,6 +51,7 @@ for(const [name,engine,options] of [['chromium',chromium,{executablePath:process
     await page.locator('[name=visibility][value=public]').check();await page.locator('#photo-provider-query').fill('daycare');
     await visible(page,'[data-photo-provider="0"]');await page.locator('[data-photo-provider="0"]').click();
     await page.locator('[name=caption]').fill('Milo’s fresh look');
+    assert.equal(await page.locator('[name=life_stage]').inputValue(),'unknown');await page.locator('[name=life_stage]').selectOption('puppy');
     for(const width of [320,390,768,1440]){
       await page.setViewportSize({width,height:844});
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'overflow at '+width);
@@ -58,12 +60,13 @@ for(const [name,engine,options] of [['chromium',chromium,{executablePath:process
     await page.setViewportSize({width:390,height:844});await page.screenshot({path:'test-results/'+name+'-photo-sharing.png',fullPage:true});
     await page.locator('[type=submit]').click();await visible(page,'.polaroid[data-photo-id]');
     assert.match(await page.locator('.polaroid figcaption').innerText(),/Public · Happy Daycare/);
-    let rows=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos')));assert.equal(rows[0].visibility,'public');assert.equal(rows[0].provider_id,'33333333-3333-4333-8333-333333333333');
+    let rows=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos')));assert.equal(rows[0].visibility,'public');assert.equal(rows[0].life_stage,'puppy');assert.equal(rows[0].provider_id,'33333333-3333-4333-8333-333333333333');
     await page.locator('.polaroid a').click();await visible(page,'[data-remove-provider]');
     assert.equal(await page.locator('[name=visibility]:checked').inputValue(),'public');
+    assert.equal(await page.locator('[name=life_stage]').inputValue(),'puppy');await page.locator('[name=life_stage]').selectOption('adult');
     await page.locator('[name=visibility][value=private]').check();await page.locator('[data-remove-provider]').click();
     await page.locator('[type=submit]').click();await visible(page,'.polaroid[data-photo-id]');
-    rows=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos')));assert.equal(rows[0].visibility,'private');assert.equal(rows[0].provider_id,null);
+    rows=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos')));assert.equal(rows[0].visibility,'private');assert.equal(rows[0].life_stage,'adult');assert.equal(rows[0].provider_id,null);
     await page.locator('.lookbook-add').click();await page.locator('#photo-provider-query').fill('slow');
     await page.waitForFunction(()=>document.querySelector('#photo-provider-status').textContent.includes('Finding'));
     await page.locator('#photo-provider-query').fill('none');await page.waitForFunction(()=>document.querySelector('#photo-provider-status').textContent.includes('No matches'));

@@ -72,16 +72,17 @@ export async function photoFor(owner,dog,id) {
 export async function findPhotoProviders(query) {
   return result(await client.rpc('fd_find_photo_providers',{p_query:query}));
 }
-export async function savePhoto(owner,dog,id,image,caption,visibility='private',providerId=null) {
-  let inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption,visibility,provider_id:providerId});
+export async function savePhoto(owner,dog,id,image,caption,visibility='private',providerId=null,lifeStage='unknown') {
+  const age=lifeStage==='unknown'?{}:{life_stage:lifeStage};
+  let inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption,visibility,provider_id:providerId,...age});
   // Preserve private uploads before migration 006; never discard a sharing choice or tag.
-  if(['PGRST204','42703'].includes(inserted.error?.code) && visibility==='private' && !providerId)
+  if(['PGRST204','42703'].includes(inserted.error?.code) && visibility==='private' && !providerId && lifeStage==='unknown')
     inserted=await client.from('fd_dog_photos').insert({id,owner_id:owner,dog_id:dog,image_data:image,caption});
   if(inserted.error?.code==='23505')throw Error('This photo is already in the lookbook. Open it there to change its caption, sharing or provider tag.');
   result(inserted);
 }
-export async function updatePhoto(owner,dog,id,caption,visibility,providerId) {
-  result(await client.from('fd_dog_photos').update({caption,visibility,provider_id:providerId})
+export async function updatePhoto(owner,dog,id,caption,visibility,providerId,lifeStage='unknown') {
+  result(await client.from('fd_dog_photos').update({caption,visibility,provider_id:providerId,life_stage:lifeStage})
     .eq('owner_id',owner).eq('dog_id',dog).eq('id',id).select('id').single());
 }
 export async function openGroom(owner,dog,id) {

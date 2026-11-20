@@ -346,7 +346,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
         if(!['private','public'].includes(values.visibility))throw Error('Choose who can see this photo.');
         const args=[id(),dogId,draft.id];
         if(!draft.editing)args.push(draft.image);
-        args.push(values.caption.trim(),values.visibility,draft.provider?.id||null);
+        args.push(values.caption.trim(),values.visibility,draft.provider?.id||null,values.life_stage||'unknown');
         await (draft.editing?db.updatePhoto:db.savePhoto)(...args);
         if(valid())navigate('dog-profile/'+dogId);return;
       }

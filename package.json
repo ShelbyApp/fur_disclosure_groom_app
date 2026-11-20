@@ -7,7 +7,7 @@
     "dev": "node scripts/build.mjs && node scripts/preview.mjs",
     "build": "node scripts/build.mjs",
     "docs": "node scripts/docs.mjs",
-    "test": "node --test test/flow.test.mjs test/profiles.test.mjs test/print-plan.test.mjs test/directory.test.mjs test/directory-map.test.mjs test/onboarding-lookbook.test.mjs test/public-gallery.test.mjs test/breeds.test.mjs"
+    "test": "node --test test/flow.test.mjs test/profiles.test.mjs test/print-plan.test.mjs test/directory.test.mjs test/directory-map.test.mjs test/onboarding-lookbook.test.mjs test/public-gallery.test.mjs test/breeds.test.mjs test/lookbook-discovery.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.119.0"
