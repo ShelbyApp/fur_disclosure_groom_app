@@ -82,8 +82,14 @@ export async function savePhoto(owner,dog,id,image,caption,visibility='private',
   result(inserted);
 }
 export async function updatePhoto(owner,dog,id,caption,visibility,providerId,lifeStage='unknown') {
-  result(await client.from('fd_dog_photos').update({caption,visibility,provider_id:providerId,life_stage:lifeStage})
-    .eq('owner_id',owner).eq('dog_id',dog).eq('id',id).select('id').single());
+  const values={caption,visibility,provider_id:providerId};
+  const update=fields=>client.from('fd_dog_photos').update(fields)
+    .eq('owner_id',owner).eq('dog_id',dog).eq('id',id).select('id').single();
+  let updated=await update({...values,life_stage:lifeStage});
+  // Existing unlabeled photos can still be edited before migration 011.
+  // Never discard an explicitly chosen Puppy or Adult label.
+  if(['PGRST204','42703'].includes(updated.error?.code)&&lifeStage==='unknown')updated=await update(values);
+  result(updated);
 }
 export async function openGroom(owner,dog,id) {
   return result(await client.from('fd_grooms').select('id,dog_id,service,visit_date,created_at,plan').eq('owner_id',owner).eq('dog_id',dog).eq('id',id).single());

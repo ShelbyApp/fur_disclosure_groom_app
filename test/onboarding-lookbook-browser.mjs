@@ -67,6 +67,15 @@ for(const [name,engine,options] of [['chromium',chromium,{executablePath:process
     await page.locator('[name=visibility][value=private]').check();await page.locator('[data-remove-provider]').click();
     await page.locator('[type=submit]').click();await visible(page,'.polaroid[data-photo-id]');
     rows=await page.evaluate(()=>JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos')));assert.equal(rows[0].visibility,'private');assert.equal(rows[0].life_stage,'adult');assert.equal(rows[0].provider_id,null);
+    // The deployment window preserves edits to unlabeled legacy photos but never drops an explicit age choice.
+    await page.evaluate(()=>{const rows=JSON.parse(sessionStorage.getItem('test:rows:fd_dog_photos'));rows.forEach(row=>delete row.life_stage);sessionStorage.setItem('test:rows:fd_dog_photos',JSON.stringify(rows));});
+    await page.locator('.polaroid a').click();await visible(page,'[name=life_stage]');
+    await page.evaluate(()=>sessionStorage.setItem('test:legacy-life-stage','yes'));
+    await page.locator('[name=life_stage]').selectOption('puppy');await page.locator('[type=submit]').click();
+    await page.waitForFunction(()=>document.querySelector('#account-message').textContent.includes('database update'));
+    await page.locator('[name=life_stage]').selectOption('unknown');await page.locator('[name=caption]').fill('Updated caption');await page.locator('[type=submit]').click();await visible(page,'.polaroid[data-photo-id]');
+    assert.match(await page.locator('.polaroid figcaption').innerText(),/Updated caption/);
+    await page.evaluate(()=>sessionStorage.removeItem('test:legacy-life-stage'));
     await page.locator('.lookbook-add').click();await page.locator('#photo-provider-query').fill('slow');
     await page.waitForFunction(()=>document.querySelector('#photo-provider-status').textContent.includes('Finding'));
     await page.locator('#photo-provider-query').fill('none');await page.waitForFunction(()=>document.querySelector('#photo-provider-status').textContent.includes('No matches'));

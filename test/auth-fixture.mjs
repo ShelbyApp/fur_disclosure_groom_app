@@ -94,6 +94,7 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
     }
     let filtered=rows.filter(row=>[...url.searchParams].every(([field,value])=>!value.startsWith('eq.')||row[field]===value.slice(3)));
     if(options.method==='PATCH') {
+      if(table==='fd_dog_photos'&&'life_stage' in JSON.parse(options.body)&&sessionStorage.getItem('test:legacy-life-stage')==='yes')return reply({code:'PGRST204',message:'Missing life_stage column'},400);
       filtered.forEach(row=>Object.assign(row,JSON.parse(options.body)));
       if(table==='fd_dog_photos')filtered.forEach(row=>{row.provider_label=row.provider_id==='33333333-3333-4333-8333-333333333333'?'Happy Daycare':row.provider_id?'Rolling Pups':'';});
       sessionStorage.setItem(key,JSON.stringify(rows));
