@@ -1,0 +1,2327 @@
+[
+  {
+    "id": "unknown",
+    "name": "Unknown",
+    "kind": "unspecified",
+    "aliases": [
+      "",
+      "Unkown",
+      "Not sure",
+      "Unsure",
+      "Unknown breed"
+    ],
+    "source_url": null,
+    "sort_order": 0
+  },
+  {
+    "id": "mixed-breed",
+    "name": "Mixed breed",
+    "kind": "unspecified",
+    "aliases": [
+      "Mixed",
+      "Mix",
+      "Mutt"
+    ],
+    "source_url": null,
+    "sort_order": 1
+  },
+  {
+    "id": "aussiedoodle",
+    "name": "Aussiedoodle",
+    "kind": "mix",
+    "aliases": [
+      "Aussie Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "australian-labradoodle",
+    "name": "Australian Labradoodle",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "bernedoodle",
+    "name": "Bernedoodle",
+    "kind": "mix",
+    "aliases": [
+      "Berne Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "bordoodle",
+    "name": "Bordoodle",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "cavapoo",
+    "name": "Cavapoo",
+    "kind": "mix",
+    "aliases": [
+      "Cavoodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "cockapoo",
+    "name": "Cockapoo",
+    "kind": "mix",
+    "aliases": [
+      "Cockerpoo"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "doodle-mix",
+    "name": "Doodle mix",
+    "kind": "mix",
+    "aliases": [
+      "Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "double-doodle",
+    "name": "Double Doodle",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "goldendoodle",
+    "name": "Goldendoodle",
+    "kind": "mix",
+    "aliases": [
+      "Golden Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "havapoo",
+    "name": "Havapoo",
+    "kind": "mix",
+    "aliases": [
+      "Havadoodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "labradoodle",
+    "name": "Labradoodle",
+    "kind": "mix",
+    "aliases": [
+      "Labra Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "maltipoo",
+    "name": "Maltipoo",
+    "kind": "mix",
+    "aliases": [
+      "Malti-poo"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "peekapoo",
+    "name": "Peekapoo",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "pomapoo",
+    "name": "Pomapoo",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "poodle",
+    "name": "Poodle",
+    "kind": "unspecified",
+    "aliases": [
+      "Poodle (size unknown)"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "schnauzer",
+    "name": "Schnauzer",
+    "kind": "unspecified",
+    "aliases": [
+      "Schnauzer (size unknown)"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "schnoodle",
+    "name": "Schnoodle",
+    "kind": "mix",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "sheepadoodle",
+    "name": "Sheepadoodle",
+    "kind": "mix",
+    "aliases": [
+      "Sheepa Doodle"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "shih-poo",
+    "name": "Shih-poo",
+    "kind": "mix",
+    "aliases": [
+      "Shihpoo",
+      "Shih Poo"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "yorkipoo",
+    "name": "Yorkipoo",
+    "kind": "mix",
+    "aliases": [
+      "Yorkiepoo",
+      "Yorkie Poo"
+    ],
+    "source_url": null,
+    "sort_order": 50
+  },
+  {
+    "id": "affenpinscher",
+    "name": "Affenpinscher",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/affenpinscher/"
+  },
+  {
+    "id": "afghan-hound",
+    "name": "Afghan Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/afghan-hound/"
+  },
+  {
+    "id": "airedale-terrier",
+    "name": "Airedale Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/airedale-terrier/"
+  },
+  {
+    "id": "akita",
+    "name": "Akita",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/akita/"
+  },
+  {
+    "id": "alaskan-klee-kai",
+    "name": "Alaskan Klee Kai",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/alaskan-klee-kai/"
+  },
+  {
+    "id": "alaskan-malamute",
+    "name": "Alaskan Malamute",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/alaskan-malamute/"
+  },
+  {
+    "id": "american-bulldog",
+    "name": "American Bulldog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-bulldog/"
+  },
+  {
+    "id": "american-english-coonhound",
+    "name": "American English Coonhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-english-coonhound/"
+  },
+  {
+    "id": "american-eskimo-dog",
+    "name": "American Eskimo Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-eskimo-dog/"
+  },
+  {
+    "id": "american-foxhound",
+    "name": "American Foxhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-foxhound/"
+  },
+  {
+    "id": "american-hairless-terrier",
+    "name": "American Hairless Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-hairless-terrier/"
+  },
+  {
+    "id": "american-leopard-hound",
+    "name": "American Leopard Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-leopard-hound/"
+  },
+  {
+    "id": "american-staffordshire-terrier",
+    "name": "American Staffordshire Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-staffordshire-terrier/"
+  },
+  {
+    "id": "american-water-spaniel",
+    "name": "American Water Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/american-water-spaniel/"
+  },
+  {
+    "id": "anatolian-shepherd-dog",
+    "name": "Anatolian Shepherd Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/anatolian-shepherd-dog/"
+  },
+  {
+    "id": "appenzeller-sennenhund",
+    "name": "Appenzeller Sennenhund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/appenzeller-sennenhund/"
+  },
+  {
+    "id": "australian-cattle-dog",
+    "name": "Australian Cattle Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/australian-cattle-dog/"
+  },
+  {
+    "id": "australian-kelpie",
+    "name": "Australian Kelpie",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/australian-kelpie/"
+  },
+  {
+    "id": "australian-shepherd",
+    "name": "Australian Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/australian-shepherd/"
+  },
+  {
+    "id": "australian-stumpy-tail-cattle-dog",
+    "name": "Australian Stumpy Tail Cattle Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/australian-stumpy-tail-cattle-dog/"
+  },
+  {
+    "id": "australian-terrier",
+    "name": "Australian Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/australian-terrier/"
+  },
+  {
+    "id": "azawakh",
+    "name": "Azawakh",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/azawakh/"
+  },
+  {
+    "id": "barbado-da-terceira",
+    "name": "Barbado da Terceira",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/barbado-da-terceira/"
+  },
+  {
+    "id": "barbet",
+    "name": "Barbet",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/barbet/"
+  },
+  {
+    "id": "basenji",
+    "name": "Basenji",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/basenji/"
+  },
+  {
+    "id": "basset-fauve-de-bretagne",
+    "name": "Basset Fauve de Bretagne",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/basset-fauve-de-bretagne/"
+  },
+  {
+    "id": "basset-hound",
+    "name": "Basset Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/basset-hound/"
+  },
+  {
+    "id": "bavarian-mountain-scent-hound",
+    "name": "Bavarian Mountain Scent Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bavarian-mountain-scent-hound/"
+  },
+  {
+    "id": "beagle",
+    "name": "Beagle",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/beagle/"
+  },
+  {
+    "id": "bearded-collie",
+    "name": "Bearded Collie",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bearded-collie/"
+  },
+  {
+    "id": "beauceron",
+    "name": "Beauceron",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/beauceron/"
+  },
+  {
+    "id": "bedlington-terrier",
+    "name": "Bedlington Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bedlington-terrier/"
+  },
+  {
+    "id": "belgian-laekenois",
+    "name": "Belgian Laekenois",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/belgian-laekenois/"
+  },
+  {
+    "id": "belgian-malinois",
+    "name": "Belgian Malinois",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/belgian-malinois/"
+  },
+  {
+    "id": "belgian-sheepdog",
+    "name": "Belgian Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/belgian-sheepdog/"
+  },
+  {
+    "id": "belgian-tervuren",
+    "name": "Belgian Tervuren",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/belgian-tervuren/"
+  },
+  {
+    "id": "bergamasco-sheepdog",
+    "name": "Bergamasco Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bergamasco-sheepdog/"
+  },
+  {
+    "id": "berger-picard",
+    "name": "Berger Picard",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/berger-picard/"
+  },
+  {
+    "id": "bernese-mountain-dog",
+    "name": "Bernese Mountain Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bernese-mountain-dog/"
+  },
+  {
+    "id": "bichon-frise",
+    "name": "Bichon Frise",
+    "kind": "breed",
+    "aliases": [
+      "Bichon Frisé",
+      "Bichon"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/bichon-frise/"
+  },
+  {
+    "id": "biewer-terrier",
+    "name": "Biewer Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/biewer-terrier/"
+  },
+  {
+    "id": "black-and-tan-coonhound",
+    "name": "Black and Tan Coonhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/black-and-tan-coonhound/"
+  },
+  {
+    "id": "black-russian-terrier",
+    "name": "Black Russian Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/black-russian-terrier/"
+  },
+  {
+    "id": "bloodhound",
+    "name": "Bloodhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bloodhound/"
+  },
+  {
+    "id": "blue-picardy-spaniel",
+    "name": "Blue Picardy Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/blue-picardy-spaniel/"
+  },
+  {
+    "id": "bluetick-coonhound",
+    "name": "Bluetick Coonhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bluetick-coonhound/"
+  },
+  {
+    "id": "boerboel",
+    "name": "Boerboel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/boerboel/"
+  },
+  {
+    "id": "bohemian-shepherd",
+    "name": "Bohemian Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bohemian-shepherd/"
+  },
+  {
+    "id": "bolognese",
+    "name": "Bolognese",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bolognese/"
+  },
+  {
+    "id": "border-collie",
+    "name": "Border Collie",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/border-collie/"
+  },
+  {
+    "id": "border-terrier",
+    "name": "Border Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/border-terrier/"
+  },
+  {
+    "id": "borzoi",
+    "name": "Borzoi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/borzoi/"
+  },
+  {
+    "id": "boston-terrier",
+    "name": "Boston Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/boston-terrier/"
+  },
+  {
+    "id": "bouvier-de-ardennes",
+    "name": "Bouvier des Ardennes",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bouvier-de-ardennes/"
+  },
+  {
+    "id": "bouvier-des-flandres",
+    "name": "Bouvier des Flandres",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bouvier-des-flandres/"
+  },
+  {
+    "id": "boxer",
+    "name": "Boxer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/boxer/"
+  },
+  {
+    "id": "boykin-spaniel",
+    "name": "Boykin Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/boykin-spaniel/"
+  },
+  {
+    "id": "bracco-italiano",
+    "name": "Bracco Italiano",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bracco-italiano/"
+  },
+  {
+    "id": "braque-du-bourbonnais",
+    "name": "Braque du Bourbonnais",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/braque-du-bourbonnais/"
+  },
+  {
+    "id": "braque-francais-pyrenean",
+    "name": "Braque Francais Pyrenean",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/braque-francais-pyrenean/"
+  },
+  {
+    "id": "braque-saint-germain",
+    "name": "Braque Saint-Germain",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/braque-saint-germain/"
+  },
+  {
+    "id": "brazilian-terrier",
+    "name": "Brazilian Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/brazilian-terrier/"
+  },
+  {
+    "id": "briard",
+    "name": "Briard",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/briard/"
+  },
+  {
+    "id": "brittany",
+    "name": "Brittany",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/brittany/"
+  },
+  {
+    "id": "broholmer",
+    "name": "Broholmer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/broholmer/"
+  },
+  {
+    "id": "brussels-griffon",
+    "name": "Brussels Griffon",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/brussels-griffon/"
+  },
+  {
+    "id": "bull-terrier",
+    "name": "Bull Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bull-terrier/"
+  },
+  {
+    "id": "bulldog",
+    "name": "Bulldog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bulldog/"
+  },
+  {
+    "id": "bullmastiff",
+    "name": "Bullmastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/bullmastiff/"
+  },
+  {
+    "id": "cairn-terrier",
+    "name": "Cairn Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cairn-terrier/"
+  },
+  {
+    "id": "calupoh",
+    "name": "Calupoh",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/calupoh/"
+  },
+  {
+    "id": "canaan-dog",
+    "name": "Canaan Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/canaan-dog/"
+  },
+  {
+    "id": "canadian-eskimo-dog",
+    "name": "Canadian Eskimo Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/canadian-eskimo-dog/"
+  },
+  {
+    "id": "cane-corso",
+    "name": "Cane Corso",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cane-corso/"
+  },
+  {
+    "id": "cardigan-welsh-corgi",
+    "name": "Cardigan Welsh Corgi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cardigan-welsh-corgi/"
+  },
+  {
+    "id": "carolina-dog",
+    "name": "Carolina Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/carolina-dog/"
+  },
+  {
+    "id": "catahoula-leopard-dog",
+    "name": "Catahoula Leopard Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/catahoula-leopard-dog/"
+  },
+  {
+    "id": "caucasian-shepherd-dog",
+    "name": "Caucasian Shepherd Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/caucasian-shepherd-dog/"
+  },
+  {
+    "id": "cavalier-king-charles-spaniel",
+    "name": "Cavalier King Charles Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cavalier-king-charles-spaniel/"
+  },
+  {
+    "id": "central-asian-shepherd-dog",
+    "name": "Central Asian Shepherd Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/central-asian-shepherd-dog/"
+  },
+  {
+    "id": "cesky-terrier",
+    "name": "Cesky Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cesky-terrier/"
+  },
+  {
+    "id": "chesapeake-bay-retriever",
+    "name": "Chesapeake Bay Retriever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chesapeake-bay-retriever/"
+  },
+  {
+    "id": "chihuahua",
+    "name": "Chihuahua",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chihuahua/"
+  },
+  {
+    "id": "chinese-crested",
+    "name": "Chinese Crested",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chinese-crested/"
+  },
+  {
+    "id": "chinese-shar-pei",
+    "name": "Chinese Shar-Pei",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chinese-shar-pei/"
+  },
+  {
+    "id": "chinook",
+    "name": "Chinook",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chinook/"
+  },
+  {
+    "id": "chow-chow",
+    "name": "Chow Chow",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/chow-chow/"
+  },
+  {
+    "id": "cirneco-delletna",
+    "name": "Cirneco dell’Etna",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cirneco-delletna/"
+  },
+  {
+    "id": "clumber-spaniel",
+    "name": "Clumber Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/clumber-spaniel/"
+  },
+  {
+    "id": "cocker-spaniel",
+    "name": "Cocker Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/cocker-spaniel/"
+  },
+  {
+    "id": "collie",
+    "name": "Collie",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/collie/"
+  },
+  {
+    "id": "coton-de-tulear",
+    "name": "Coton de Tulear",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/coton-de-tulear/"
+  },
+  {
+    "id": "croatian-sheepdog",
+    "name": "Croatian Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/croatian-sheepdog/"
+  },
+  {
+    "id": "curly-coated-retriever",
+    "name": "Curly-Coated Retriever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/curly-coated-retriever/"
+  },
+  {
+    "id": "czechoslovakian-vlciak",
+    "name": "Czechoslovakian Vlciak",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/czechoslovakian-vlciak/"
+  },
+  {
+    "id": "dachshund",
+    "name": "Dachshund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dachshund/"
+  },
+  {
+    "id": "dalmatian",
+    "name": "Dalmatian",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dalmatian/"
+  },
+  {
+    "id": "dandie-dinmont-terrier",
+    "name": "Dandie Dinmont Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dandie-dinmont-terrier/"
+  },
+  {
+    "id": "danish-swedish-farmdog",
+    "name": "Danish-Swedish Farmdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/danish-swedish-farmdog/"
+  },
+  {
+    "id": "deutscher-wachtelhund",
+    "name": "Deutscher Wachtelhund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/deutscher-wachtelhund/"
+  },
+  {
+    "id": "doberman-pinscher",
+    "name": "Doberman Pinscher",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/doberman-pinscher/"
+  },
+  {
+    "id": "dogo-argentino",
+    "name": "Dogo Argentino",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dogo-argentino/"
+  },
+  {
+    "id": "dogue-de-bordeaux",
+    "name": "Dogue de Bordeaux",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dogue-de-bordeaux/"
+  },
+  {
+    "id": "drentsche-patrijshond",
+    "name": "Drentsche Patrijshond",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/drentsche-patrijshond/"
+  },
+  {
+    "id": "drever",
+    "name": "Drever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/drever/"
+  },
+  {
+    "id": "dutch-shepherd",
+    "name": "Dutch Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/dutch-shepherd/"
+  },
+  {
+    "id": "english-cocker-spaniel",
+    "name": "English Cocker Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/english-cocker-spaniel/"
+  },
+  {
+    "id": "english-foxhound",
+    "name": "English Foxhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/english-foxhound/"
+  },
+  {
+    "id": "english-setter",
+    "name": "English Setter",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/english-setter/"
+  },
+  {
+    "id": "english-springer-spaniel",
+    "name": "English Springer Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/english-springer-spaniel/"
+  },
+  {
+    "id": "english-toy-spaniel",
+    "name": "English Toy Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/english-toy-spaniel/"
+  },
+  {
+    "id": "entlebucher-mountain-dog",
+    "name": "Entlebucher Mountain Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/entlebucher-mountain-dog/"
+  },
+  {
+    "id": "estrela-mountain-dog",
+    "name": "Estrela Mountain Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/estrela-mountain-dog/"
+  },
+  {
+    "id": "eurasier",
+    "name": "Eurasier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/eurasier/"
+  },
+  {
+    "id": "field-spaniel",
+    "name": "Field Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/field-spaniel/"
+  },
+  {
+    "id": "finnish-lapphund",
+    "name": "Finnish Lapphund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/finnish-lapphund/"
+  },
+  {
+    "id": "finnish-spitz",
+    "name": "Finnish Spitz",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/finnish-spitz/"
+  },
+  {
+    "id": "flat-coated-retriever",
+    "name": "Flat-Coated Retriever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/flat-coated-retriever/"
+  },
+  {
+    "id": "french-bulldog",
+    "name": "French Bulldog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/french-bulldog/"
+  },
+  {
+    "id": "french-spaniel",
+    "name": "French Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/french-spaniel/"
+  },
+  {
+    "id": "german-longhaired-pointer",
+    "name": "German Longhaired Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/german-longhaired-pointer/"
+  },
+  {
+    "id": "german-pinscher",
+    "name": "German Pinscher",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/german-pinscher/"
+  },
+  {
+    "id": "german-shepherd-dog",
+    "name": "German Shepherd Dog",
+    "kind": "breed",
+    "aliases": [
+      "German Shepherd",
+      "GSD"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/german-shepherd-dog/"
+  },
+  {
+    "id": "german-shorthaired-pointer",
+    "name": "German Shorthaired Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/german-shorthaired-pointer/"
+  },
+  {
+    "id": "german-spitz",
+    "name": "German Spitz",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/german-spitz/"
+  },
+  {
+    "id": "german-wirehaired-pointer",
+    "name": "German Wirehaired Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/german-wirehaired-pointer/"
+  },
+  {
+    "id": "giant-schnauzer",
+    "name": "Giant Schnauzer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/giant-schnauzer/"
+  },
+  {
+    "id": "glen-of-imaal-terrier",
+    "name": "Glen of Imaal Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/glen-of-imaal-terrier/"
+  },
+  {
+    "id": "golden-retriever",
+    "name": "Golden Retriever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/golden-retriever/"
+  },
+  {
+    "id": "gordon-setter",
+    "name": "Gordon Setter",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/gordon-setter/"
+  },
+  {
+    "id": "grand-basset-griffon-vendeen",
+    "name": "Grand Basset Griffon Vendéen",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/grand-basset-griffon-vendeen/"
+  },
+  {
+    "id": "great-dane",
+    "name": "Great Dane",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/great-dane/"
+  },
+  {
+    "id": "great-pyrenees",
+    "name": "Great Pyrenees",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/great-pyrenees/"
+  },
+  {
+    "id": "greater-swiss-mountain-dog",
+    "name": "Greater Swiss Mountain Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/greater-swiss-mountain-dog/"
+  },
+  {
+    "id": "greyhound",
+    "name": "Greyhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/greyhound/"
+  },
+  {
+    "id": "hamiltonstovare",
+    "name": "Hamiltonstovare",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/hamiltonstovare/"
+  },
+  {
+    "id": "hanoverian-scenthound",
+    "name": "Hanoverian Scenthound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/hanoverian-scenthound/"
+  },
+  {
+    "id": "harrier",
+    "name": "Harrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/harrier/"
+  },
+  {
+    "id": "havanese",
+    "name": "Havanese",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/havanese/"
+  },
+  {
+    "id": "hokkaido",
+    "name": "Hokkaido",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/hokkaido/"
+  },
+  {
+    "id": "hovawart",
+    "name": "Hovawart",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/hovawart/"
+  },
+  {
+    "id": "ibizan-hound",
+    "name": "Ibizan Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/ibizan-hound/"
+  },
+  {
+    "id": "icelandic-sheepdog",
+    "name": "Icelandic Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/icelandic-sheepdog/"
+  },
+  {
+    "id": "irish-red-and-white-setter",
+    "name": "Irish Red and White Setter",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/irish-red-and-white-setter/"
+  },
+  {
+    "id": "irish-setter",
+    "name": "Irish Setter",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/irish-setter/"
+  },
+  {
+    "id": "irish-terrier",
+    "name": "Irish Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/irish-terrier/"
+  },
+  {
+    "id": "irish-water-spaniel",
+    "name": "Irish Water Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/irish-water-spaniel/"
+  },
+  {
+    "id": "irish-wolfhound",
+    "name": "Irish Wolfhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/irish-wolfhound/"
+  },
+  {
+    "id": "italian-greyhound",
+    "name": "Italian Greyhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/italian-greyhound/"
+  },
+  {
+    "id": "jagdterrier",
+    "name": "Jagdterrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/jagdterrier/"
+  },
+  {
+    "id": "japanese-akitainu",
+    "name": "Japanese Akitainu",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/japanese-akitainu/"
+  },
+  {
+    "id": "japanese-chin",
+    "name": "Japanese Chin",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/japanese-chin/"
+  },
+  {
+    "id": "japanese-spitz",
+    "name": "Japanese Spitz",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/japanese-spitz/"
+  },
+  {
+    "id": "japanese-terrier",
+    "name": "Japanese Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/japanese-terrier/"
+  },
+  {
+    "id": "kai-ken",
+    "name": "Kai Ken",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/kai-ken/"
+  },
+  {
+    "id": "karelian-bear-dog",
+    "name": "Karelian Bear Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/karelian-bear-dog/"
+  },
+  {
+    "id": "keeshond",
+    "name": "Keeshond",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/keeshond/"
+  },
+  {
+    "id": "kerry-blue-terrier",
+    "name": "Kerry Blue Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/kerry-blue-terrier/"
+  },
+  {
+    "id": "kishu-ken",
+    "name": "Kishu Ken",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/kishu-ken/"
+  },
+  {
+    "id": "komondor",
+    "name": "Komondor",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/komondor/"
+  },
+  {
+    "id": "korean-jindo-dog",
+    "name": "Korean Jindo Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/korean-jindo-dog/"
+  },
+  {
+    "id": "kromfohrlander",
+    "name": "Kromfohrlander",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/kromfohrlander/"
+  },
+  {
+    "id": "kuvasz",
+    "name": "Kuvasz",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/kuvasz/"
+  },
+  {
+    "id": "labrador-retriever",
+    "name": "Labrador Retriever",
+    "kind": "breed",
+    "aliases": [
+      "Lab",
+      "Labrador"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/labrador-retriever/"
+  },
+  {
+    "id": "lagotto-romagnolo",
+    "name": "Lagotto Romagnolo",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lagotto-romagnolo/"
+  },
+  {
+    "id": "lakeland-terrier",
+    "name": "Lakeland Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lakeland-terrier/"
+  },
+  {
+    "id": "lancashire-heeler",
+    "name": "Lancashire Heeler",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lancashire-heeler/"
+  },
+  {
+    "id": "lapponian-herder",
+    "name": "Lapponian Herder",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lapponian-herder/"
+  },
+  {
+    "id": "large-munsterlander",
+    "name": "Large Munsterlander",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/large-munsterlander/"
+  },
+  {
+    "id": "leonberger",
+    "name": "Leonberger",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/leonberger/"
+  },
+  {
+    "id": "lhasa-apso",
+    "name": "Lhasa Apso",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lhasa-apso/"
+  },
+  {
+    "id": "lowchen",
+    "name": "Löwchen",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lowchen/"
+  },
+  {
+    "id": "lucas-terrier",
+    "name": "Lucas Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/lucas-terrier/"
+  },
+  {
+    "id": "maltese",
+    "name": "Maltese",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/maltese/"
+  },
+  {
+    "id": "manchester-terrier-standard",
+    "name": "Manchester Terrier (Standard)",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/manchester-terrier-standard/"
+  },
+  {
+    "id": "manchester-terrier-toy",
+    "name": "Manchester Terrier (Toy)",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/manchester-terrier-toy/"
+  },
+  {
+    "id": "mastiff",
+    "name": "Mastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/mastiff/"
+  },
+  {
+    "id": "miniature-american-shepherd",
+    "name": "Miniature American Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/miniature-american-shepherd/"
+  },
+  {
+    "id": "miniature-bull-terrier",
+    "name": "Miniature Bull Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/miniature-bull-terrier/"
+  },
+  {
+    "id": "miniature-pinscher",
+    "name": "Miniature Pinscher",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/miniature-pinscher/"
+  },
+  {
+    "id": "miniature-schnauzer",
+    "name": "Miniature Schnauzer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/miniature-schnauzer/"
+  },
+  {
+    "id": "mountain-cur",
+    "name": "Mountain Cur",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/mountain-cur/"
+  },
+  {
+    "id": "mudi",
+    "name": "Mudi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/mudi/"
+  },
+  {
+    "id": "neapolitan-mastiff",
+    "name": "Neapolitan Mastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/neapolitan-mastiff/"
+  },
+  {
+    "id": "nederlandse-kooikerhondje",
+    "name": "Nederlandse Kooikerhondje",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/nederlandse-kooikerhondje/"
+  },
+  {
+    "id": "nenets-laika",
+    "name": "Nenets Laika",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/nenets-laika/"
+  },
+  {
+    "id": "newfoundland",
+    "name": "Newfoundland",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/newfoundland/"
+  },
+  {
+    "id": "norfolk-terrier",
+    "name": "Norfolk Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norfolk-terrier/"
+  },
+  {
+    "id": "norrbottenspets",
+    "name": "Norrbottenspets",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norrbottenspets/"
+  },
+  {
+    "id": "norwegian-buhund",
+    "name": "Norwegian Buhund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norwegian-buhund/"
+  },
+  {
+    "id": "norwegian-elkhound",
+    "name": "Norwegian Elkhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norwegian-elkhound/"
+  },
+  {
+    "id": "norwegian-lundehund",
+    "name": "Norwegian Lundehund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norwegian-lundehund/"
+  },
+  {
+    "id": "norwich-terrier",
+    "name": "Norwich Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/norwich-terrier/"
+  },
+  {
+    "id": "nova-scotia-duck-tolling-retriever",
+    "name": "Nova Scotia Duck Tolling Retriever",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/nova-scotia-duck-tolling-retriever/"
+  },
+  {
+    "id": "old-danish-pointer",
+    "name": "Old Danish Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/old-danish-pointer/"
+  },
+  {
+    "id": "old-english-sheepdog",
+    "name": "Old English Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/old-english-sheepdog/"
+  },
+  {
+    "id": "otterhound",
+    "name": "Otterhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/otterhound/"
+  },
+  {
+    "id": "papillon",
+    "name": "Papillon",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/papillon/"
+  },
+  {
+    "id": "parson-russell-terrier",
+    "name": "Parson Russell Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/parson-russell-terrier/"
+  },
+  {
+    "id": "pekingese",
+    "name": "Pekingese",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pekingese/"
+  },
+  {
+    "id": "pembroke-welsh-corgi",
+    "name": "Pembroke Welsh Corgi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pembroke-welsh-corgi/"
+  },
+  {
+    "id": "peruvian-inca-orchid",
+    "name": "Peruvian Inca Orchid",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/peruvian-inca-orchid/"
+  },
+  {
+    "id": "petit-basset-griffon-vendeen",
+    "name": "Petit Basset Griffon Vendéen",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/petit-basset-griffon-vendeen/"
+  },
+  {
+    "id": "pharaoh-hound",
+    "name": "Pharaoh Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pharaoh-hound/"
+  },
+  {
+    "id": "plott-hound",
+    "name": "Plott Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/plott-hound/"
+  },
+  {
+    "id": "pointer",
+    "name": "Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pointer/"
+  },
+  {
+    "id": "polish-lowland-sheepdog",
+    "name": "Polish Lowland Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/polish-lowland-sheepdog/"
+  },
+  {
+    "id": "pomeranian",
+    "name": "Pomeranian",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pomeranian/"
+  },
+  {
+    "id": "pont-audemer-spaniel",
+    "name": "Pont-Audemer Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pont-audemer-spaniel/"
+  },
+  {
+    "id": "poodle-miniature",
+    "name": "Poodle (Miniature)",
+    "kind": "breed",
+    "aliases": [
+      "Miniature Poodle",
+      "Mini Poodle"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/poodle-miniature/"
+  },
+  {
+    "id": "poodle-standard",
+    "name": "Poodle (Standard)",
+    "kind": "breed",
+    "aliases": [
+      "Standard Poodle"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/poodle-standard/"
+  },
+  {
+    "id": "poodle-toy",
+    "name": "Poodle (Toy)",
+    "kind": "breed",
+    "aliases": [
+      "Toy Poodle"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/poodle-toy/"
+  },
+  {
+    "id": "porcelaine",
+    "name": "Porcelaine",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/porcelaine/"
+  },
+  {
+    "id": "portuguese-podengo",
+    "name": "Portuguese Podengo",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/portuguese-podengo/"
+  },
+  {
+    "id": "portuguese-podengo-pequeno",
+    "name": "Portuguese Podengo Pequeno",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/portuguese-podengo-pequeno/"
+  },
+  {
+    "id": "portuguese-pointer",
+    "name": "Portuguese Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/portuguese-pointer/"
+  },
+  {
+    "id": "portuguese-sheepdog",
+    "name": "Portuguese Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/portuguese-sheepdog/"
+  },
+  {
+    "id": "portuguese-water-dog",
+    "name": "Portuguese Water Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/portuguese-water-dog/"
+  },
+  {
+    "id": "presa-canario",
+    "name": "Presa Canario",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/presa-canario/"
+  },
+  {
+    "id": "pudelpointer",
+    "name": "Pudelpointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pudelpointer/"
+  },
+  {
+    "id": "pug",
+    "name": "Pug",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pug/"
+  },
+  {
+    "id": "puli",
+    "name": "Puli",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/puli/"
+  },
+  {
+    "id": "pumi",
+    "name": "Pumi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pumi/"
+  },
+  {
+    "id": "pyrenean-mastiff",
+    "name": "Pyrenean Mastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pyrenean-mastiff/"
+  },
+  {
+    "id": "pyrenean-shepherd",
+    "name": "Pyrenean Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/pyrenean-shepherd/"
+  },
+  {
+    "id": "rafeiro-do-alentejo",
+    "name": "Rafeiro do Alentejo",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/rafeiro-do-alentejo/"
+  },
+  {
+    "id": "rat-terrier",
+    "name": "Rat Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/rat-terrier/"
+  },
+  {
+    "id": "redbone-coonhound",
+    "name": "Redbone Coonhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/redbone-coonhound/"
+  },
+  {
+    "id": "rhodesian-ridgeback",
+    "name": "Rhodesian Ridgeback",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/rhodesian-ridgeback/"
+  },
+  {
+    "id": "romanian-carpathian-shepherd",
+    "name": "Romanian Carpathian Shepherd",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/romanian-carpathian-shepherd/"
+  },
+  {
+    "id": "romanian-mioritic-shepherd-dog",
+    "name": "Romanian Mioritic Shepherd Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/romanian-mioritic-shepherd-dog/"
+  },
+  {
+    "id": "rottweiler",
+    "name": "Rottweiler",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/rottweiler/"
+  },
+  {
+    "id": "russell-terrier",
+    "name": "Russell Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/russell-terrier/"
+  },
+  {
+    "id": "russian-toy",
+    "name": "Russian Toy",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/russian-toy/"
+  },
+  {
+    "id": "russian-tsvetnaya-bolonka",
+    "name": "Russian Tsvetnaya Bolonka",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/russian-tsvetnaya-bolonka/"
+  },
+  {
+    "id": "saarloos-wolfhond",
+    "name": "Saarloos Wolfhond",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/saarloos-wolfhond/"
+  },
+  {
+    "id": "st-bernard",
+    "name": "Saint Bernard",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/st-bernard/"
+  },
+  {
+    "id": "saluki",
+    "name": "Saluki",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/saluki/"
+  },
+  {
+    "id": "samoyed",
+    "name": "Samoyed",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/samoyed/"
+  },
+  {
+    "id": "schapendoes",
+    "name": "Schapendoes",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/schapendoes/"
+  },
+  {
+    "id": "schipperke",
+    "name": "Schipperke",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/schipperke/"
+  },
+  {
+    "id": "scottish-deerhound",
+    "name": "Scottish Deerhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/scottish-deerhound/"
+  },
+  {
+    "id": "scottish-terrier",
+    "name": "Scottish Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/scottish-terrier/"
+  },
+  {
+    "id": "sealyham-terrier",
+    "name": "Sealyham Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/sealyham-terrier/"
+  },
+  {
+    "id": "segugio-italiano",
+    "name": "Segugio Italiano",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/segugio-italiano/"
+  },
+  {
+    "id": "shetland-sheepdog",
+    "name": "Shetland Sheepdog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/shetland-sheepdog/"
+  },
+  {
+    "id": "shiba-inu",
+    "name": "Shiba Inu",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/shiba-inu/"
+  },
+  {
+    "id": "shih-tzu",
+    "name": "Shih Tzu",
+    "kind": "breed",
+    "aliases": [
+      "Shih Tsu"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/shih-tzu/"
+  },
+  {
+    "id": "shikoku-ken",
+    "name": "Shikoku Ken",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/shikoku-ken/"
+  },
+  {
+    "id": "siberian-husky",
+    "name": "Siberian Husky",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/siberian-husky/"
+  },
+  {
+    "id": "silken-windhound",
+    "name": "Silken Windhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/silken-windhound/"
+  },
+  {
+    "id": "silky-terrier",
+    "name": "Silky Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/silky-terrier/"
+  },
+  {
+    "id": "skye-terrier",
+    "name": "Skye Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/skye-terrier/"
+  },
+  {
+    "id": "sloughi",
+    "name": "Sloughi",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/sloughi/"
+  },
+  {
+    "id": "slovakian-wirehaired-pointer",
+    "name": "Slovakian Wirehaired Pointer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/slovakian-wirehaired-pointer/"
+  },
+  {
+    "id": "slovensky-cuvac",
+    "name": "Slovensky Cuvac",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/slovensky-cuvac/"
+  },
+  {
+    "id": "slovensky-kopov",
+    "name": "Slovensky Kopov",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/slovensky-kopov/"
+  },
+  {
+    "id": "small-munsterlander",
+    "name": "Small Munsterlander",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/small-munsterlander/"
+  },
+  {
+    "id": "smooth-fox-terrier",
+    "name": "Smooth Fox Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/smooth-fox-terrier/"
+  },
+  {
+    "id": "soft-coated-wheaten-terrier",
+    "name": "Soft Coated Wheaten Terrier",
+    "kind": "breed",
+    "aliases": [
+      "Wheaten Terrier"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/soft-coated-wheaten-terrier/"
+  },
+  {
+    "id": "spanish-mastiff",
+    "name": "Spanish Mastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/spanish-mastiff/"
+  },
+  {
+    "id": "spanish-water-dog",
+    "name": "Spanish Water Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/spanish-water-dog/"
+  },
+  {
+    "id": "spinone-italiano",
+    "name": "Spinone Italiano",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/spinone-italiano/"
+  },
+  {
+    "id": "stabyhoun",
+    "name": "Stabyhoun",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/stabyhoun/"
+  },
+  {
+    "id": "staffordshire-bull-terrier",
+    "name": "Staffordshire Bull Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/staffordshire-bull-terrier/"
+  },
+  {
+    "id": "standard-schnauzer",
+    "name": "Standard Schnauzer",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/standard-schnauzer/"
+  },
+  {
+    "id": "sussex-spaniel",
+    "name": "Sussex Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/sussex-spaniel/"
+  },
+  {
+    "id": "swedish-lapphund",
+    "name": "Swedish Lapphund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/swedish-lapphund/"
+  },
+  {
+    "id": "swedish-vallhund",
+    "name": "Swedish Vallhund",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/swedish-vallhund/"
+  },
+  {
+    "id": "taiwan-dog",
+    "name": "Taiwan Dog",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/taiwan-dog/"
+  },
+  {
+    "id": "teddy-roosevelt-terrier",
+    "name": "Teddy Roosevelt Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/teddy-roosevelt-terrier/"
+  },
+  {
+    "id": "thai-bangkaew",
+    "name": "Thai Bangkaew",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/thai-bangkaew/"
+  },
+  {
+    "id": "thai-ridgeback",
+    "name": "Thai Ridgeback",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/thai-ridgeback/"
+  },
+  {
+    "id": "tibetan-mastiff",
+    "name": "Tibetan Mastiff",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/tibetan-mastiff/"
+  },
+  {
+    "id": "tibetan-spaniel",
+    "name": "Tibetan Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/tibetan-spaniel/"
+  },
+  {
+    "id": "tibetan-terrier",
+    "name": "Tibetan Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/tibetan-terrier/"
+  },
+  {
+    "id": "tornjak",
+    "name": "Tornjak",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/tornjak/"
+  },
+  {
+    "id": "tosa",
+    "name": "Tosa",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/tosa/"
+  },
+  {
+    "id": "toy-fox-terrier",
+    "name": "Toy Fox Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/toy-fox-terrier/"
+  },
+  {
+    "id": "transylvanian-hound",
+    "name": "Transylvanian Hound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/transylvanian-hound/"
+  },
+  {
+    "id": "treeing-tennessee-brindle",
+    "name": "Treeing Tennessee Brindle",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/treeing-tennessee-brindle/"
+  },
+  {
+    "id": "treeing-walker-coonhound",
+    "name": "Treeing Walker Coonhound",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/treeing-walker-coonhound/"
+  },
+  {
+    "id": "vizsla",
+    "name": "Vizsla",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/vizsla/"
+  },
+  {
+    "id": "volpino-italiano",
+    "name": "Volpino Italiano",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/volpino-italiano/"
+  },
+  {
+    "id": "weimaraner",
+    "name": "Weimaraner",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/weimaraner/"
+  },
+  {
+    "id": "welsh-springer-spaniel",
+    "name": "Welsh Springer Spaniel",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/welsh-springer-spaniel/"
+  },
+  {
+    "id": "welsh-terrier",
+    "name": "Welsh Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/welsh-terrier/"
+  },
+  {
+    "id": "west-highland-white-terrier",
+    "name": "West Highland White Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/west-highland-white-terrier/"
+  },
+  {
+    "id": "wetterhoun",
+    "name": "Wetterhoun",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/wetterhoun/"
+  },
+  {
+    "id": "whippet",
+    "name": "Whippet",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/whippet/"
+  },
+  {
+    "id": "wire-fox-terrier",
+    "name": "Wire Fox Terrier",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/wire-fox-terrier/"
+  },
+  {
+    "id": "wirehaired-pointing-griffon",
+    "name": "Wirehaired Pointing Griffon",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/wirehaired-pointing-griffon/"
+  },
+  {
+    "id": "wirehaired-vizsla",
+    "name": "Wirehaired Vizsla",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/wirehaired-vizsla/"
+  },
+  {
+    "id": "working-kelpie",
+    "name": "Working Kelpie",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/working-kelpie/"
+  },
+  {
+    "id": "xoloitzcuintli",
+    "name": "Xoloitzcuintli",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/xoloitzcuintli/"
+  },
+  {
+    "id": "yakutian-laika",
+    "name": "Yakutian Laika",
+    "kind": "breed",
+    "aliases": [],
+    "source_url": "https://www.akc.org/dog-breeds/yakutian-laika/"
+  },
+  {
+    "id": "yorkshire-terrier",
+    "name": "Yorkshire Terrier",
+    "kind": "breed",
+    "aliases": [
+      "Yorkie"
+    ],
+    "source_url": "https://www.akc.org/dog-breeds/yorkshire-terrier/"
+  },
+  {
+    "id": "other",
+    "name": "Other",
+    "kind": "unspecified",
+    "aliases": [],
+    "source_url": null,
+    "sort_order": 200
+  }
+]

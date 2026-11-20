@@ -1,5 +1,6 @@
 import {advanced, byId, careMap, decisionIds, fieldsFor, guides, intake} from './flow.js';
 import {escapeHtml as esc, mapView} from './maps.js';
+import {breedField} from './breeds.js';
 
 export const button = (label, attrs, cls='primary') => `<button type="button" class="${cls}" ${attrs}>${label}</button>`;
 export function icon(name) {
@@ -61,6 +62,7 @@ function photoField(field, data) {
 }
 function fieldView(field, data) {
   const value = data[field.id] ?? '', name = esc(field.id), label = esc(field.label);
+  if (field.id === 'breed') return breedField(value);
   if (field.type === 'photo') return photoField(field,data);
   if (field.type === 'check') return `<label class="tick"><input type="checkbox" name="${name}" ${value?'checked':''}><span>${label}</span></label>`;
   if (field.type === 'range') {

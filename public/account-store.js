@@ -1,4 +1,5 @@
 import {historyPageSize} from './profile-model.js';
+import {loadBreeds,canonicalBreed} from './breeds.js';
 
 const config = globalThis.FD_CONFIG || {};
 export const configured = Boolean(config.publishableKey && globalThis.supabase?.createClient);
@@ -14,7 +15,8 @@ function result(response) {
 export async function household(id) {
   const [profile, dogs] = await Promise.all([
     client.from('fd_owner_profiles').select('*').eq('owner_id',id).maybeSingle(),
-    client.from('fd_dogs').select('id,owner_id,name,breed,birthday,care_defaults').eq('owner_id',id).order('created_at')
+    client.from('fd_dogs').select('id,owner_id,name,breed,birthday,care_defaults').eq('owner_id',id).order('created_at'),
+    loadBreeds(client)
   ]);
   return {profile:result(profile),dogs:result(dogs)};
 }
@@ -36,6 +38,7 @@ export async function saveOwner(id, values) {
   else result(inserted);
 }
 export async function saveDog(owner, id, values, isNew) {
+  values={...values,breed:canonicalBreed(values.breed)};
   if (isNew) {
     const added=await client.from('fd_dogs').insert({id,owner_id:owner,...values});
     if (!added.error || added.error.code!=='23505') {result(added);return;}

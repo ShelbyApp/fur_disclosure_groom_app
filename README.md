@@ -11,3 +11,5 @@ The owner flow starts with email and password login or account creation, a house
 [Screen specifications](docs/screens/README.md) · [Brand guide](docs/BRAND.md) · [Feature scope](docs/SCOPE.md)
 
 **Verify a release.** Vercel writes the deployed Git SHA to `/version.json`. After a push, run `node scripts/verify-deployment.mjs https://groom.furdisclosure.com <full-commit-sha>` to check that revision, the deployed assets and public Supabase configuration. The check does not write database records.
+
+**Breed catalog.** The [breed setup guide](docs/breeds.md) covers the 320-choice catalog, Unknown, searchable suggestions, and the SQL migration to run in Supabase.

@@ -262,3 +262,5 @@ dialog select,dialog textarea {border:1.5px solid var(--edge);background:white;m
 .directory-see-all {margin:0 0 12px;text-decoration:underline}
 .login-version {font-size:11px;text-align:center;color:var(--soft);margin:10px 0 0}
 
+
+.breed-help{margin:-4px 0 18px;color:#705479;font-size:14px;line-height:1.5}

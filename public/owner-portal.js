@@ -8,6 +8,7 @@ import {readPhoto} from './photos.js';
 import {directoryMarkup,mountDirectory,serviceFields,flagsFromForm} from './directory.js';
 import {accountRole,signupIntent,signupOptions} from './signup-intent.js';
 import {photoSettings,mountPhotoProvider} from './photo-settings.js';
+import {breedField} from './breeds.js';
 
 const routes = new Set(['account','create-account','forgot-password','set-password','profile','groomer-home','owner-settings','dog-profile','edit-dog','dog-care','edit-groomer','find-groomer','add-photo','edit-photo','history','past-groom']);
 const entryRoutes = ['account','create-account','forgot-password'];
@@ -199,7 +200,7 @@ export function ownerPortal({app, navigate, identityChanged, startVisit, hasDraf
       if (screen==='edit-dog' && (dog || dogId==='new')) {
         newDogId=dog?.id || crypto.randomUUID();
         frame(dog?'Edit '+dog.name:'Meet your pup.','These details will fill in a fresh groom.',
-          field('Dog’s name','name',dog?.name,'text','required maxlength="60"')+field('Breed or mix','breed',dog?.breed,'text','maxlength="180"')+
+          field('Dog’s name','name',dog?.name,'text','required maxlength="60"')+breedField(dog?.breed)+
           field('Birthday (optional)','birthday',dog?.birthday,'date','max="'+dateToday()+'"')+
           field('Weight (optional)','weight',dog?.care_defaults?.weight,'text','maxlength="40" placeholder="e.g. 28 lb"')+
           submit('Next · care & what-ifs'),

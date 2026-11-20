@@ -79,6 +79,7 @@ export function installAuthFixture(directory=[],{liveMaps=false}={}) {
       }
       throw Error('Unexpected directory RPC');
     }
+    if(table==='fd_breeds')return reply({code:'PGRST205',message:'Breed catalog not installed in this fixture'},404);
     if(!['fd_owner_profiles','fd_dogs','fd_grooms','fd_groomers','fd_dog_photos'].includes(table))throw Error('Unexpected table');
     const key='test:rows:'+table;
     const rows=JSON.parse(sessionStorage.getItem(key)||'[]');
